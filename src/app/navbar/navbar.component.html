@@ -1,0 +1,29 @@
+<ion-menu contentId="main-content" menu-id="Menu-izquierdo" side="start">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Contenido del menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-list>
+      <ion-item href="/hola">
+        hola
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button menu="Menu-izquierdo"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        <ion-img src="assets/icon/favicon.png" style="width: 25px"></ion-img>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    Tap the button in the toolbar to open the menu.
+  </ion-content>
+</div>

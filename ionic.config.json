@@ -1,0 +1,7 @@
+{
+  "name": "Divigroup",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
