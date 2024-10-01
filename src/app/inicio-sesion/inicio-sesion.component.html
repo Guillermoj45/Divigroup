@@ -1,16 +1,30 @@
-<ion-input
-  id="username"
-  label="Usuario"
-  labelPlacement="floating"
-  [counter]="true"
-  maxlength="20"
-  [counterFormatter]="customCounterFormatter"
-></ion-input>
-<ion-input
-  id="password"
-  label="Contraseña"
-  labelPlacement="floating"
-  [counter]="true"
-  maxlength="20"
-  [counterFormatter]="customCounterFormatter"
-></ion-input>
+
+<ion-img
+  src="assets/icon/Icono.png"
+    style=""
+/>
+<div
+  style="width: 50%; margin: auto; margin-top: -20%"
+>
+
+  <ion-input
+    id="username"
+    label="Usuario"
+    labelPlacement="floating"
+    [counter]="false"
+    maxlength="50"
+    [counterFormatter]="customCounterFormatter"
+    type="text"
+  />
+  <ion-input
+    id="password"
+    label="Contraseña"
+    labelPlacement="floating"
+    [counter]="false"
+    maxlength="50"
+    [counterFormatter]="customCounterFormatter"
+    type="password"
+  />
+  <ion-button style="display: flex; align-items: center; margin-top: 5%" shape="round">Iniciar sesión</ion-button>
+  <ion-button style="display: flex; align-items: center; margin-top: 5%" shape="round">Crear cuenta</ion-button>
+</div>
