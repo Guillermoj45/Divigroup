@@ -8,8 +8,9 @@ import {
   IonCardHeader,
   IonCardTitle, IonCardSubtitle, IonCardContent, IonSearchbar, IonList, IonItem, IonLabel, IonImg
 } from '@ionic/angular/standalone';
-import {NavbarComponent} from "../navbar/navbar.component";
-import {InicioSesionComponent} from "../inicio-sesion/inicio-sesion.component";
+import { OnInit } from '@angular/core';
+import {TajetaCuentaComponent} from "../tajeta-cuenta/tajeta-cuenta.component";
+import {MenuTajetaCuentaComponent} from "../menu-tajeta-cuenta/menu-tajeta-cuenta.component";
 
 @Component({
   selector: 'app-home',
@@ -31,8 +32,11 @@ import {InicioSesionComponent} from "../inicio-sesion/inicio-sesion.component";
     IonItem,
     IonLabel,
     IonImg,
+    TajetaCuentaComponent,
+    MenuTajetaCuentaComponent,
   ],
 })
+
 export class HomePage {
   constructor() {}
   public data = [
