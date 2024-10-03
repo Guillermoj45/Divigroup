@@ -11,8 +11,10 @@ import {
   IonToolbar
 } from "@ionic/angular/standalone";
 import {addIcons} from "ionicons";
-import {addOutline, document, people, peopleOutline, person} from "ionicons/icons";
-import {Routes, RouterModule} from "@angular/router"
+import {addOutline, document, home, people, person} from "ionicons/icons";
+import {Router, RouterModule, Routes} from '@angular/router';
+import {InicioSesionComponent} from "src/app/inicio-sesion/inicio-sesion.component";
+import {routes} from "../app.routes";
 
 @Component({
     selector: 'app-footer',
@@ -28,18 +30,19 @@ import {Routes, RouterModule} from "@angular/router"
     IonGrid,
     IonCol,
     IonRow,
-    IonRouterLink
+    IonRouterLink,
+    RouterModule
   ]
 })
 export class FooterComponent  implements OnInit {
 
-  constructor() {
+  constructor(private router: Router) {
     addIcons({'add-outline': addOutline, 'document': document, 'people': people, 'person': person});
   }
-  routes: Routes = [
-    { path: 'hola', component: FooterComponent },
-    // otras rutas
-  ];
+
+
+
+
   ngOnInit() {}
 
 }
