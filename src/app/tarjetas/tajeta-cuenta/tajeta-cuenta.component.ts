@@ -9,7 +9,7 @@ import {
   IonImg, IonRow
 } from "@ionic/angular/standalone";
 import {NgOptimizedImage} from "@angular/common";
-import {MiniMenuImgsComponent} from "../mini-menu-imgs/mini-menu-imgs.component";
+import {MiniMenuImgsComponent} from "../../mini-menu-imgs/mini-menu-imgs.component";
 
 @Component({
     selector: 'app-tajeta-cuenta',

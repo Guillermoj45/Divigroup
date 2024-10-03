@@ -37,7 +37,7 @@ export class FooterComponent  implements OnInit {
     addIcons({'add-outline': addOutline, 'document': document, 'people': people, 'person': person});
   }
   routes: Routes = [
-    { path: 'hola', component: HolaComponent },
+    { path: 'hola', component: FooterComponent },
     // otras rutas
   ];
   ngOnInit() {}

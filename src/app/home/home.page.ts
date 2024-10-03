@@ -3,8 +3,8 @@ import {
   IonContent,
   IonSearchbar,
 } from '@ionic/angular/standalone';
-import {TajetaCuentaComponent} from "../tajeta-cuenta/tajeta-cuenta.component";
-import {MenuTajetaCuentaComponent} from "../menu-tajeta-cuenta/menu-tajeta-cuenta.component";
+import {TajetaCuentaComponent} from "../tarjetas/tajeta-cuenta/tajeta-cuenta.component";
+import {MenuTajetaCuentaComponent} from "../tarjetas/menu-tajeta-cuenta/menu-tajeta-cuenta.component";
 import {addIcons} from "ionicons";
 import {addOutline, document} from "ionicons/icons";
 import {FooterComponent} from "../footer/footer.component";
