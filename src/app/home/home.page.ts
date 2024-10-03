@@ -1,16 +1,13 @@
 import { Component } from '@angular/core';
 import {
-  IonHeader,
-  IonToolbar,
-  IonTitle,
   IonContent,
-  IonCard,
-  IonCardHeader,
-  IonCardTitle, IonCardSubtitle, IonCardContent, IonSearchbar, IonList, IonItem, IonLabel, IonImg
+  IonSearchbar,
 } from '@ionic/angular/standalone';
-import { OnInit } from '@angular/core';
 import {TajetaCuentaComponent} from "../tajeta-cuenta/tajeta-cuenta.component";
 import {MenuTajetaCuentaComponent} from "../menu-tajeta-cuenta/menu-tajeta-cuenta.component";
+import {addIcons} from "ionicons";
+import {addOutline, document} from "ionicons/icons";
+import {FooterComponent} from "../footer/footer.component";
 
 @Component({
   selector: 'app-home',
@@ -18,27 +15,21 @@ import {MenuTajetaCuentaComponent} from "../menu-tajeta-cuenta/menu-tajeta-cuent
   styleUrls: ['home.page.scss'],
   standalone: true,
   imports: [
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonContent,
-    IonCard,
-    IonCardHeader,
-    IonCardTitle,
-    IonCardSubtitle,
-    IonCardContent,
-    IonSearchbar,
-    IonList,
-    IonItem,
-    IonLabel,
-    IonImg,
+
     TajetaCuentaComponent,
     MenuTajetaCuentaComponent,
+    FooterComponent,
+    IonSearchbar,
+    IonContent,
   ],
 })
 
+
 export class HomePage {
-  constructor() {}
+  constructor() {
+    addIcons({'add-outline': addOutline, 'document': document});
+  }
+
   public data = [
     'Amsterdam',
     'Buenos Aires',
