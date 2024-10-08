@@ -13,7 +13,7 @@ import {
 import {addIcons} from "ionicons";
 import {addOutline, document, home, people, person} from "ionicons/icons";
 import {Router, RouterModule, Routes} from '@angular/router';
-import {InicioSesionComponent} from "src/app/inicio-sesion/inicio-sesion.component";
+import {InicioSesionComponent} from "src/app/pantallas/inicio-sesion/inicio-sesion.component";
 import {routes} from "../app.routes";
 
 @Component({

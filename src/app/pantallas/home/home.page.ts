@@ -3,11 +3,12 @@ import {
   IonContent,
   IonSearchbar,
 } from '@ionic/angular/standalone';
-import {TajetaCuentaComponent} from "../tarjetas/tajeta-cuenta/tajeta-cuenta.component";
-import {MenuTajetaCuentaComponent} from "../tarjetas/menu-tajeta-cuenta/menu-tajeta-cuenta.component";
+import {TajetaCuentaComponent} from "../../tarjetas/tajeta-cuenta/tajeta-cuenta.component";
+import {MenuTajetaCuentaComponent} from "../../tarjetas/menu-tajeta-cuenta/menu-tajeta-cuenta.component";
 import {addIcons} from "ionicons";
 import {addOutline, document} from "ionicons/icons";
-import {FooterComponent} from "../footer/footer.component";
+import {FooterComponent} from "../../footer/footer.component";
+import {NavarComponent} from "../../navar/navar.component";
 
 @Component({
   selector: 'app-home',
@@ -21,6 +22,7 @@ import {FooterComponent} from "../footer/footer.component";
     FooterComponent,
     IonSearchbar,
     IonContent,
+    NavarComponent,
   ],
 })
 

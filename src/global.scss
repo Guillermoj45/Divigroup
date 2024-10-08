@@ -50,3 +50,21 @@
 .divMismaLinea{
   display: flex;
 }
+
+:root {
+  --ion-color-defecto: #4d8dff;
+  --ion-color-defecto-rgb: 77,141,255;
+  --ion-color-defecto-contrast: #000000;
+  --ion-color-defecto-contrast-rgb: 0,0,0;
+  --ion-color-defecto-shade: #447ce0;
+  --ion-color-defecto-tint: #5f98ff;
+}
+
+.ion-color-defecto {
+  --ion-color-base: var(--ion-color-defecto);
+  --ion-color-base-rgb: var(--ion-color-defecto-rgb);
+  --ion-color-contrast: var(--ion-color-defecto-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-defecto-contrast-rgb);
+  --ion-color-shade: var(--ion-color-defecto-shade);
+  --ion-color-tint: var(--ion-color-defecto-tint);
+}
