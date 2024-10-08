@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FooterComponent} from "../footer/footer.component";
-import {NavarComponent} from "../navar/navar.component";
-import {MenuTajetaCuentaComponent} from "../tarjetas/menu-tajeta-cuenta/menu-tajeta-cuenta.component";
+import {FooterComponent} from "../../footer/footer.component";
+import {NavarComponent} from "../../navar/navar.component";
+import {MenuTajetaCuentaComponent} from "../../tarjetas/menu-tajeta-cuenta/menu-tajeta-cuenta.component";
 import {IonicModule} from "@ionic/angular";
+import {MenuTarjetaAmigosComponent} from "../../tarjetas/menu-tarjeta-amigos/menu-tarjeta-amigos.component";
 
 @Component({
   selector: 'app-amigos',
@@ -13,7 +14,8 @@ import {IonicModule} from "@ionic/angular";
     FooterComponent,
     NavarComponent,
     MenuTajetaCuentaComponent,
-    IonicModule
+    IonicModule,
+    MenuTarjetaAmigosComponent
   ]
 })
 export class AmigosComponent  implements OnInit {

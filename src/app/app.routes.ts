@@ -16,6 +16,6 @@ export const routes: Routes = [
   },
   {
     path: 'amigos',
-    loadComponent: () => import('./amigos/amigos.component').then((m) => m.AmigosComponent),
+    loadComponent: () => import('./pantallas/amigos/amigos.component').then((m) => m.AmigosComponent),
   }
 ];
