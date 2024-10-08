@@ -7,7 +7,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'inicio-sesion',
+    redirectTo: '/inicio-sesion',
     pathMatch: 'full',
   },
   {
@@ -17,5 +17,9 @@ export const routes: Routes = [
   {
     path: 'amigos',
     loadComponent: () => import('./pantallas/amigos/amigos.component').then((m) => m.AmigosComponent),
+  },
+  {
+    path: 'perfil',
+    loadComponent: () => import('./perfil/perfil.component').then((m) => m.PerfilComponent),
   }
 ];
