@@ -20,7 +20,7 @@ export const routes: Routes = [
   },
   {
     path: 'perfil',
-    loadComponent: () => import('./perfil/perfil.component').then((m) => m.PerfilComponent),
+    loadComponent: () => import('./pantallas/perfil/perfil.component').then((m) => m.PerfilComponent),
   },
   {
     path: 'amigo/perfil',

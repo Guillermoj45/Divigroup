@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {NavarComponent} from "../navar/navar.component";
-import {FooterComponent} from "../footer/footer.component";
+import {NavarComponent} from "../../navar/navar.component";
+import {FooterComponent} from "../../footer/footer.component";
 import {IonicModule} from "@ionic/angular";
 
 @Component({
