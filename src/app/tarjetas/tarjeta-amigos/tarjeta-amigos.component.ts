@@ -10,6 +10,7 @@ import {
 } from "@ionic/angular/standalone";
 import {MiniMenuImgsComponent} from "../../mini-menu-imgs/mini-menu-imgs.component";
 import {addIcons} from "ionicons";
+import {RouterLink} from "@angular/router";
 
 @Component({
     selector: 'app-tarjeta-amigos',
@@ -27,7 +28,8 @@ import {addIcons} from "ionicons";
     IonRow,
     MiniMenuImgsComponent,
     IonButton,
-    IonIcon
+    IonIcon,
+    RouterLink
   ]
 })
 export class TarjetaAmigosComponent  implements OnInit {

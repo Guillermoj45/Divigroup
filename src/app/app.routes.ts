@@ -21,5 +21,9 @@ export const routes: Routes = [
   {
     path: 'perfil',
     loadComponent: () => import('./perfil/perfil.component').then((m) => m.PerfilComponent),
+  },
+  {
+    path: 'amigo/perfil',
+    loadComponent: () => import('./amigo/amigo.component').then((m) => m.AmigoComponent),
   }
 ];

@@ -20,8 +20,7 @@ export class PerfilComponent  implements OnInit {
   constructor() {
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   openFileExplorer() {
     const fileInput = document.createElement('input');
@@ -43,7 +42,6 @@ export class PerfilComponent  implements OnInit {
         imagen.setAttribute('src', URL.createObjectURL(file).toString());
       }
       console.log('Selected file:', file);
-      // Handle the selected file here
     }
   }
 }
