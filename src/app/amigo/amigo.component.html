@@ -1,5 +1,33 @@
-<ion-avatar>
-  <img [src]="foto" />
-</ion-avatar>
-
+<div class="background-image" style="background-image: url({{imagenFondo}}) "></div>
+<ion-grid style="width: 100%">
+  <ion-row>
+    <ion-col size="12">
+    </ion-col>
+    <ion-col size="3">
+      <ion-avatar>
+        <img [src]="foto"  alt=""/>
+      </ion-avatar>
+    </ion-col>
+    <ion-col size="5">
+      <p class="ion-color-letra">{{nome}}</p>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col class="centrar" size="5">
+      <ion-button >amistad</ion-button>
+    </ion-col>
+    <ion-col class="centrar">
+      <ion-button>Enviar mensaje</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="0.5"/>
+    <ion-col>
+      <span class="ion-color-letra">Cuentas en común</span>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+      <div id="containerCuentas"></div>
+  </ion-row>
+</ion-grid>
 <app-footer></app-footer>

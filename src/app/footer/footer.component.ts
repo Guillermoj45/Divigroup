@@ -2,19 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import {
   IonButton,
   IonButtons,
-  IonCol,
+  IonCol, IonContent,
   IonFooter,
-  IonGrid,
+  IonGrid, IonHeader,
   IonIcon,
   IonRouterLink,
-  IonRow,
+  IonRow, IonTabBar, IonTabButton, IonTabs, IonTitle,
   IonToolbar
 } from "@ionic/angular/standalone";
 import {addIcons} from "ionicons";
 import {addOutline, document, home, people, person} from "ionicons/icons";
 import {Router, RouterModule, Routes} from '@angular/router';
-import {InicioSesionComponent} from "src/app/pantallas/inicio-sesion/inicio-sesion.component";
-import {routes} from "../app.routes";
 
 @Component({
     selector: 'app-footer',
@@ -31,7 +29,13 @@ import {routes} from "../app.routes";
     IonCol,
     IonRow,
     IonRouterLink,
-    RouterModule
+    RouterModule,
+    IonTabs,
+    IonHeader,
+    IonTitle,
+    IonContent,
+    IonTabBar,
+    IonTabButton
   ]
 })
 export class FooterComponent  implements OnInit {
@@ -43,6 +47,7 @@ export class FooterComponent  implements OnInit {
 
 
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
 }

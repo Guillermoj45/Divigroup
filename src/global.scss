@@ -69,6 +69,32 @@
   --ion-color-tint: var(--ion-color-defecto-tint);
 }
 
+:root {
+  --ion-color-letra: #000000;
+  --ion-color-letra-rgb: 0,0,0;
+  --ion-color-letra-contrast: #ffffff;
+  --ion-color-letra-contrast-rgb: 255,255,255;
+  --ion-color-letra-shade: #000000;
+  --ion-color-letra-tint: #1a1a1a;
+}
+
+.ion-color-letra {
+  --ion-color-base: var(--ion-color-letra);
+  --ion-color-base-rgb: var(--ion-color-letra-rgb);
+  --ion-color-contrast: var(--ion-color-letra-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-letra-contrast-rgb);
+  --ion-color-shade: var(--ion-color-letra-shade);
+  --ion-color-tint: var(--ion-color-letra-tint);
+  font-weight: bolder;
+}
+
 ion-content{
   --keyboard-offset: none !important;
+}
+
+ion-avatar {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  height: 100%;
+  max-height: 100vh;
 }

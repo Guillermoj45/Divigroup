@@ -23,7 +23,7 @@ export const routes: Routes = [
     loadComponent: () => import('./pantallas/perfil/perfil.component').then((m) => m.PerfilComponent),
   },
   {
-    path: 'amigo/perfil',
+    path: 'amigos/perfil',
     loadComponent: () => import('./amigo/amigo.component').then((m) => m.AmigoComponent),
   }
 ];
