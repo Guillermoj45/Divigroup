@@ -4,11 +4,11 @@ import {FormsModule} from "@angular/forms";
 import {Cuenta} from "../../assets/js/Cuenta";
 import {NgForOf, NgIf} from "@angular/common";
 import {TajetaCuentaComponent} from "../tarjetas/tajeta-cuenta/tajeta-cuenta.component";
-import {ProductoComponent} from "../producto/producto.component";
 import {AmigoComponent} from "../pantallas/amigo/amigo.component";
 import {MenuTarjetaAmigosComponent} from "../tarjetas/menu-tarjeta-amigos/menu-tarjeta-amigos.component";
 import {TarjetaAmigosComponent} from "../tarjetas/tarjeta-amigos/tarjeta-amigos.component";
 import {Producto} from "../../assets/js/Producto";
+import {ProductoComponent} from "../producto/producto.component";
 
 @Component({
   selector: 'app-cuenta',
@@ -20,11 +20,11 @@ import {Producto} from "../../assets/js/Producto";
     FormsModule,
     NgIf,
     TajetaCuentaComponent,
-    ProductoComponent,
     AmigoComponent,
     MenuTarjetaAmigosComponent,
     TarjetaAmigosComponent,
-    NgForOf
+    NgForOf,
+    ProductoComponent
   ]
 })
 export class CuentaComponent  implements OnInit {
