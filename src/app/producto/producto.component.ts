@@ -15,7 +15,7 @@ import {Producto} from "../../assets/js/Producto";
 })
 
 export class ProductoComponent  implements OnInit {
-  @Input() producto:Producto= new Producto('Producto 1', '20', 1, new Date());
+  @Input() producto:Producto= new Producto('https://picsum.photos/80/80?random=1', '20', 1, new Date());
   constructor() {
   }
 

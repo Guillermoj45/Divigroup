@@ -19,13 +19,10 @@
     </ion-row>
   <ion-row>
         <ion-col size="10" style="margin:auto; height: 2000px">
-          <div *ngFor="let producto of productos">
-
-          </div>
-
-
           <ng-content *ngIf="segmento === 'cuentas'">
-            <app-producto></app-producto>
+            <div *ngFor="let producto of productos">
+              <app-producto [producto]="producto"></app-producto>
+            </div>
           </ng-content>
           <ng-content *ngIf="segmento === 'division'">
             <app-tarjeta-amigos></app-tarjeta-amigos>

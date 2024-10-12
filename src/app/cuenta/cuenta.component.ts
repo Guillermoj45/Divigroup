@@ -36,7 +36,11 @@ export class CuentaComponent  implements OnInit {
 
   constructor() {
     this.cuentas = [new Cuenta('Cuenta 1', 100, 'https://picsum.photos/500/500?random=3', 1)];
-    this.productos = [new Producto('Producto 1', '20', 1, new Date())];
+    this.productos = [new Producto('https://picsum.photos/80/80?random=1', '20', 1, new Date())];
+    this.productos = [
+      ...this.productos,
+      new Producto('https://picsum.photos/80/80?random=2', '20', 1, new Date())
+    ];
   }
 
   ngOnInit() {
