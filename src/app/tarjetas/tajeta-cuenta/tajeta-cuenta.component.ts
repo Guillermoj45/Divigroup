@@ -10,6 +10,7 @@ import {
 } from "@ionic/angular/standalone";
 import {NgOptimizedImage} from "@angular/common";
 import {MiniMenuImgsComponent} from "../../mini-menu-imgs/mini-menu-imgs.component";
+import {RouterLink} from "@angular/router";
 
 @Component({
     selector: 'app-tajeta-cuenta',
@@ -29,7 +30,8 @@ import {MiniMenuImgsComponent} from "../../mini-menu-imgs/mini-menu-imgs.compone
     IonCol,
     IonIcon,
     NgOptimizedImage,
-    MiniMenuImgsComponent
+    MiniMenuImgsComponent,
+    RouterLink
   ]
 })
 export class TajetaCuentaComponent  implements OnInit {

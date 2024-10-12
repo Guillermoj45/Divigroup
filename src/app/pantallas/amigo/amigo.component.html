@@ -9,7 +9,7 @@
       </ion-avatar>
     </ion-col>
     <ion-col size="5">
-      <p class="ion-color-letra">{{nome}}</p>
+      <p class="ion-color-letra">{{nombre}}</p>
     </ion-col>
   </ion-row>
   <ion-row>
@@ -27,7 +27,14 @@
     </ion-col>
   </ion-row>
   <ion-row>
-      <div id="containerCuentas"></div>
+      <div id="containerCuentas" style="height: fit-content">
+        <ng-content>
+        <app-tajeta-cuenta style="height: fit-content"></app-tajeta-cuenta>
+        <app-tajeta-cuenta style="height: fit-content"></app-tajeta-cuenta>
+        <app-tajeta-cuenta style="height: fit-content"></app-tajeta-cuenta>
+        <app-tajeta-cuenta style="height: fit-content"></app-tajeta-cuenta>
+        </ng-content>
+      </div>
   </ion-row>
 </ion-grid>
 <app-footer></app-footer>

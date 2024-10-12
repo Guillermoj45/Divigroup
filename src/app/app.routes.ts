@@ -24,6 +24,10 @@ export const routes: Routes = [
   },
   {
     path: 'amigos/perfil',
-    loadComponent: () => import('./amigo/amigo.component').then((m) => m.AmigoComponent),
+    loadComponent: () => import('./pantallas/amigo/amigo.component').then((m) => m.AmigoComponent),
+  },
+  {
+    path: 'cuentas/cuenta',
+    loadComponent: () => import('./cuenta/cuenta.component').then((m) => m.CuentaComponent),
   }
 ];

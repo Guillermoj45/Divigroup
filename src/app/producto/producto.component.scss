@@ -1,0 +1,16 @@
+div {
+  /* From https://css.glass */
+  background: rgba(58, 57, 57, 0.38);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+ion-img {
+  border-radius: 40px !important;
+  overflow: hidden;
+}
+p{
+  text-align: end;
+}

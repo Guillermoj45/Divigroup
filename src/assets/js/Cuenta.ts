@@ -1,20 +1,30 @@
 import {Persona} from './Persona';
+import {Producto} from "./Producto";
 export class Cuenta {
   private _nombre: string;
   private _saldo: number;
   private _imagen: string;
   private _id: number;
   private _personas: Array<Persona>;
+  private _productos: Array<Producto>;
 
-
-  constructor(nombre: string, saldo: number, imagen: string, id: number, personas?: Array<Persona>) {
+  constructor(nombre: string, saldo: number, imagen: string, id: number, personas?: Array<Persona>, productos?: Array<Producto>) {
     this._nombre = nombre;
     this._saldo = saldo;
     this._imagen = imagen;
     this._id = id;
     this._personas = personas || [];
+    this._productos = productos || [];
   }
 
+
+  get productos(): Array<Producto> {
+    return this._productos;
+  }
+
+  set productos(value: Array<Producto>) {
+    this._productos = value;
+  }
 
   get nombre(): string {
     return this._nombre;
