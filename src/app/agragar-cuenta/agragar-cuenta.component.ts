@@ -7,6 +7,7 @@ import {cloudUploadOutline} from "ionicons/icons";
 import {Persona} from "../../assets/js/Persona";
 import {TarjetaAmigosComponent} from "../tarjetas/tarjeta-amigos/tarjeta-amigos.component";
 import {NgForOf} from "@angular/common";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-agragar-cuenta',
@@ -18,7 +19,8 @@ import {NgForOf} from "@angular/common";
     IonicModule,
     MiniMenuImgsComponent,
     TarjetaAmigosComponent,
-    NgForOf
+    NgForOf,
+    RouterLink
   ]
 })
 export class AgragarCuentaComponent  implements OnInit {
@@ -35,5 +37,14 @@ export class AgragarCuentaComponent  implements OnInit {
   }
 
   ngOnInit() {}
+
+  agregarCuenta(){
+    console.log("Agregar cuenta")
+  }
+
+
+  cancelar(){
+    console.log("Cancelar")
+  }
 
 }

@@ -80,7 +80,7 @@ export class AmigoComponent  implements OnInit {
       },
     },
     {
-      text: 'Cancel',
+      text: 'Cancelar',
       role: 'cancel',
       data: {
         action: 'cancel',

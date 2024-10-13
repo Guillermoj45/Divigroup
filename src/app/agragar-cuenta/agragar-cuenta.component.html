@@ -19,10 +19,16 @@
   </ion-row>
   <ion-row>
     <ion-col>
-      <div *ngFor="let invitado of invitados">
-        <app-tarjeta-amigos [persona]="invitado"></app-tarjeta-amigos>
+      <div style="max-height: 300px; overflow-y: auto;">
+        <app-tarjeta-amigos *ngFor="let invitado of invitados" [persona]="invitado"></app-tarjeta-amigos>
       </div>
     </ion-col>
   </ion-row>
 </ion-grid>
+<ion-fab horizontal="start" vertical="bottom" slot="fixed" routerLink="/home">
+  <ion-button>Cancelar</ion-button>
+</ion-fab>
+<ion-fab horizontal="end" vertical="bottom" slot="fixed" (click)="agregarCuenta()">
+  <ion-button>Guardar</ion-button>
+</ion-fab>
 <app-footer/>
