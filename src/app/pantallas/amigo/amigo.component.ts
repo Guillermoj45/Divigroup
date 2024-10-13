@@ -5,6 +5,7 @@ import {MenuTajetaCuentaComponent} from "../../tarjetas/menu-tajeta-cuenta/menu-
 import {TajetaCuentaComponent} from "../../tarjetas/tajeta-cuenta/tajeta-cuenta.component";
 import {Component, OnInit} from "@angular/core";
 import {TarjetaAmigosComponent} from "../../tarjetas/tarjeta-amigos/tarjeta-amigos.component";
+import {MiniMenuImgsComponent} from "../../mini-menu-imgs/mini-menu-imgs.component";
 
 @Component({
   selector: 'app-amigo',
@@ -17,7 +18,8 @@ import {TarjetaAmigosComponent} from "../../tarjetas/tarjeta-amigos/tarjeta-amig
     NgStyle,
     MenuTajetaCuentaComponent,
     TajetaCuentaComponent,
-    TarjetaAmigosComponent
+    TarjetaAmigosComponent,
+    MiniMenuImgsComponent
   ]
 })
 export class AmigoComponent  implements OnInit {

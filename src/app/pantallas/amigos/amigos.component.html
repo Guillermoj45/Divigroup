@@ -3,5 +3,13 @@
 <ion-content>
   <app-menu-tarjeta-amigos></app-menu-tarjeta-amigos>
 </ion-content>
+<ion-fab horizontal="end" vertical="bottom" slot="fixed" style="margin-bottom: 60px" (click)="setAgregar(true)">
+  <ion-fab-button *ngIf="!agregar">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+  <div class="ion-color-defecto" style="background-color: var(--color-fondo); border-radius: 10px" *ngIf="agregar" class="ion-color-defecto">
+    <ion-input id="inputAmigo" color="default" (keydown.enter)="agregarAmigo()"></ion-input>
+  </div>
+</ion-fab>
 
 <app-footer></app-footer>

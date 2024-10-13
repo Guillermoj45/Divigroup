@@ -104,3 +104,21 @@ ion-col.centrar {
   flex-direction: column;
   align-items: center;
 }
+
+:root {
+  --color-modo-claro: #b4b4b4; /* Color para modo claro */
+  --color-modo-oscuro: rgb(52, 52, 52); /* Color para modo oscuro */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-fondo: var(--color-modo-oscuro);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-fondo: var(--color-modo-claro);
+  }
+}
+
