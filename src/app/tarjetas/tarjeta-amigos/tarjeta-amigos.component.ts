@@ -13,6 +13,7 @@ import {addIcons} from "ionicons";
 import {RouterLink} from "@angular/router";
 import {NgIf} from "@angular/common";
 import {Persona} from "../../../assets/js/Persona";
+import {image} from "ionicons/icons";
 
 @Component({
     selector: 'app-tarjeta-amigos',
@@ -37,7 +38,8 @@ import {Persona} from "../../../assets/js/Persona";
 })
 export class TarjetaAmigosComponent  implements OnInit {
   @Input() deve:number | null = null;
-  @Input() persona:Persona | null = null;
+  @Input() persona:Persona = new Persona(0, 'Usuario X', 'https://picsum.photos/500/500?random=4')
+  @Input() seleccionado:boolean | null = null;
 
   constructor() {
     addIcons({'add-outline': 'trash-outline'});
@@ -69,4 +71,6 @@ export class TarjetaAmigosComponent  implements OnInit {
     }
     return 'No se ha definido';
   }
+
+  protected readonly image = image;
 }

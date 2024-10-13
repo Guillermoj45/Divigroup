@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IonicModule} from "@ionic/angular";
-import {MiniMenuImgsComponent} from '../mini-menu-imgs/mini-menu-imgs.component'
-import {Producto} from "../../assets/js/Producto";
+import {MiniMenuImgsComponent} from '../../mini-menu-imgs/mini-menu-imgs.component'
+import {Producto} from "../../../assets/js/Producto";
 
 @Component({
   selector: 'app-producto',
