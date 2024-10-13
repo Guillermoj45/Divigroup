@@ -7,6 +7,7 @@ import {MenuTarjetaAmigosComponent} from "../../tarjetas/menu-tarjeta-amigos/men
 import {addIcons} from "ionicons";
 import {add} from "ionicons/icons";
 import {NgIf} from "@angular/common";
+import {BotonAgregarComponent} from "../../boton-agregar/boton-agregar.component";
 
 @Component({
   selector: 'app-amigos',
@@ -19,30 +20,15 @@ import {NgIf} from "@angular/common";
     MenuTajetaCuentaComponent,
     IonicModule,
     MenuTarjetaAmigosComponent,
-    NgIf
+    NgIf,
+    BotonAgregarComponent
   ]
 })
 export class AmigosComponent  implements OnInit {
-  agregar:boolean = false;
   constructor() {
     addIcons({add})
   }
 
   ngOnInit() {}
 
-  setAgregar(newValor:boolean){
-    this.agregar = newValor;
-  }
-
-  agregarAmigo(){
-    let input = document.getElementById("inputAmigo") as HTMLInputElement;
-    const nombre = input ? input.value : "";
-    if (nombre == "") {
-      console.log("No se ingreso ningun nombre");
-      return;
-    }
-
-    console.log(nombre);
-    this.setAgregar(false);
-  }
 }
