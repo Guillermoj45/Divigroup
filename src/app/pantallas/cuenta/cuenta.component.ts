@@ -10,24 +10,28 @@ import {TarjetaAmigosComponent} from "../../tarjetas/tarjeta-amigos/tarjeta-amig
 import {Producto} from "../../../assets/js/Producto";
 import {ProductoComponent} from "../../tarjetas/producto/producto.component";
 import {FooterComponent} from "../../footer/footer.component";
+import {BotonAgregarComponent} from "../../boton-agregar/boton-agregar.component";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-cuenta',
   templateUrl: './cuenta.component.html',
   styleUrls: ['./cuenta.component.scss'],
   standalone: true,
-  imports: [
-    IonicModule,
-    FormsModule,
-    NgIf,
-    TajetaCuentaComponent,
-    AmigoComponent,
-    MenuTarjetaAmigosComponent,
-    TarjetaAmigosComponent,
-    NgForOf,
-    ProductoComponent,
-    FooterComponent
-  ]
+    imports: [
+        IonicModule,
+        FormsModule,
+        NgIf,
+        TajetaCuentaComponent,
+        AmigoComponent,
+        MenuTarjetaAmigosComponent,
+        TarjetaAmigosComponent,
+        NgForOf,
+        ProductoComponent,
+        FooterComponent,
+        BotonAgregarComponent,
+        RouterLink
+    ]
 })
 export class CuentaComponent  implements OnInit {
   nombre: string = 'Nombre de cuenta';
@@ -59,7 +63,9 @@ export class CuentaComponent  implements OnInit {
       return total;
     }
     for (let producto of this.productos){
-      total += producto.precio;
+      if (producto.precio !== null){
+        total += producto.precio;
+      }
     }
     return total;
   }

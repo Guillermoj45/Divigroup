@@ -4,16 +4,17 @@ import {
   IonCard,
   IonCardHeader,
   IonCardSubtitle,
-  IonCardTitle,
+  IonCardTitle, IonCheckbox,
   IonCol,
   IonGrid, IonIcon, IonRow
 } from "@ionic/angular/standalone";
 import {MiniMenuImgsComponent} from "../../mini-menu-imgs/mini-menu-imgs.component";
 import {addIcons} from "ionicons";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {NgIf} from "@angular/common";
 import {Persona} from "../../../assets/js/Persona";
 import {image} from "ionicons/icons";
+import {FormsModule} from "@angular/forms";
 
 @Component({
     selector: 'app-tarjeta-amigos',
@@ -33,7 +34,9 @@ import {image} from "ionicons/icons";
     IonButton,
     IonIcon,
     RouterLink,
-    NgIf
+    NgIf,
+    IonCheckbox,
+    FormsModule
   ]
 })
 export class TarjetaAmigosComponent  implements OnInit {
@@ -41,7 +44,7 @@ export class TarjetaAmigosComponent  implements OnInit {
   @Input() persona:Persona = new Persona(0, 'Usuario X', 'https://picsum.photos/500/500?random=4')
   @Input() seleccionado:boolean | null = null;
 
-  constructor() {
+  constructor(private router:Router) {
     addIcons({'add-outline': 'trash-outline'});
   }
 
@@ -73,4 +76,12 @@ export class TarjetaAmigosComponent  implements OnInit {
   }
 
   protected readonly image = image;
+
+  cliqueado() {
+    if (this.seleccionado === null){
+      this.router.navigate(['/amigos', this.persona.id]);
+    }else {
+      this.seleccionado = !this.seleccionado;
+    }
+  }
 }

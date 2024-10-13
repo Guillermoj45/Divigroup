@@ -1,4 +1,4 @@
-<ion-card routerLink="/amigos/perfil">
+<ion-card (click)="cliqueado()">
   <ion-card-header style="margin-top: -10px;">
     <div class="divMismaLinea ">
       <ion-grid>
@@ -18,6 +18,9 @@
               {{getMensaje()}} {{deve}}€
             </div>
           </ion-col>
+          <ion-col size="1" *ngIf="seleccionado !== null" style="margin: auto">
+            <ion-checkbox [(ngModel)]="seleccionado"></ion-checkbox>
+        </ion-col>
         </ion-row>
       </ion-grid>
     </div>

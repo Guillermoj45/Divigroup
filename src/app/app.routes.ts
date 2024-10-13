@@ -33,5 +33,9 @@ export const routes: Routes = [
   {
     path: 'cuentas/crear',
     loadComponent: () => import('./pantallas/agragar-cuenta/agragar-cuenta.component').then((m) => m.AgragarCuentaComponent),
+  },
+  {
+    path: 'producto/crear',
+    loadComponent: () => import('./agregar-producto/agregar-producto.component').then((m) => m.AgregarProductoComponent),
   }
 ];
