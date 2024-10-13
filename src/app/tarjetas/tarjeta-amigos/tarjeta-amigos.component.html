@@ -8,9 +8,14 @@
               <img alt="Foto de la cuenta" src="https://picsum.photos/80/80?random=4" />
             </ion-avatar>
           </ion-col>
-          <ion-col size="7.1">
+          <ion-col size="6  ">
             <div class="centrarTexto">
               <ion-card-title>Amigo X</ion-card-title>
+            </div>
+          </ion-col>
+          <ion-col *ngIf="deve !== null">
+            <div style="display: block; border-radius: 10%; padding: 6px; width: fit-content; background-color: {{getColor()}};">
+              {{getMensaje()}} {{deve}}€
             </div>
           </ion-col>
         </ion-row>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {
   IonAvatar, IonButton,
   IonCard,
@@ -11,6 +11,8 @@ import {
 import {MiniMenuImgsComponent} from "../../mini-menu-imgs/mini-menu-imgs.component";
 import {addIcons} from "ionicons";
 import {RouterLink} from "@angular/router";
+import {NgIf} from "@angular/common";
+import {Persona} from "../../../assets/js/Persona";
 
 @Component({
     selector: 'app-tarjeta-amigos',
@@ -29,10 +31,13 @@ import {RouterLink} from "@angular/router";
     MiniMenuImgsComponent,
     IonButton,
     IonIcon,
-    RouterLink
+    RouterLink,
+    NgIf
   ]
 })
 export class TarjetaAmigosComponent  implements OnInit {
+  @Input() deve:number | null = null;
+  @Input() persona:Persona | null = null;
 
   constructor() {
     addIcons({'add-outline': 'trash-outline'});
@@ -40,4 +45,28 @@ export class TarjetaAmigosComponent  implements OnInit {
 
   ngOnInit() {}
 
+  getColor(){
+    if (this.deve === null){
+      return 'red';
+    }
+    if (this.deve > 0){
+      return 'green';
+    }
+    if (this.deve < 0){
+      return 'red'
+    }
+    return 'danger';
+  }
+  getMensaje(){
+    if (this.deve === null){
+      return 'No se ha definido';
+    }
+    if (this.deve > 0){
+      return 'Pagado';
+    }
+    if (this.deve < 0){
+      return 'Deben';
+    }
+    return 'No se ha definido';
+  }
 }

@@ -14,7 +14,7 @@
   </ion-row>
   <ion-row>
     <ion-col class="centrar" size="5">
-      <ion-button >amistad</ion-button>
+      <ion-button (click)="setOpen(true)" >amistad</ion-button>
     </ion-col>
     <ion-col class="centrar">
       <ion-button>Enviar mensaje</ion-button>
@@ -38,3 +38,8 @@
   </ion-row>
 </ion-grid>
 <app-footer></app-footer>
+<ion-action-sheet
+  [isOpen]="isActionSheet"
+  [buttons]="actionSheetButtons"
+  (didDismiss)="setOpen(false)"
+></ion-action-sheet>

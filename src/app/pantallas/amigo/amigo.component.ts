@@ -3,8 +3,6 @@ import {FooterComponent} from "../../footer/footer.component";
 import {NgStyle} from "@angular/common";
 import {MenuTajetaCuentaComponent} from "../../tarjetas/menu-tajeta-cuenta/menu-tajeta-cuenta.component";
 import {TajetaCuentaComponent} from "../../tarjetas/tajeta-cuenta/tajeta-cuenta.component";
-import {Cuenta} from "../../../assets/js/Cuenta";
-import {Persona} from "../../../assets/js/Persona";
 import {Component, OnInit} from "@angular/core";
 import {TarjetaAmigosComponent} from "../../tarjetas/tarjeta-amigos/tarjeta-amigos.component";
 
@@ -26,8 +24,7 @@ export class AmigoComponent  implements OnInit {
   foto:string = 'https://picsum.photos/1000/1000?random=4';
   imagenFondo:string = 'https://picsum.photos/5000/5000?random=4';
   nombre: string = 'Nombre de amigo';
-  cuentas: Cuenta[] = [new Cuenta('Cuenta 1', 100, 'https://picsum.photos/5000/5000?random=3', 1, [new Persona(1, 'Usuario 1')])];
-
+  isActionSheet:boolean = false;
   constructor() {}
 
   ngOnInit() {
@@ -35,18 +32,61 @@ export class AmigoComponent  implements OnInit {
   }
 
   private containerCuentas(){
+  }
 
-    this.cuentas = [new Cuenta('Cuenta 1', 100, 'https://picsum.photos/80/80?random=1', 1, [new Persona(1, 'Usuario 1')])];
-    console.log(this.cuentas);
-    let containerCuentas = document.getElementById('containerCuentas');
-    console.log(containerCuentas);
-    if (containerCuentas === null) {
-      return;
-    }
-    let htmlCuentas:string = '';
-    for (let cuenta of this.cuentas){
-    }
-    console.log(htmlCuentas);
+  public denunciar() {
+    console.log('Denunciar');
+  }
 
+  public bloquear() {
+    console.log('Bloquear');
+  }
+
+  public dejarDeSerAmigo() {
+    console.log('Dejar de ser amigo');
+  }
+
+  public actionSheetButtons = [
+    {
+      text: 'Denunciar',
+      role: 'destructive',
+      handler: () => {
+        this.denunciar();
+      },
+      data: {
+        action: 'Denunciar',
+      },
+    },
+    {
+      text: 'Bloquear',
+      role: 'destructive',
+      handler: () => {
+        this.bloquear();
+      },
+      data: {
+        action: 'Bloquear',
+      },
+    },
+    {
+      text: 'Dejar de ser amigo',
+      role: 'destructive',
+      handler: () => {
+        this.dejarDeSerAmigo();
+      },
+      data: {
+        action: 'Bloquear',
+      },
+    },
+    {
+      text: 'Cancel',
+      role: 'cancel',
+      data: {
+        action: 'cancel',
+      },
+    },
+  ];
+
+  setOpen(isOpen:boolean){
+    this.isActionSheet = isOpen;
   }
 }

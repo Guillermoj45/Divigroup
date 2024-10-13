@@ -1,4 +1,4 @@
-import {Component, NgIterable, OnInit} from '@angular/core';
+import {Component, NgIterable, OnInit, signal} from '@angular/core';
 import {IonicModule} from "@ionic/angular";
 import {FormsModule} from "@angular/forms";
 import {Cuenta} from "../../assets/js/Cuenta";
@@ -9,6 +9,7 @@ import {MenuTarjetaAmigosComponent} from "../tarjetas/menu-tarjeta-amigos/menu-t
 import {TarjetaAmigosComponent} from "../tarjetas/tarjeta-amigos/tarjeta-amigos.component";
 import {Producto} from "../../assets/js/Producto";
 import {ProductoComponent} from "../producto/producto.component";
+import {FooterComponent} from "../footer/footer.component";
 
 @Component({
   selector: 'app-cuenta',
@@ -24,7 +25,8 @@ import {ProductoComponent} from "../producto/producto.component";
     MenuTarjetaAmigosComponent,
     TarjetaAmigosComponent,
     NgForOf,
-    ProductoComponent
+    ProductoComponent,
+    FooterComponent
   ]
 })
 export class CuentaComponent  implements OnInit {
@@ -34,12 +36,13 @@ export class CuentaComponent  implements OnInit {
   segmento: string = 'cuentas';
   productos: NgIterable<Producto> | undefined | null;
 
+
   constructor() {
     this.cuentas = [new Cuenta('Cuenta 1', 100, 'https://picsum.photos/500/500?random=3', 1)];
-    this.productos = [new Producto('https://picsum.photos/80/80?random=1', '20', 1, new Date())];
+    this.productos = [new Producto('https://picsum.photos/80/80?random=1', 'salchichas', 1, new Date())];
     this.productos = [
       ...this.productos,
-      new Producto('https://picsum.photos/80/80?random=2', '20', 1, new Date())
+      new Producto('https://picsum.photos/80/80?random=2', 'kepchup', 1, new Date())
     ];
   }
 
@@ -48,6 +51,22 @@ export class CuentaComponent  implements OnInit {
 
   onSegmentChange(event: any) {
     this.segmento = event.detail.value;
+  }
+
+  getTotal(){
+    let total:number = 0;
+    if (this.productos === null || this.productos === undefined){
+      return total;
+    }
+    for (let producto of this.productos){
+      total += producto.precio;
+    }
+    return total;
+  }
+  getPorPersona(){
+    let total:number = this.getTotal();
+    let personas:number = this.cuentas.length;
+    return total / personas;
   }
 
 }
