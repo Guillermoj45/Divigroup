@@ -1,0 +1,28 @@
+<ion-grid>
+  <ion-row>
+    <ion-col size="4">
+      <ion-img src="/assets/img/playa.jpg"/>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="6">
+      <ion-input label="Nombre" placeholder="Nombre de la cuenta"></ion-input>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="5">
+      <ion-button style="width: 100%" class="ion-color-defecto" shape="round">
+        <ion-icon slot="start" name="cloud-upload-outline"></ion-icon>
+        Cambiar imagen
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div *ngFor="let invitado of invitados">
+        <app-tarjeta-amigos [persona]="invitado"></app-tarjeta-amigos>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<app-footer/>

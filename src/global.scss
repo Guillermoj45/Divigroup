@@ -121,4 +121,6 @@ ion-col.centrar {
     --color-fondo: var(--color-modo-claro);
   }
 }
-
+ion-img {
+  overflow: hidden;
+}

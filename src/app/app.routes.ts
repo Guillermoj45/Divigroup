@@ -28,6 +28,10 @@ export const routes: Routes = [
   },
   {
     path: 'cuentas/cuenta',
-    loadComponent: () => import('./cuenta/cuenta.component').then((m) => m.CuentaComponent),
+    loadComponent: () => import('./pantallas/cuenta/cuenta.component').then((m) => m.CuentaComponent),
+  },
+  {
+    path: 'cuentas/crear',
+    loadComponent: () => import('./agragar-cuenta/agragar-cuenta.component').then((m) => m.AgragarCuentaComponent),
   }
 ];
