@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IonicModule} from "@ionic/angular";
 import {NgIf} from "@angular/common";
+import {addIcons} from "ionicons";
+import {add} from "ionicons/icons";
 
 @Component({
     selector: 'app-boton-agregar',
@@ -15,11 +17,16 @@ import {NgIf} from "@angular/common";
 export class BotonAgregarComponent  implements OnInit {
   agregar:boolean = false;
   @Input() textoAyuda:string = "Ingrese aquí el nombre";
-  constructor() { }
+  constructor() {
+    addIcons({add})
+  }
 
   ngOnInit() {}
 
   setAgregar(newValor:boolean){
+    if (this.textoAyuda == "") {
+      return
+    }
     this.agregar = newValor;
   }
 
