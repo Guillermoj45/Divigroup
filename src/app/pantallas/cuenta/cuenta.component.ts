@@ -46,7 +46,8 @@ export class CuentaComponent  implements OnInit {
     this.productos = [new Producto('https://picsum.photos/80/80?random=1', 'salchichas', 1, new Date())];
     this.productos = [
       ...this.productos,
-      new Producto('https://picsum.photos/80/80?random=2', 'kepchup', 1, new Date())
+      new Producto('https://picsum.photos/80/80?random=2', 'kepchup', 1, new Date()),
+      new Producto('https://picsum.photos/80/80?random=3', 'mostaza', 1, new Date()),
     ];
   }
 
