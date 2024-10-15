@@ -6,6 +6,7 @@ import {Component, OnInit} from "@angular/core";
 import {TarjetaAmigosComponent} from "../../tarjetas/tarjeta-amigos/tarjeta-amigos.component";
 import {FooterComponent} from "../../componentes/footer/footer.component";
 import {MiniMenuImgsComponent} from "../../componentes/mini-menu-imgs/mini-menu-imgs.component";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-amigo',
@@ -19,7 +20,8 @@ import {MiniMenuImgsComponent} from "../../componentes/mini-menu-imgs/mini-menu-
     MenuTajetaCuentaComponent,
     TajetaCuentaComponent,
     TarjetaAmigosComponent,
-    MiniMenuImgsComponent
+    MiniMenuImgsComponent,
+    RouterLink
   ]
 })
 export class AmigoComponent implements OnInit {

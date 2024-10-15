@@ -31,6 +31,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pantallas/amigo/amigo.component').then((m) => m.AmigoComponent),
   },
   {
+    path: 'amigos/chat',
+    loadComponent: () => import('./pantallas/chat/chat.component').then((m) => m.ChatComponent),
+  },
+  {
     path: 'cuentas/cuenta',
     loadComponent: () => import('./pantallas/cuentas/cuenta/cuenta.component').then((m) => m.CuentaComponent),
   },
