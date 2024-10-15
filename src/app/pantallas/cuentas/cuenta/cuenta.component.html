@@ -28,12 +28,12 @@
           </div>
         </div>
         <div *ngIf="segmento === 'division'">
-          <p>Total {{ getTotal() }} <br>
-            Por persona {{ getPorPersona() }}</p>
-          <app-tarjeta-amigos [deve]="12"></app-tarjeta-amigos>
+          <p>Total {{ getTotal() }}€ <br>
+            Por persona {{ getPorPersona() }}€</p>
+          <app-tarjeta-amigos [deve]="202"></app-tarjeta-amigos>
           <app-tarjeta-amigos [deve]="-12"></app-tarjeta-amigos>
           <app-tarjeta-amigos [deve]="12"></app-tarjeta-amigos>
-          <app-tarjeta-amigos></app-tarjeta-amigos>
+          <app-tarjeta-amigos [deve]="12"></app-tarjeta-amigos>
         </div>
       </ion-col>
     </ion-row>

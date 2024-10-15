@@ -15,7 +15,7 @@ import {
 import {addIcons} from "ionicons";
 import {Router, RouterLink} from "@angular/router";
 import {NgIf} from "@angular/common";
-import {Persona} from "../../../assets/js/Persona";
+import {Persona} from "../../modelos/Persona";
 import {image} from "ionicons/icons";
 import {FormsModule} from "@angular/forms";
 import {MiniMenuImgsComponent} from "../../componentes/mini-menu-imgs/mini-menu-imgs.component";
@@ -58,13 +58,13 @@ export class TarjetaAmigosComponent implements OnInit {
 
   getColor() {
     if (this.deve === null) {
-      return 'red';
+      return '#592e2e';
     }
     if (this.deve > 0) {
-      return 'green';
+      return '#32592e';
     }
     if (this.deve < 0) {
-      return 'red'
+      return '#592e2e';
     }
     return 'danger';
   }

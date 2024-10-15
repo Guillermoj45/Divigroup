@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IonicModule} from "@ionic/angular";
-import {Producto} from "../../../assets/js/Producto";
+import {Producto} from "../../modelos/Producto";
 import {BotonAgregarComponent} from "../../componentes/boton-agregar/boton-agregar.component";
 import {MiniMenuImgsComponent} from "../../componentes/mini-menu-imgs/mini-menu-imgs.component";
 import {RouterLink} from "@angular/router";

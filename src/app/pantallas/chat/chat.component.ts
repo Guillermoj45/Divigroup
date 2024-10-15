@@ -1,11 +1,11 @@
 import {Component, Input, OnInit, ViewChild, ElementRef, AfterViewInit} from '@angular/core';
-import {Mensaje} from "../../../assets/js/Mensaje";
+import {Mensaje} from "../../modelos/Mensaje";
 import {IonicModule} from "@ionic/angular";
 import {FooterComponent} from "../../componentes/footer/footer.component";
 import {RouterLink} from "@angular/router";
 import {NgClass, NgForOf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
-import {Persona} from "../../../assets/js/Persona";
+import {Persona} from "../../modelos/Persona";
 import {addIcons} from "ionicons";
 import {add, arrowBack, camera, paperPlane} from "ionicons/icons";
 

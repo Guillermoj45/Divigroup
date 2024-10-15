@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {IonicModule} from "@ionic/angular";
 import {addIcons} from "ionicons";
 import {cloudUploadOutline} from "ionicons/icons";
-import {Persona} from "../../../../assets/js/Persona";
+import {Persona} from "../../../modelos/Persona";
 import {TarjetaAmigosComponent} from "../../../tarjetas/tarjeta-amigos/tarjeta-amigos.component";
 import {NgForOf} from "@angular/common";
 import {RouterLink} from "@angular/router";
