@@ -15,6 +15,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pantallas/inicio-sesion/inicio-sesion.component').then((m) => m.InicioSesionComponent),
   },
   {
+    path: 'registro',
+    loadComponent: () => import('./crear-cuenta/crear-cuenta.component').then((m) => m.CrearCuentaComponent ),
+  },
+  {
     path: 'amigos',
     loadComponent: () => import('./pantallas/amigos/amigos.component').then((m) => m.AmigosComponent),
   },
@@ -37,5 +41,5 @@ export const routes: Routes = [
   {
     path: 'producto/crear',
     loadComponent: () => import('./pantallas/agregar-producto/agregar-producto.component').then((m) => m.AgregarProductoComponent),
-  }
+  },
 ];
