@@ -3,6 +3,7 @@ import {IonicModule} from "@ionic/angular";
 import {Producto} from "../../../assets/js/Producto";
 import {BotonAgregarComponent} from "../../componentes/boton-agregar/boton-agregar.component";
 import {MiniMenuImgsComponent} from "../../componentes/mini-menu-imgs/mini-menu-imgs.component";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-producto',
@@ -12,7 +13,8 @@ import {MiniMenuImgsComponent} from "../../componentes/mini-menu-imgs/mini-menu-
   imports: [
     IonicModule,
     MiniMenuImgsComponent,
-    BotonAgregarComponent
+    BotonAgregarComponent,
+    RouterLink
   ]
 })
 
