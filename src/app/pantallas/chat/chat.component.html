@@ -26,12 +26,11 @@
 </ion-content>
 
 <div style="display: flex" #contenedorMensajes>
-  <ion-icon name="add" style="font-size: 30px; margin: 10px"></ion-icon>
-  <ion-icon name="camera" style="font-size: 30px; margin: 10px"></ion-icon>
+  <ion-icon (click)="agregarArchivo($event)" name="add" style="font-size: 30px; margin: 10px"></ion-icon>
+  <ion-icon (click)="agregarImagen($event)" name="camera" style="font-size: 30px; margin: 10px"></ion-icon>
 
   <ion-input [(ngModel)]="mensaje" label-placement="floating" fill="outline" placeholder="Escribir mensaje"></ion-input>
-  <div style="background: #4c8cfd; border-radius: 30px" (click)="enviarMensaje()">
+  <div style="background: #4c8cfd; border-radius: 30px; margin-bottom: 10px" (click)="enviarMensaje()">
     <ion-icon name="paper-plane" style="font-size: 30px; margin: 10px;"></ion-icon>
   </div>
 </div>
-<app-footer></app-footer>

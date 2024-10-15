@@ -19,6 +19,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pantallas/sesion/crear-cuenta/crear-cuenta.component').then((m) => m.CrearCuentaComponent),
   },
   {
+    path: 'recuperacion',
+    loadComponent: () => import('./pantallas/sesion/password-olvidada/password-olvidada.component').then((m) => m.PasswordOlvidadaComponent),
+  },
+  {
     path: 'amigos',
     loadComponent: () => import('./pantallas/amigos/amigos.component').then((m) => m.AmigosComponent),
   },

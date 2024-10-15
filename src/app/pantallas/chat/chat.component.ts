@@ -51,4 +51,44 @@ export class ChatComponent implements OnInit {
     this.mensaje = '';
   }
 
+  agregarArchivo(event: Event) {
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.style.display = 'none';
+    fileInput.onchange = this.onFileSelected.bind(this);
+    document.body.appendChild(fileInput);
+    fileInput.click();
+    document.body.removeChild(fileInput);
+  }
+
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+      console.log('Selected file:', file);
+      // Aquí puedes manejar el archivo seleccionado
+    }
+  }
+  agregarImagen(event: Event) {
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.style.display = 'none';
+    fileInput.onchange = this.onImageSelected.bind(this);
+    document.body.appendChild(fileInput);
+    fileInput.click();
+    document.body.removeChild(fileInput);
+  }
+
+  onImageSelected(event: Event) {
+    let imagen = document.getElementById('Avatar');
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+      if (imagen != null) {
+        imagen.setAttribute('src', URL.createObjectURL(file).toString());
+      }
+      console.log('Selected file:', file);
+    }
+  }
+
 }
