@@ -1,17 +1,17 @@
 import {Component, NgIterable, OnInit} from '@angular/core';
 import {IonicModule} from "@ionic/angular";
 import {FormsModule} from "@angular/forms";
-import {Cuenta} from "../../../assets/js/Cuenta";
+import {Cuenta} from "../../../../assets/js/Cuenta";
 import {NgForOf, NgIf} from "@angular/common";
-import {TajetaCuentaComponent} from "../../tarjetas/tajeta-cuenta/tajeta-cuenta.component";
-import {AmigoComponent} from "../amigo/amigo.component";
-import {MenuTarjetaAmigosComponent} from "../../tarjetas/menu-tarjeta-amigos/menu-tarjeta-amigos.component";
-import {TarjetaAmigosComponent} from "../../tarjetas/tarjeta-amigos/tarjeta-amigos.component";
-import {Producto} from "../../../assets/js/Producto";
-import {ProductoComponent} from "../../tarjetas/producto/producto.component";
-import {BotonAgregarComponent} from "../../componentes/boton-agregar/boton-agregar.component";
+import {TajetaCuentaComponent} from "../../../tarjetas/tajeta-cuenta/tajeta-cuenta.component";
+import {AmigoComponent} from "../../amigo/amigo.component";
+import {MenuTarjetaAmigosComponent} from "../../../tarjetas/menu-tarjeta-amigos/menu-tarjeta-amigos.component";
+import {TarjetaAmigosComponent} from "../../../tarjetas/tarjeta-amigos/tarjeta-amigos.component";
+import {Producto} from "../../../../assets/js/Producto";
+import {ProductoComponent} from "../../../tarjetas/producto/producto.component";
+import {BotonAgregarComponent} from "../../../componentes/boton-agregar/boton-agregar.component";
 import {RouterLink} from "@angular/router";
-import {FooterComponent} from "../../componentes/footer/footer.component";
+import {FooterComponent} from "../../../componentes/footer/footer.component";
 
 @Component({
   selector: 'app-cuenta',

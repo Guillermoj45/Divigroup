@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 
 import {IonicModule} from "@ionic/angular";
-import {NavarComponent} from "../../componentes/navar/navar.component";
-import {FooterComponent} from "../../componentes/footer/footer.component";
+import {NavarComponent} from "../../../componentes/navar/navar.component";
+import {FooterComponent} from "../../../componentes/footer/footer.component";
 
 @Component({
   selector: 'app-perfil',

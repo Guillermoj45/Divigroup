@@ -12,11 +12,11 @@ export const routes: Routes = [
   },
   {
     path: 'inicio-sesion',
-    loadComponent: () => import('./pantallas/inicio-sesion/inicio-sesion.component').then((m) => m.InicioSesionComponent),
+    loadComponent: () => import('./pantallas/sesion/inicio-sesion/inicio-sesion.component').then((m) => m.InicioSesionComponent),
   },
   {
     path: 'registro',
-    loadComponent: () => import('./pantallas/crear-cuenta/crear-cuenta.component').then((m) => m.CrearCuentaComponent),
+    loadComponent: () => import('./pantallas/sesion/crear-cuenta/crear-cuenta.component').then((m) => m.CrearCuentaComponent),
   },
   {
     path: 'amigos',
@@ -24,7 +24,7 @@ export const routes: Routes = [
   },
   {
     path: 'perfil',
-    loadComponent: () => import('./pantallas/perfil/perfil.component').then((m) => m.PerfilComponent),
+    loadComponent: () => import('./pantallas/sesion/perfil/perfil.component').then((m) => m.PerfilComponent),
   },
   {
     path: 'amigos/perfil',
@@ -32,14 +32,18 @@ export const routes: Routes = [
   },
   {
     path: 'cuentas/cuenta',
-    loadComponent: () => import('./pantallas/cuenta/cuenta.component').then((m) => m.CuentaComponent),
+    loadComponent: () => import('./pantallas/cuentas/cuenta/cuenta.component').then((m) => m.CuentaComponent),
   },
   {
     path: 'cuentas/crear',
-    loadComponent: () => import('./pantallas/agragar-cuenta/agragar-cuenta.component').then((m) => m.AgragarCuentaComponent),
+    loadComponent: () => import('./pantallas/cuentas/agragar-cuenta/agragar-cuenta.component').then((m) => m.AgragarCuentaComponent),
   },
   {
     path: 'producto/crear',
-    loadComponent: () => import('./pantallas/agregar-producto/agregar-producto.component').then((m) => m.AgregarProductoComponent),
+    loadComponent: () => import('./pantallas/productos/agregar-producto/agregar-producto.component').then((m) => m.AgregarProductoComponent),
+  },
+  {
+    path: 'producto',
+    loadComponent: () => import('./pantallas/productos/pantalla-producto/pantalla-producto.component').then((m) => m.PantallaProductoComponent),
   },
 ];
