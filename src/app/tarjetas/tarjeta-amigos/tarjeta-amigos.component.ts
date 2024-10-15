@@ -79,7 +79,7 @@ export class TarjetaAmigosComponent  implements OnInit {
 
   cliqueado() {
     if (this.seleccionado === null){
-      this.router.navigate(['/amigos', this.persona.id]);
+      this.router.navigate(['/amigos/perfil']);
     }else {
       this.seleccionado = !this.seleccionado;
     }

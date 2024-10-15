@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {IonicModule} from "@ionic/angular";
 import {FormsModule} from "@angular/forms";
-import {Producto} from "../../assets/js/Producto";
+import {Producto} from "../../../assets/js/Producto";
 import {add, camera, clipboardOutline} from "ionicons/icons";
 import {addIcons} from "ionicons";
-import {TarjetaAmigosComponent} from "../tarjetas/tarjeta-amigos/tarjeta-amigos.component";
+import {TarjetaAmigosComponent} from "../../tarjetas/tarjeta-amigos/tarjeta-amigos.component";
 import {NgForOf} from "@angular/common";
-import {Persona} from "../../assets/js/Persona";
-import {FooterComponent} from "../footer/footer.component";
+import {Persona} from "../../../assets/js/Persona";
+import {FooterComponent} from "../../footer/footer.component";
 
 @Component({
   selector: 'app-agregar-producto',

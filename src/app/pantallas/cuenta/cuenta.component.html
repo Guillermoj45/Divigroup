@@ -1,41 +1,44 @@
-<ion-grid class="ion-color-defecto">
+<ion-content>
+  <ion-grid class="ion-color-defecto">
+      <ion-row>
+          <ion-col size="4" style="margin:auto;">
+              <ion-img [src]="imagen"/>
+              <p>{{nombre}}</p>
+          </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col size="8" style="margin:auto;">
+            <ion-segment value="cuentas" [(ngModel)]="segmento" (ionChange)="onSegmentChange($event)">
+              <ion-segment-button value="cuentas">
+                <ion-label>Cuentas</ion-label>
+              </ion-segment-button>
+              <ion-segment-button value="division">
+                <ion-label>Division</ion-label>
+              </ion-segment-button>
+            </ion-segment>
+          </ion-col>
+      </ion-row>
     <ion-row>
-        <ion-col size="4" style="margin:auto;">
-            <ion-img [src]="imagen"/>
-            <p>{{nombre}}</p>
-        </ion-col>
     </ion-row>
     <ion-row>
-        <ion-col size="8" style="margin:auto;">
-          <ion-segment value="cuentas" [(ngModel)]="segmento" (ionChange)="onSegmentChange($event)">
-            <ion-segment-button value="cuentas">
-              <ion-label>Cuentas</ion-label>
-            </ion-segment-button>
-            <ion-segment-button value="division">
-              <ion-label>Division</ion-label>
-            </ion-segment-button>
-          </ion-segment>
-        </ion-col>
-    </ion-row>
-  <ion-row>
-  </ion-row>
-  <ion-row>
-        <ion-col size="10" style="margin:auto;">
-          <ion-content *ngIf="segmento === 'cuentas'">
-            <div *ngFor="let producto of productos">
-              <app-producto [producto]="producto"></app-producto>
+          <ion-col size="10" style="margin:auto;">
+            <div *ngIf="segmento === 'cuentas'">
+              <div *ngFor="let producto of productos">
+                <app-producto [producto]="producto"></app-producto>
+              </div>
             </div>
-          </ion-content>
-          <ng-content *ngIf="segmento === 'division'">
-            <p>Total {{getTotal()}} <br>
-            Por persona {{getPorPersona()}}</p>
-            <app-tarjeta-amigos [deve]="12" ></app-tarjeta-amigos>
-            <app-tarjeta-amigos [deve]="-12"></app-tarjeta-amigos>
-            <app-tarjeta-amigos [deve]="12"></app-tarjeta-amigos>
-            <app-tarjeta-amigos ></app-tarjeta-amigos>
-          </ng-content>
-        </ion-col>
-    </ion-row>
-</ion-grid>
+            <div *ngIf="segmento === 'division'">
+              <p>Total {{getTotal()}} <br>
+              Por persona {{getPorPersona()}}</p>
+              <app-tarjeta-amigos [deve]="12" ></app-tarjeta-amigos>
+              <app-tarjeta-amigos [deve]="-12"></app-tarjeta-amigos>
+              <app-tarjeta-amigos [deve]="12"></app-tarjeta-amigos>
+              <app-tarjeta-amigos ></app-tarjeta-amigos>
+            </div>
+          </ion-col>
+      </ion-row>
+  </ion-grid>
+</ion-content>
 <app-boton-agregar textoAyuda="" routerLink="/producto/crear"></app-boton-agregar>
+
 <app-footer></app-footer>

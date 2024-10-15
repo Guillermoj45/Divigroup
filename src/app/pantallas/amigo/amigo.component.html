@@ -1,3 +1,4 @@
+<ion-content>
 <div class="background-image" style="background-image: url({{imagenFondo}}) "></div>
 <ion-grid style="width: 100%">
   <ion-row>
@@ -30,12 +31,10 @@
   </ion-row>
   <ion-row>
       <div id="containerCuentas" style="height: fit-content">
-        <ng-content>
         <app-tajeta-cuenta></app-tajeta-cuenta>
         <app-tajeta-cuenta></app-tajeta-cuenta>
         <app-tajeta-cuenta></app-tajeta-cuenta>
         <app-tajeta-cuenta></app-tajeta-cuenta>
-        </ng-content>
       </div>
   </ion-row>
 </ion-grid>
@@ -44,4 +43,6 @@
   [buttons]="actionSheetButtons"
   (didDismiss)="setOpen(false)"
 ></ion-action-sheet>
+</ion-content>
+
 <app-footer></app-footer>

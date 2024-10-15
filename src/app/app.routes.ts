@@ -36,6 +36,6 @@ export const routes: Routes = [
   },
   {
     path: 'producto/crear',
-    loadComponent: () => import('./agregar-producto/agregar-producto.component').then((m) => m.AgregarProductoComponent),
+    loadComponent: () => import('./pantallas/agregar-producto/agregar-producto.component').then((m) => m.AgregarProductoComponent),
   }
 ];
