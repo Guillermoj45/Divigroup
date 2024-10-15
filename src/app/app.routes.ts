@@ -16,7 +16,7 @@ export const routes: Routes = [
   },
   {
     path: 'registro',
-    loadComponent: () => import('./crear-cuenta/crear-cuenta.component').then((m) => m.CrearCuentaComponent),
+    loadComponent: () => import('./pantallas/crear-cuenta/crear-cuenta.component').then((m) => m.CrearCuentaComponent),
   },
   {
     path: 'amigos',
