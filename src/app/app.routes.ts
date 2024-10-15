@@ -23,6 +23,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pantallas/sesion/password-olvidada/password-olvidada.component').then((m) => m.PasswordOlvidadaComponent),
   },
   {
+    path: 'notificaciones',
+    loadComponent: () => import('./pantallas/sesion/notificaciones/notificaciones.component').then((m) => m.NotificacionesComponent),
+  },
+  {
     path: 'amigos',
     loadComponent: () => import('./pantallas/amigos/amigos.component').then((m) => m.AmigosComponent),
   },

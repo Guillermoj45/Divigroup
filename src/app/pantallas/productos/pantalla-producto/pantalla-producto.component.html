@@ -22,6 +22,17 @@
     </ion-row>
   </ion-grid>
 </ion-content>
-<app-boton-agregar routerLink="/producto/crear" textoAyuda=""></app-boton-agregar>
+<ion-fab horizontal="end" vertical="bottom" slot="fixed" style="margin-bottom: 60px">
+  <ion-fab-button id="BotonEliminar" color="danger">
+    <ion-icon name="close-sharp"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+<ion-fab horizontal="start" vertical="bottom" slot="fixed" style="margin-bottom: 60px">
+  <ion-fab-button id="present-alert" routerLink="/producto/crear">
+    <ion-icon name="create-sharp"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+<ion-alert trigger="BotonEliminar" class="custom-alert" header="Desea eliminar" [buttons]="alertButtons"></ion-alert>
 
 <app-footer></app-footer>

@@ -42,6 +42,45 @@ export class AgregarProductoComponent implements OnInit {
   ngOnInit() {
   }
 
+  agregarArchivo(event: Event) {
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.style.display = 'none';
+    fileInput.onchange = this.onFileSelected.bind(this);
+    document.body.appendChild(fileInput);
+    fileInput.click();
+    document.body.removeChild(fileInput);
+  }
+
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+      console.log('Selected file:', file);
+    }
+  }
+  agregarImagen(event: Event) {
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.style.display = 'none';
+    fileInput.onchange = this.onImageSelected.bind(this);
+    document.body.appendChild(fileInput);
+    fileInput.click();
+    document.body.removeChild(fileInput);
+  }
+
+  onImageSelected(event: Event) {
+
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+      if (this.prodcuto.imagen != null) {
+        this.prodcuto.imagen = URL.createObjectURL(file).toString();
+        console.log(URL.createObjectURL(file).toString())
+      }
+    }
+  }
+
   agregarProducto() {
     console.log(this.prodcuto);
   }
