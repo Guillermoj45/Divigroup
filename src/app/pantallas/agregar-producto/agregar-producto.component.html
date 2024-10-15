@@ -40,4 +40,11 @@
     </ion-row>
   </ion-grid>
   </ion-content>
+
+<ion-fab horizontal="start" vertical="bottom" slot="fixed" style="margin-bottom: 60px">
+  <ion-button style="margin: auto" routerLink="/cuentas/cuenta">Cancelar</ion-button>
+</ion-fab>
+<ion-fab horizontal="end" vertical="bottom" slot="fixed" style="margin-bottom: 60px" >
+  <ion-button style="margin: auto" (click)="agregarProducto()">Guardar</ion-button>
+</ion-fab>
 <app-footer></app-footer>

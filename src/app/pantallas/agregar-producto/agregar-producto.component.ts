@@ -5,9 +5,10 @@ import {Producto} from "../../../assets/js/Producto";
 import {add, camera, clipboardOutline} from "ionicons/icons";
 import {addIcons} from "ionicons";
 import {TarjetaAmigosComponent} from "../../tarjetas/tarjeta-amigos/tarjeta-amigos.component";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {Persona} from "../../../assets/js/Persona";
 import {FooterComponent} from "../../footer/footer.component";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-agregar-producto',
@@ -19,7 +20,9 @@ import {FooterComponent} from "../../footer/footer.component";
     FormsModule,
     TarjetaAmigosComponent,
     NgForOf,
-    FooterComponent
+    FooterComponent,
+    NgIf,
+    RouterLink
   ]
 })
 export class AgregarProductoComponent  implements OnInit {
@@ -38,4 +41,7 @@ export class AgregarProductoComponent  implements OnInit {
 
   ngOnInit() {}
 
+  agregarProducto(){
+    console.log(this.prodcuto);
+  }
 }

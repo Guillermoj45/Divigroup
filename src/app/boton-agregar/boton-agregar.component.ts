@@ -34,7 +34,7 @@ export class BotonAgregarComponent  implements OnInit {
     let input = document.getElementById("inputAmigo") as HTMLInputElement;
     const nombre = input ? input.value : "";
     if (nombre == "") {
-      console.log("No se ingreso ningun nombre");
+      console.log("No se ingreso ningún nombre");
       return;
     }
 
