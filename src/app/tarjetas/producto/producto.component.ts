@@ -16,11 +16,13 @@ import {MiniMenuImgsComponent} from "../../componentes/mini-menu-imgs/mini-menu-
   ]
 })
 
-export class ProductoComponent  implements OnInit {
-  @Input() producto:Producto= new Producto('https://picsum.photos/80/80?random=1', '20', 0, new Date());
+export class ProductoComponent implements OnInit {
+  @Input() producto: Producto = new Producto('https://picsum.photos/80/80?random=1', '20', 0, new Date());
+
   constructor() {
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
 }

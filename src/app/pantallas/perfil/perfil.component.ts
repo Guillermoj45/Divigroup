@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 import {IonicModule} from "@ionic/angular";
 import {NavarComponent} from "../../componentes/navar/navar.component";
@@ -15,13 +15,14 @@ import {FooterComponent} from "../../componentes/footer/footer.component";
     IonicModule
   ]
 })
-export class PerfilComponent  implements OnInit {
+export class PerfilComponent implements OnInit {
 
 
   constructor() {
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   openFileExplorer() {
     const fileInput = document.createElement('input');

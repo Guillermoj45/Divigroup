@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { MenuTajetaCuentaComponent } from './menu-tajeta-cuenta.component';
+import {MenuTajetaCuentaComponent} from './menu-tajeta-cuenta.component';
 
 describe('MenuTajetaCuentaComponent', () => {
   let component: MenuTajetaCuentaComponent;

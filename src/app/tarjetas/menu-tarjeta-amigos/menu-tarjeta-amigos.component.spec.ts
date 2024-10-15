@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { MenuTarjetaAmigosComponent } from './menu-tarjeta-amigos.component';
+import {MenuTarjetaAmigosComponent} from './menu-tarjeta-amigos.component';
 
 describe('MenuTarjetaAmigosComponent', () => {
   let component: MenuTarjetaAmigosComponent;

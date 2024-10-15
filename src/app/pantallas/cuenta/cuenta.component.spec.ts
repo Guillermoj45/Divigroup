@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { CuentaComponent } from './cuenta.component';
+import {CuentaComponent} from './cuenta.component';
 
 describe('CuentaComponent', () => {
   let component: CuentaComponent;

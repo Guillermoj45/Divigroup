@@ -1,48 +1,48 @@
 <ion-content>
-<div class="background-image" style="background-image: url({{imagenFondo}}) "></div>
-<ion-grid style="width: 100%">
-  <ion-row>
-    <ion-col size="4">
-      <ion-avatar>
-        <img [src]="foto"  alt=""/>
-      </ion-avatar>
-    </ion-col>
-    <ion-col>
-      <p class="ion-color-letra">{{nombre}}</p>
-      <div style="display:flex;">
-        <span>Cuentas en común</span>
-        <app-mini-menu-imgs></app-mini-menu-imgs>
-      </div>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col class="centrar" size="5">
-      <ion-button (click)="setOpen(true)">amistad</ion-button>
-    </ion-col>
-    <ion-col class="centrar">
-      <ion-button>Enviar mensaje</ion-button>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col size="0.5"/>
-    <ion-col>
-      <span class="ion-color-letra">Cuentas en común</span>
-    </ion-col>
-  </ion-row>
-  <ion-row>
+  <div class="background-image" style="background-image: url({{imagenFondo}}) "></div>
+  <ion-grid style="width: 100%">
+    <ion-row>
+      <ion-col size="4">
+        <ion-avatar>
+          <img [src]="foto" alt=""/>
+        </ion-avatar>
+      </ion-col>
+      <ion-col>
+        <p class="ion-color-letra">{{ nombre }}</p>
+        <div style="display:flex;">
+          <span>Cuentas en común</span>
+          <app-mini-menu-imgs></app-mini-menu-imgs>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="centrar" size="5">
+        <ion-button (click)="setOpen(true)">amistad</ion-button>
+      </ion-col>
+      <ion-col class="centrar">
+        <ion-button>Enviar mensaje</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="0.5"/>
+      <ion-col>
+        <span class="ion-color-letra">Cuentas en común</span>
+      </ion-col>
+    </ion-row>
+    <ion-row>
       <div id="containerCuentas" style="height: fit-content">
         <app-tajeta-cuenta></app-tajeta-cuenta>
         <app-tajeta-cuenta></app-tajeta-cuenta>
         <app-tajeta-cuenta></app-tajeta-cuenta>
         <app-tajeta-cuenta></app-tajeta-cuenta>
       </div>
-  </ion-row>
-</ion-grid>
-<ion-action-sheet
-  [isOpen]="isActionSheet"
-  [buttons]="actionSheetButtons"
-  (didDismiss)="setOpen(false)"
-></ion-action-sheet>
+    </ion-row>
+  </ion-grid>
+  <ion-action-sheet
+    (didDismiss)="setOpen(false)"
+    [buttons]="actionSheetButtons"
+    [isOpen]="isActionSheet"
+  ></ion-action-sheet>
 </ion-content>
 
 <app-footer></app-footer>

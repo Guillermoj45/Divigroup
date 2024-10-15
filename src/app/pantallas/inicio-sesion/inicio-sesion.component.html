@@ -1,25 +1,24 @@
-
 <ion-img
   src="assets/icon/Icono.png"
-    style=""
+  style=""
 />
 <div>
   <ion-input
+    [counterFormatter]="customCounterFormatter"
+    [counter]="false"
     id="username"
     label="Usuario"
     labelPlacement="floating"
-    [counter]="false"
     maxlength="50"
-    [counterFormatter]="customCounterFormatter"
     type="text"
   />
   <ion-input
+    [counterFormatter]="customCounterFormatter"
+    [counter]="false"
     id="password"
     label="Contraseña"
     labelPlacement="floating"
-    [counter]="false"
     maxlength="50"
-    [counterFormatter]="customCounterFormatter"
     type="password"
   />
   <ion-button href="/home" shape="round">Iniciar sesión</ion-button>

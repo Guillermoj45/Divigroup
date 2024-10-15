@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { TarjetaAmigosComponent } from './tarjeta-amigos.component';
+import {TarjetaAmigosComponent} from './tarjeta-amigos.component';
 
 describe('TarjetaAmigosComponent', () => {
   let component: TarjetaAmigosComponent;

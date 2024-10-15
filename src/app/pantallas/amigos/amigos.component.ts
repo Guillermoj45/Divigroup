@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 import {MenuTajetaCuentaComponent} from "../../tarjetas/menu-tajeta-cuenta/menu-tajeta-cuenta.component";
 import {IonicModule} from "@ionic/angular";
@@ -25,11 +25,12 @@ import {NavarComponent} from "../../componentes/navar/navar.component";
     BotonAgregarComponent
   ]
 })
-export class AmigosComponent  implements OnInit {
+export class AmigosComponent implements OnInit {
   constructor() {
     addIcons({add})
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
 }

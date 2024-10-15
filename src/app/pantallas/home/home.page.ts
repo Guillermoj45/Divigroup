@@ -1,8 +1,5 @@
-import { Component } from '@angular/core';
-import {
-  IonContent,
-  IonSearchbar,
-} from '@ionic/angular/standalone';
+import {Component} from '@angular/core';
+import {IonContent, IonSearchbar,} from '@ionic/angular/standalone';
 import {TajetaCuentaComponent} from "../../tarjetas/tajeta-cuenta/tajeta-cuenta.component";
 import {MenuTajetaCuentaComponent} from "../../tarjetas/menu-tajeta-cuenta/menu-tajeta-cuenta.component";
 import {addIcons} from "ionicons";
@@ -33,10 +30,6 @@ import {NavarComponent} from "../../componentes/navar/navar.component";
 
 
 export class HomePage {
-  constructor() {
-    addIcons({'add-outline': addOutline, 'document': document});
-  }
-
   public data = [
     'Amsterdam',
     'Buenos Aires',
@@ -50,6 +43,10 @@ export class HomePage {
     'Panama City',
   ];
   public results = [...this.data];
+
+  constructor() {
+    addIcons({'add-outline': addOutline, 'document': document});
+  }
 
   handleInput(event: any) {
     console.log(event)

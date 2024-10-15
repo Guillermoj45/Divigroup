@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { TajetaCuentaComponent } from './tajeta-cuenta.component';
+import {TajetaCuentaComponent} from './tajeta-cuenta.component';
 
 describe('TajetaCuentaComponent', () => {
   let component: TajetaCuentaComponent;

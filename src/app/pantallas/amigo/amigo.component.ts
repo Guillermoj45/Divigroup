@@ -22,32 +22,11 @@ import {MiniMenuImgsComponent} from "../../componentes/mini-menu-imgs/mini-menu-
     MiniMenuImgsComponent
   ]
 })
-export class AmigoComponent  implements OnInit {
-  foto:string = 'https://picsum.photos/1000/1000?random=4';
-  imagenFondo:string = 'https://picsum.photos/5000/5000?random=4';
+export class AmigoComponent implements OnInit {
+  foto: string = 'https://picsum.photos/1000/1000?random=4';
+  imagenFondo: string = 'https://picsum.photos/5000/5000?random=4';
   nombre: string = 'Nombre de amigo';
-  isActionSheet:boolean = false;
-  constructor() {}
-
-  ngOnInit() {
-    this.containerCuentas();
-  }
-
-  private containerCuentas(){
-  }
-
-  public denunciar() {
-    console.log('Denunciar');
-  }
-
-  public bloquear() {
-    console.log('Bloquear');
-  }
-
-  public dejarDeSerAmigo() {
-    console.log('Dejar de ser amigo');
-  }
-
+  isActionSheet: boolean = false;
   public actionSheetButtons = [
     {
       text: 'Denunciar',
@@ -88,7 +67,29 @@ export class AmigoComponent  implements OnInit {
     },
   ];
 
-  setOpen(isOpen:boolean){
+  constructor() {
+  }
+
+  ngOnInit() {
+    this.containerCuentas();
+  }
+
+  public denunciar() {
+    console.log('Denunciar');
+  }
+
+  public bloquear() {
+    console.log('Bloquear');
+  }
+
+  public dejarDeSerAmigo() {
+    console.log('Dejar de ser amigo');
+  }
+
+  setOpen(isOpen: boolean) {
     this.isActionSheet = isOpen;
+  }
+
+  private containerCuentas() {
   }
 }

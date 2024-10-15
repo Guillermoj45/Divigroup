@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TarjetaAmigosComponent} from "../tarjeta-amigos/tarjeta-amigos.component";
 
 @Component({
@@ -10,10 +10,12 @@ import {TarjetaAmigosComponent} from "../tarjeta-amigos/tarjeta-amigos.component
     TarjetaAmigosComponent
   ]
 })
-export class MenuTarjetaAmigosComponent  implements OnInit {
+export class MenuTarjetaAmigosComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
 }

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { AgragarCuentaComponent } from './agragar-cuenta.component';
+import {AgragarCuentaComponent} from './agragar-cuenta.component';
 
 describe('AgragarCuentaComponent', () => {
   let component: AgragarCuentaComponent;

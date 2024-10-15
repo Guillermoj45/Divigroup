@@ -5,7 +5,7 @@
         <ion-row>
           <ion-col size="2">
             <ion-avatar>
-              <img alt="Foto de la cuenta" [src]="persona.avatar" />
+              <img [src]="persona.avatar" alt="Foto de la cuenta"/>
             </ion-avatar>
           </ion-col>
           <ion-col size="6">
@@ -14,13 +14,14 @@
             </div>
           </ion-col>
           <ion-col *ngIf="deve !== null">
-            <div style="display: block; border-radius: 10%; padding: 6px; width: fit-content; background-color: {{getColor()}};">
-              {{getMensaje()}} {{deve}}€
+            <div
+              style="display: block; border-radius: 10%; padding: 6px; width: fit-content; background-color: {{getColor()}};">
+              {{ getMensaje() }} {{ deve }}€
             </div>
           </ion-col>
-          <ion-col size="1" *ngIf="seleccionado !== null" style="margin: auto">
+          <ion-col *ngIf="seleccionado !== null" size="1" style="margin: auto">
             <ion-checkbox [(ngModel)]="seleccionado"></ion-checkbox>
-        </ion-col>
+          </ion-col>
         </ion-row>
       </ion-grid>
     </div>

@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
-import { trigger, transition, style, animate } from '@angular/animations';  
+import {Component} from '@angular/core';
+import {IonApp, IonRouterOutlet} from '@ionic/angular/standalone';
+import {animate, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +10,13 @@ import { trigger, transition, style, animate } from '@angular/animations';
   animations: [
     trigger('routeAnimations', [
       transition('customAnimation => *', [
-        style({ opacity: 0 }),
-        animate('500ms', style({ opacity: 1 }))
+        style({opacity: 0}),
+        animate('500ms', style({opacity: 1}))
       ])
     ])
   ]
 })
 export class AppComponent {
-  constructor() {}
+  constructor() {
+  }
 }

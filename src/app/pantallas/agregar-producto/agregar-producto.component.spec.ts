@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { AgregarProductoComponent } from './agregar-producto.component';
+import {AgregarProductoComponent} from './agregar-producto.component';
 
 describe('AgregarProductoComponent', () => {
   let component: AgregarProductoComponent;

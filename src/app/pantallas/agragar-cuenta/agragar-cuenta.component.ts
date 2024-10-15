@@ -23,27 +23,29 @@ import {MiniMenuImgsComponent} from "../../componentes/mini-menu-imgs/mini-menu-
     RouterLink
   ]
 })
-export class AgragarCuentaComponent  implements OnInit {
-  @Input() invitados:Persona[] = [];
+export class AgragarCuentaComponent implements OnInit {
+  @Input() invitados: Persona[] = [];
+
   constructor() {
     addIcons({cloudUploadOutline})
     this.invitados = [
-      new Persona(1, "Juan","https://picsum.photos/500/500?random=0"),
-      new Persona(2, "Pedro","https://picsum.photos/500/500?random=1"),
+      new Persona(1, "Juan", "https://picsum.photos/500/500?random=0"),
+      new Persona(2, "Pedro", "https://picsum.photos/500/500?random=1"),
       new Persona(3, "Maria", "https://picsum.photos/500/500?random=2"),
       new Persona(4, "Jose", "https://picsum.photos/500/500?random=3"),
       new Persona(5, "Luis", "https://picsum.photos/500/500?random=4"),
     ]
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
-  agregarCuenta(){
+  agregarCuenta() {
     console.log("Agregar cuenta")
   }
 
 
-  cancelar(){
+  cancelar() {
     console.log("Cancelar")
   }
 

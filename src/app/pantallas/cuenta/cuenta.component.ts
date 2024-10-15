@@ -1,4 +1,4 @@
-import {Component, NgIterable, OnInit, signal} from '@angular/core';
+import {Component, NgIterable, OnInit} from '@angular/core';
 import {IonicModule} from "@ionic/angular";
 import {FormsModule} from "@angular/forms";
 import {Cuenta} from "../../../assets/js/Cuenta";
@@ -18,22 +18,22 @@ import {FooterComponent} from "../../componentes/footer/footer.component";
   templateUrl: './cuenta.component.html',
   styleUrls: ['./cuenta.component.scss'],
   standalone: true,
-    imports: [
-        IonicModule,
-        FormsModule,
-        NgIf,
-        TajetaCuentaComponent,
-        AmigoComponent,
-        MenuTarjetaAmigosComponent,
-        TarjetaAmigosComponent,
-        NgForOf,
-        ProductoComponent,
-        FooterComponent,
-        BotonAgregarComponent,
-        RouterLink
-    ]
+  imports: [
+    IonicModule,
+    FormsModule,
+    NgIf,
+    TajetaCuentaComponent,
+    AmigoComponent,
+    MenuTarjetaAmigosComponent,
+    TarjetaAmigosComponent,
+    NgForOf,
+    ProductoComponent,
+    FooterComponent,
+    BotonAgregarComponent,
+    RouterLink
+  ]
 })
-export class CuentaComponent  implements OnInit {
+export class CuentaComponent implements OnInit {
   nombre: string = 'Nombre de cuenta';
   imagen: string = 'https://picsum.photos/500/500?random=4';
   cuentas: Cuenta[];
@@ -58,21 +58,22 @@ export class CuentaComponent  implements OnInit {
     this.segmento = event.detail.value;
   }
 
-  getTotal(){
-    let total:number = 0;
-    if (this.productos === null || this.productos === undefined){
+  getTotal() {
+    let total: number = 0;
+    if (this.productos === null || this.productos === undefined) {
       return total;
     }
-    for (let producto of this.productos){
-      if (producto.precio !== null){
+    for (let producto of this.productos) {
+      if (producto.precio !== null) {
         total += producto.precio;
       }
     }
     return total;
   }
-  getPorPersona(){
-    let total:number = this.getTotal();
-    let personas:number = this.cuentas.length;
+
+  getPorPersona() {
+    let total: number = this.getTotal();
+    let personas: number = this.cuentas.length;
     return total / personas;
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {IonicModule} from "@ionic/angular";
 import {IonRouterLink} from "@ionic/angular/standalone";
 import {RouterModule} from "@angular/router";
@@ -14,11 +14,13 @@ import {RouterModule} from "@angular/router";
     RouterModule
   ]
 })
-export class InicioSesionComponent  implements OnInit {
+export class InicioSesionComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   customCounterFormatter(inputLength: number, maxLength: number) {
     return `${maxLength - inputLength} characters remaining`;

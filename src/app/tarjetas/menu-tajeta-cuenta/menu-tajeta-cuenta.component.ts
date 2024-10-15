@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {IonicModule} from "@ionic/angular";
 import {TajetaCuentaComponent} from "../tajeta-cuenta/tajeta-cuenta.component";
 
@@ -16,9 +16,12 @@ import {TajetaCuentaComponent} from "../tajeta-cuenta/tajeta-cuenta.component";
 
 export class MenuTajetaCuentaComponent implements OnInit {
   items: String[] = [];
-  constructor() { }
 
-  ngOnInit() {}
+  constructor() {
+  }
+
+  ngOnInit() {
+  }
 
 
 }

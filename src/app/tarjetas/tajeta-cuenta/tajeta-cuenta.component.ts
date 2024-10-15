@@ -1,22 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
   IonAvatar,
   IonCard,
   IonCardContent,
   IonCardHeader,
   IonCardSubtitle,
-  IonCardTitle, IonCol, IonGrid, IonIcon,
-  IonImg, IonRow
+  IonCardTitle,
+  IonCol,
+  IonGrid,
+  IonIcon,
+  IonImg,
+  IonRow
 } from "@ionic/angular/standalone";
 import {NgOptimizedImage} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {MiniMenuImgsComponent} from "../../componentes/mini-menu-imgs/mini-menu-imgs.component";
 
 @Component({
-    selector: 'app-tajeta-cuenta',
-    templateUrl: './tajeta-cuenta.component.html',
-    styleUrls: ['./tajeta-cuenta.component.scss'],
-    standalone: true,
+  selector: 'app-tajeta-cuenta',
+  templateUrl: './tajeta-cuenta.component.html',
+  styleUrls: ['./tajeta-cuenta.component.scss'],
+  standalone: true,
   imports: [
     IonCard,
     IonCardContent,
@@ -34,10 +38,12 @@ import {MiniMenuImgsComponent} from "../../componentes/mini-menu-imgs/mini-menu-
     RouterLink
   ]
 })
-export class TajetaCuentaComponent  implements OnInit {
+export class TajetaCuentaComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
 }
