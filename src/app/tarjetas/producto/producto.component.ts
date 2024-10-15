@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IonicModule} from "@ionic/angular";
-import {MiniMenuImgsComponent} from '../../mini-menu-imgs/mini-menu-imgs.component'
 import {Producto} from "../../../assets/js/Producto";
-import {BotonAgregarComponent} from "../../boton-agregar/boton-agregar.component";
+import {BotonAgregarComponent} from "../../componentes/boton-agregar/boton-agregar.component";
+import {MiniMenuImgsComponent} from "../../componentes/mini-menu-imgs/mini-menu-imgs.component";
 
 @Component({
   selector: 'app-producto',

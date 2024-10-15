@@ -1,13 +1,13 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FooterComponent} from "../../footer/footer.component";
 import {IonicModule} from "@ionic/angular";
-import {MiniMenuImgsComponent} from "../../mini-menu-imgs/mini-menu-imgs.component";
 import {addIcons} from "ionicons";
 import {cloudUploadOutline} from "ionicons/icons";
 import {Persona} from "../../../assets/js/Persona";
 import {TarjetaAmigosComponent} from "../../tarjetas/tarjeta-amigos/tarjeta-amigos.component";
 import {NgForOf} from "@angular/common";
 import {RouterLink} from "@angular/router";
+import {FooterComponent} from "../../componentes/footer/footer.component";
+import {MiniMenuImgsComponent} from "../../componentes/mini-menu-imgs/mini-menu-imgs.component";
 
 @Component({
   selector: 'app-agragar-cuenta',

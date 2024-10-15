@@ -8,13 +8,13 @@ import {
   IonCol,
   IonGrid, IonIcon, IonRow
 } from "@ionic/angular/standalone";
-import {MiniMenuImgsComponent} from "../../mini-menu-imgs/mini-menu-imgs.component";
 import {addIcons} from "ionicons";
 import {Router, RouterLink} from "@angular/router";
 import {NgIf} from "@angular/common";
 import {Persona} from "../../../assets/js/Persona";
 import {image} from "ionicons/icons";
 import {FormsModule} from "@angular/forms";
+import {MiniMenuImgsComponent} from "../../componentes/mini-menu-imgs/mini-menu-imgs.component";
 
 @Component({
     selector: 'app-tarjeta-amigos',

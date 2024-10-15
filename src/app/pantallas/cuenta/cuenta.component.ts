@@ -9,9 +9,9 @@ import {MenuTarjetaAmigosComponent} from "../../tarjetas/menu-tarjeta-amigos/men
 import {TarjetaAmigosComponent} from "../../tarjetas/tarjeta-amigos/tarjeta-amigos.component";
 import {Producto} from "../../../assets/js/Producto";
 import {ProductoComponent} from "../../tarjetas/producto/producto.component";
-import {FooterComponent} from "../../footer/footer.component";
-import {BotonAgregarComponent} from "../../boton-agregar/boton-agregar.component";
+import {BotonAgregarComponent} from "../../componentes/boton-agregar/boton-agregar.component";
 import {RouterLink} from "@angular/router";
+import {FooterComponent} from "../../componentes/footer/footer.component";
 
 @Component({
   selector: 'app-cuenta',

@@ -7,8 +7,8 @@ import {addIcons} from "ionicons";
 import {TarjetaAmigosComponent} from "../../tarjetas/tarjeta-amigos/tarjeta-amigos.component";
 import {NgForOf, NgIf} from "@angular/common";
 import {Persona} from "../../../assets/js/Persona";
-import {FooterComponent} from "../../footer/footer.component";
 import {RouterLink} from "@angular/router";
+import {FooterComponent} from "../../componentes/footer/footer.component";
 
 @Component({
   selector: 'app-agregar-producto',

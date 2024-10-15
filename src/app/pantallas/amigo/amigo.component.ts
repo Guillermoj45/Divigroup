@@ -1,11 +1,11 @@
 import {IonicModule} from "@ionic/angular";
-import {FooterComponent} from "../../footer/footer.component";
 import {NgStyle} from "@angular/common";
 import {MenuTajetaCuentaComponent} from "../../tarjetas/menu-tajeta-cuenta/menu-tajeta-cuenta.component";
 import {TajetaCuentaComponent} from "../../tarjetas/tajeta-cuenta/tajeta-cuenta.component";
 import {Component, OnInit} from "@angular/core";
 import {TarjetaAmigosComponent} from "../../tarjetas/tarjeta-amigos/tarjeta-amigos.component";
-import {MiniMenuImgsComponent} from "../../mini-menu-imgs/mini-menu-imgs.component";
+import {FooterComponent} from "../../componentes/footer/footer.component";
+import {MiniMenuImgsComponent} from "../../componentes/mini-menu-imgs/mini-menu-imgs.component";
 
 @Component({
   selector: 'app-amigo',

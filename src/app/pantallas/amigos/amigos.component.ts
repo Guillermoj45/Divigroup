@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {FooterComponent} from "../../footer/footer.component";
-import {NavarComponent} from "../../navar/navar.component";
+
 import {MenuTajetaCuentaComponent} from "../../tarjetas/menu-tajeta-cuenta/menu-tajeta-cuenta.component";
 import {IonicModule} from "@ionic/angular";
 import {MenuTarjetaAmigosComponent} from "../../tarjetas/menu-tarjeta-amigos/menu-tarjeta-amigos.component";
 import {addIcons} from "ionicons";
 import {add} from "ionicons/icons";
 import {NgIf} from "@angular/common";
-import {BotonAgregarComponent} from "../../boton-agregar/boton-agregar.component";
+import {BotonAgregarComponent} from "../../componentes/boton-agregar/boton-agregar.component";
+import {FooterComponent} from "../../componentes/footer/footer.component";
+import {NavarComponent} from "../../componentes/navar/navar.component";
 
 @Component({
   selector: 'app-amigos',

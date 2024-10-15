@@ -7,10 +7,11 @@ import {TajetaCuentaComponent} from "../../tarjetas/tajeta-cuenta/tajeta-cuenta.
 import {MenuTajetaCuentaComponent} from "../../tarjetas/menu-tajeta-cuenta/menu-tajeta-cuenta.component";
 import {addIcons} from "ionicons";
 import {addOutline, document} from "ionicons/icons";
-import {FooterComponent} from "../../footer/footer.component";
-import {NavarComponent} from "../../navar/navar.component";
-import {BotonAgregarComponent} from "../../boton-agregar/boton-agregar.component";
+
+import {BotonAgregarComponent} from "../../componentes/boton-agregar/boton-agregar.component";
 import {RouterLink} from "@angular/router";
+import {FooterComponent} from "../../componentes/footer/footer.component";
+import {NavarComponent} from "../../componentes/navar/navar.component";
 
 @Component({
   selector: 'app-home',
