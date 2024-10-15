@@ -23,12 +23,11 @@ import {add, arrowBack, camera, paperPlane} from "ionicons/icons";
     FormsModule
   ]
 })
-export class ChatComponent implements OnInit, AfterViewInit {
+export class ChatComponent implements OnInit {
   @Input() otraPersona: Persona = new Persona(0, 'Usuario X', 'https://picsum.photos/500/500?random=4');
   @Input() mensajes: Array<Mensaje> = [];
   mensaje: string = '';
 
-  @ViewChild('contenedorMensajes') contenedorMensajes!: ElementRef;
 
   constructor() {
     addIcons({add, camera, paperPlane, arrowBack});
@@ -46,21 +45,10 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {}
 
-  ngAfterViewInit() {
-    this.scrollToBottom();
-  }
 
   enviarMensaje() {
     this.mensajes.push(new Mensaje(this.mensaje, true));
     this.mensaje = '';
-    this.scrollToBottom();
   }
 
-  private scrollToBottom(): void {
-    try {
-      this.contenedorMensajes.nativeElement.scrollTop = this.contenedorMensajes.nativeElement.scrollHeight;
-    } catch (err) {
-      console.error('Error scrolling to bottom:', err);
-    }
-  }
 }
