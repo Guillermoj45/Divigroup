@@ -22,7 +22,7 @@ public class DatosPersonales {
 
     @OneToOne
     @PrimaryKeyJoinColumn
-    private Usuarios usuario;
+    private Usuario usuario;
 
     @Column(name = "nombre")
     private String nombre;

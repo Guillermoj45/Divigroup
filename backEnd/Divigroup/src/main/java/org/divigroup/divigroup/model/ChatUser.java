@@ -9,26 +9,24 @@ import lombok.Setter;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "notificaciones", schema = "divigroup")
+@Table(name = "chat_user", schema = "divigroup")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Notificaciones {
+public class ChatUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(name = "fecha")
     private LocalDate fecha;
 
-    @Column(name = "mensaje")
-    private String mensaje;
-
-    @Column(name = "visto")
-    private boolean visto;
-
-    @JoinColumn(name = "users_id")
+    @JoinColumn(name = "id_chats")
     @ManyToOne
-    private Usuarios usuario;
+    private Chat chat;
+
+    @JoinColumn(name = "id_user")
+    @ManyToOne
+    private Usuario usuario;
 }

@@ -10,7 +10,7 @@ import lombok.Setter;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "productos_user", schema = "divigroup")
+@Table(name = "producto_user", schema = "divigroup")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -19,12 +19,12 @@ public class ProductoUser {
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_user")
-    private Usuarios usuario;
+    private Usuario usuario;
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_producto")
-    private Productos producto;
+    private Producto producto;
 
     @Column(name = "pagado")
     private boolean pagado;

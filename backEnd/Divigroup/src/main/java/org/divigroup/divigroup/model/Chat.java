@@ -8,12 +8,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "chats", schema = "divigroup")
+@Table(name = "chat", schema = "divigroup")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Chats {
+public class Chat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

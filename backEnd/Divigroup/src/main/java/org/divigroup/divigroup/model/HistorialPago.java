@@ -8,12 +8,12 @@ import lombok.Setter;
 import org.divigroup.divigroup.model.enums.TipoPago;
 
 @Entity
-@Table(name = "historial_pagos", schema = "divigroup")
+@Table(name = "historial_pago", schema = "divigroup")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class HistorialPagos {
+public class HistorialPago {
     @Id
     @Column(name = "id")
     private int id;
@@ -24,9 +24,9 @@ public class HistorialPagos {
 
     @JoinColumn(name = "id_users")
     @ManyToOne
-    private Usuarios usuario;
+    private Usuario usuario;
 
     @JoinColumn(name = "id_producto")
     @ManyToOne
-    private Productos producto;
+    private Producto producto;
 }

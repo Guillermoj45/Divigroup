@@ -1,32 +1,31 @@
 package org.divigroup.divigroup.model;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
-
 @Entity
-@Table(name = "chats_user", schema = "divigroup")
+@Table(name = "amigo", schema = "divigroup")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ChatsUsers {
+public class Amigo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "fecha")
-    private LocalDate fecha;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "usuario1")
+    private Usuario user;
 
-    @JoinColumn(name = "id_chats")
-    @ManyToOne
-    private Chats chat;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "usuario2")
+    private Usuario amigo;
 
-    @JoinColumn(name = "id_user")
-    @ManyToOne
-    private Usuarios usuario;
+    @Column(name = "confimado")
+    private boolean confirmado;
 }

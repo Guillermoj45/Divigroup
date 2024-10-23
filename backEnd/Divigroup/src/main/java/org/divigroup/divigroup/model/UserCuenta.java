@@ -8,21 +8,21 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "user_cuentas", schema = "divigroup")
+@Table(name = "user_cuenta", schema = "divigroup")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserCuentas {
+public class UserCuenta {
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_user")
-    private Usuarios user;
+    private Usuario user;
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_cuenta")
-    private Cuentas idCuenta;
+    private Cuenta idCuenta;
 
     @Column(name = "is_admin")
     private boolean isAdmin;

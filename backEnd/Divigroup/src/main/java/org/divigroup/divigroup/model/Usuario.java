@@ -10,12 +10,12 @@ import org.divigroup.divigroup.model.enums.TipoPago;
 import org.hibernate.mapping.Set;
 
 @Entity
-@Table(name = "users", schema = "divigroup")
+@Table(name = "usuario", schema = "divigroup")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Usuarios {
+public class Usuario {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
