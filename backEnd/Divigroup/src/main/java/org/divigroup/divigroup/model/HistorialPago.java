@@ -27,6 +27,6 @@ public class HistorialPago {
     private Usuario usuario;
 
     @JoinColumn(name = "id_producto")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Producto producto;
 }

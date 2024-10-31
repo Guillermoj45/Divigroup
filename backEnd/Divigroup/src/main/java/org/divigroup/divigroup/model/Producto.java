@@ -31,11 +31,11 @@ public class Producto {
     @Column(name = "imagen", unique = true, length = 200)
     private String imagen;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_users")
     private Usuario user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_cuenta")
     private Cuenta cuenta;
 }

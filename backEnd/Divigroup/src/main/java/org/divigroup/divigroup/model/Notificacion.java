@@ -29,6 +29,6 @@ public class Notificacion {
     private boolean visto;
 
     @JoinColumn(name = "users_id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Usuario usuario;
 }

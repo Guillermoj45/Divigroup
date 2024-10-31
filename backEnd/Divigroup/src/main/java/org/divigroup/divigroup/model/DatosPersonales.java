@@ -20,7 +20,7 @@ public class DatosPersonales {
     @Column(name = "id")
     private int id;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     @PrimaryKeyJoinColumn
     private Usuario usuario;
 

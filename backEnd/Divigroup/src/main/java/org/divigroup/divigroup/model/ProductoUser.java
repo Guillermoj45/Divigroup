@@ -17,12 +17,12 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class ProductoUser {
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_user")
     private Usuario usuario;
 
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_producto")
     private Producto producto;
 

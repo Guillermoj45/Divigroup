@@ -15,12 +15,12 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UserCuenta {
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_user")
     private Usuario user;
 
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_cuenta")
     private Cuenta idCuenta;
 
