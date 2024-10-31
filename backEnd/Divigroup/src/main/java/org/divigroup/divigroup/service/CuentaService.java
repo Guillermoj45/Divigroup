@@ -13,6 +13,11 @@ import org.springframework.stereotype.Service;
 public class CuentaService {
     ICuentaRepository cuentaRepository;
 
+    /**
+     * Creamos una cuenta
+     * @param cuenta Cuenta que vamos a guardar
+     * @return devuelve el objeto entero de nuevo
+     */
     public Cuenta crearCuenta(Cuenta cuenta){
         return cuentaRepository.save(cuenta);
     }
