@@ -1,10 +1,7 @@
 package org.divigroup.divigroup.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.divigroup.divigroup.model.enums.TipoPago;
 
 @Entity
@@ -13,6 +10,7 @@ import org.divigroup.divigroup.model.enums.TipoPago;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 public class HistorialPago {
     @Id
     @Column(name = "id")

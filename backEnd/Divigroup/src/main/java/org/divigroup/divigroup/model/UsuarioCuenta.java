@@ -2,10 +2,7 @@ package org.divigroup.divigroup.model;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "user_cuenta", schema = "divigroup")
@@ -13,16 +10,20 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 public class UsuarioCuenta {
-    @Id
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "id_user")
-    private Usuario user;
 
     @Id
+    @Column(name = "id")
+    private Integer id;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "id_user")
+    private Usuario usuario;
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_cuenta")
-    private Cuenta idCuenta;
+    private Cuenta cuenta;
 
     @Column(name = "is_admin")
     private boolean isAdmin;
