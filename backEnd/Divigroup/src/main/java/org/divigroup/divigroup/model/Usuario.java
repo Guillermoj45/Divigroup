@@ -1,6 +1,7 @@
 package org.divigroup.divigroup.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 import org.divigroup.divigroup.model.enums.Rol;
@@ -14,7 +15,7 @@ import org.hibernate.mapping.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Usuario {
     @Id
     @Column(name = "id")

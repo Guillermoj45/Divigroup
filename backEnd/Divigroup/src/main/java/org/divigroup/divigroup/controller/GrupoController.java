@@ -7,10 +7,7 @@ import org.divigroup.divigroup.model.Cuenta;
 import org.divigroup.divigroup.model.UsuarioCuenta;
 import org.divigroup.divigroup.service.CuentaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/grupo")
@@ -29,6 +26,11 @@ public class GrupoController {
     @PostMapping("/participantes/nuevo")
     public GrupoListaParticipantesDTO agregarUsuarioCuenta(@RequestBody AgregarPaticipanteDTO dto){
         return cuentaService.agregarUsuarioCuenta(dto);
+    }
+
+    @GetMapping("/participantes/{idCuenta}")
+    public GrupoListaParticipantesDTO listaParticipantes(@PathVariable int idCuenta){
+        return cuentaService.listaParticipantes(idCuenta);
     }
 
 }

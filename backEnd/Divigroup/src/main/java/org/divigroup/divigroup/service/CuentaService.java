@@ -57,4 +57,13 @@ public class CuentaService {
         return dto1;
     }
 
+    public GrupoListaParticipantesDTO listaParticipantes(int idCuenta) {
+        Cuenta cuenta = cuentaRepository.findById(idCuenta).orElse(null);
+        if (cuenta == null){
+            return null;
+        }
+        List<Usuario> participantes = usuarioCuentaService.listaUsuarios(cuenta);
+        GrupoListaParticipantesDTO dto = new GrupoListaParticipantesDTO(cuenta, participantes);
+        return dto;
+    }
 }
