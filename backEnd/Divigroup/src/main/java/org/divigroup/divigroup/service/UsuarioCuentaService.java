@@ -1,5 +1,6 @@
 package org.divigroup.divigroup.service;
 
+import lombok.NoArgsConstructor;
 import org.divigroup.divigroup.model.Cuenta;
 import org.divigroup.divigroup.model.Usuario;
 import org.divigroup.divigroup.model.UsuarioCuenta;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@NoArgsConstructor
 public class UsuarioCuentaService {
     IUsuarioCuentaRepository cuentaRepository;
 
@@ -58,5 +60,19 @@ public class UsuarioCuentaService {
         return usuarios;
     }
 
-    
+    /**
+     * Listar las cuentas que tiene un usuario
+     * @param usuario El usuario que queremos para filtrar
+     * @return una lista de cuentas a las que pertenece el usuario
+     */
+    public List<Cuenta> listaCuentas (Usuario usuario) {
+        List<UsuarioCuenta> usuarioCuentas = cuentaRepository.findAllByUsuarioEquals(usuario);
+        List<Cuenta> cuentas = new ArrayList<>();
+        for (UsuarioCuenta c : usuarioCuentas) {
+            cuentas.add(c.getCuenta());
+        }
+
+        return cuentas;
+    }
+
 }

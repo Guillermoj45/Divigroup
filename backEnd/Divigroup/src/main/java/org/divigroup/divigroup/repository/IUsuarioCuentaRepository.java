@@ -27,4 +27,6 @@ public interface IUsuarioCuentaRepository extends JpaRepository<UsuarioCuenta, I
      * @return nos devuelve una lista de UsuarioCuenta con todos los elementos en question
      */
     List<UsuarioCuenta> findAllByCuentaEquals(Cuenta cuenta);
+
+    List<UsuarioCuenta> findAllByUsuarioEquals(Usuario usuario);
 }
