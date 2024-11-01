@@ -68,10 +68,8 @@ public class UsuarioCuentaService {
      * @return una lista de cuentas a las que pertenece el usuario
      */
     public List<Cuenta> listaCuentas (Usuario usuario) {
-        List<Cuenta> cuentas = cuentaRepository.listarCuentasUsuario(usuario);
 
-
-        return cuentas;
+        return cuentaRepository.listarCuentasUsuario(usuario);
     }
 
 }
