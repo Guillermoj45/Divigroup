@@ -5,6 +5,7 @@ import org.divigroup.divigroup.model.Cuenta;
 import org.divigroup.divigroup.model.Usuario;
 import org.divigroup.divigroup.model.UsuarioCuenta;
 import org.divigroup.divigroup.repository.IUsuarioCuentaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.Optional;
 @Service
 @NoArgsConstructor
 public class UsuarioCuentaService {
+    @Autowired
     IUsuarioCuentaRepository cuentaRepository;
 
     /**

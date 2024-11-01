@@ -1,5 +1,6 @@
 package org.divigroup.divigroup.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.divigroup.divigroup.model.enums.Rol;
@@ -13,6 +14,7 @@ import org.hibernate.mapping.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
+
 public class Usuario {
     @Id
     @Column(name = "id")
@@ -37,8 +39,10 @@ public class Usuario {
     private Rol rol;
 
     @Column(name = "password")
+    @JsonIgnore
     private String password;
 
     @Column(name = "eliminado")
+    @JsonIgnore
     private boolean eliminado;
 }

@@ -1,9 +1,15 @@
 package org.divigroup.divigroup.service;
 
+import lombok.NoArgsConstructor;
 import org.divigroup.divigroup.model.Usuario;
 import org.divigroup.divigroup.repository.IUsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
+@NoArgsConstructor
 public class UsuarioService {
+    @Autowired
     IUsuarioRepository usuarioRepository;
 
     /**
