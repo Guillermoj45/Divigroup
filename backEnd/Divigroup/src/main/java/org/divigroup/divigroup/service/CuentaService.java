@@ -3,7 +3,7 @@ package org.divigroup.divigroup.service;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import org.divigroup.divigroup.dto.AgregarPaticipanteDTO;
+import org.divigroup.divigroup.dto.GrupoParticipanteDTO;
 import org.divigroup.divigroup.dto.GrupoListaParticipantesDTO;
 import org.divigroup.divigroup.model.Cuenta;
 import org.divigroup.divigroup.model.Usuario;
@@ -43,7 +43,7 @@ public class CuentaService {
      * @param usuario El usuarios que queremos añadir
      * @return devuelve la relación entre ambos
      */
-    public GrupoListaParticipantesDTO agregarUsuarioCuenta(AgregarPaticipanteDTO dto){
+    public GrupoListaParticipantesDTO agregarUsuarioCuenta(GrupoParticipanteDTO dto){
         Cuenta cuenta = cuentaRepository.findById(dto.getIdGrupo()).orElse(null);
         Usuario usuario = usuarioService.buscarUsuarioId(dto.getIdUsuario());
 
@@ -65,5 +65,24 @@ public class CuentaService {
         List<Usuario> participantes = usuarioCuentaService.listaUsuarios(cuenta);
         GrupoListaParticipantesDTO dto = new GrupoListaParticipantesDTO(cuenta, participantes);
         return dto;
+    }
+
+    public GrupoListaParticipantesDTO eliminarUsuarioCuenta(GrupoParticipanteDTO dto) {
+        Cuenta cuenta = cuentaRepository.findById(dto.getIdGrupo()).orElse(null);
+        Usuario usuario = usuarioService.buscarUsuarioId(dto.getIdUsuario());
+
+        if (cuenta == null || usuario == null){
+            return null;
+        }
+        usuarioCuentaService.eliminarUsuarioCuenta(cuenta, usuario);
+        List<Usuario> participantes = usuarioCuentaService.listaUsuarios(cuenta);
+        GrupoListaParticipantesDTO dto1 = new GrupoListaParticipantesDTO(cuenta, participantes);
+
+        return dto1;
+    }
+
+    public List<Cuenta> listarCuentas(int idUsuario) {
+        Usuario usuario = usuarioService.buscarUsuarioId(idUsuario);
+        return usuarioCuentaService.listaCuentas(usuario);
     }
 }

@@ -15,6 +15,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GrupoListaParticipantesDTO {
-    Cuenta cuenta;
-    List<Usuario> participantes;
+    private Cuenta cuenta;
+    private List<Usuario> participantes;
 }

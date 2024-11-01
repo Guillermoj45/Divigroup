@@ -57,14 +57,14 @@ create table cuenta
 
 create table amigo
 (
+    id serial primary key not null,
     usuario1  integer               not null
         constraint users_usuario1
             references usuario,
     usuario2  integer               not null
         constraint users_usuario2
             references usuario,
-    confimado boolean default false not null,
-    primary key (usuario1, usuario2)
+    confimado boolean default false not null
 );
 
 

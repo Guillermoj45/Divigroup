@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class AgregarPaticipanteDTO {
-    int idGrupo;
-    int idUsuario;
+public class GrupoParticipanteDTO {
+    private int idGrupo;
+    private int idUsuario;
 }

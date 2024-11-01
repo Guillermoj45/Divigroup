@@ -4,6 +4,7 @@ import org.divigroup.divigroup.model.Cuenta;
 import org.divigroup.divigroup.model.Usuario;
 import org.divigroup.divigroup.model.UsuarioCuenta;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -28,5 +29,13 @@ public interface IUsuarioCuentaRepository extends JpaRepository<UsuarioCuenta, I
      */
     List<UsuarioCuenta> findAllByCuentaEquals(Cuenta cuenta);
 
-    List<UsuarioCuenta> findAllByUsuarioEquals(Usuario usuario);
+    /**
+     * Te devuelve una lista con todas las cuentas que tiene un usuario
+     * @param usuario El usuario por el que queremos buscar
+     * @return nos devuelve una lista de UsuarioCuenta con todos los elementos en question
+     */
+    @Query("SELECT uc.cuenta " +
+            "from UsuarioCuenta uc " +
+            "where uc.usuario = :usuario")
+    List<Cuenta> listarCuentasUsuario(Usuario usuario);
 }

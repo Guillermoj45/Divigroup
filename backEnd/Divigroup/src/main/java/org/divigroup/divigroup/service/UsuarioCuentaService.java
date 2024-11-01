@@ -68,11 +68,8 @@ public class UsuarioCuentaService {
      * @return una lista de cuentas a las que pertenece el usuario
      */
     public List<Cuenta> listaCuentas (Usuario usuario) {
-        List<UsuarioCuenta> usuarioCuentas = cuentaRepository.findAllByUsuarioEquals(usuario);
-        List<Cuenta> cuentas = new ArrayList<>();
-        for (UsuarioCuenta c : usuarioCuentas) {
-            cuentas.add(c.getCuenta());
-        }
+        List<Cuenta> cuentas = cuentaRepository.listarCuentasUsuario(usuario);
+
 
         return cuentas;
     }
