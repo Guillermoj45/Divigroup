@@ -16,15 +16,15 @@ public class Cuenta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "nombre", length = 20)
+    @Column(name = "nombre", length = 20, nullable = false)
     String nombre;
 
-    @Column(name = "descripcion", length = 400)
+    @Column(name = "descripcion", length = 400, nullable = false)
     String descripcion;
 
-    @Column(name = "imagen", unique = true, length = 200)
+    @Column(name = "imagen", unique = true, length = 200, nullable = false)
     String imagen;
 
-    @Column(name = "imagenfondo", unique = true, length = 200)
-    String imagenfondo;
+    @Column(name = "imagen_fondo", unique = true, length = 200)
+    String imagenFondo;
 }
