@@ -100,17 +100,20 @@ create table producto
 );
 
 
-create table producto_user
+create table producto_usuario_cuenta
 (
+    id serial primary key not null,
     id_user     integer not null
         constraint productos_productos_user
             references usuario,
     id_producto integer not null
         constraint users_productos_user
             references producto,
+    id_cuenta   integer not null
+        constraint productos_cuenta_user
+            references cuenta,
     pagado      boolean,
-    fecha       timestamp(6),
-    primary key (id_user, id_producto)
+    fecha       timestamp(6)
 );
 
 
