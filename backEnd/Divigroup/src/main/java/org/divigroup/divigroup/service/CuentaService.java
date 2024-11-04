@@ -20,13 +20,13 @@ import java.util.List;
 
 public class CuentaService {
     @Autowired
-    ICuentaRepository cuentaRepository;
+    private ICuentaRepository cuentaRepository;
 
     @Autowired
-    UsuarioCuentaService usuarioCuentaService;
+    private UsuarioCuentaService usuarioCuentaService;
 
     @Autowired
-    UsuarioService usuarioService;
+    private UsuarioService usuarioService;
 
     @Autowired
     @Lazy

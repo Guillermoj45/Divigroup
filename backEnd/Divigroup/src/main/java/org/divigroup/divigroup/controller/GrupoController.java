@@ -8,10 +8,12 @@ import org.divigroup.divigroup.dto.GrupoListaParticipantesDTO;
 import org.divigroup.divigroup.dto.SoloProductoDTO;
 import org.divigroup.divigroup.model.Cuenta;
 import org.divigroup.divigroup.model.Producto;
+import org.divigroup.divigroup.model.Usuario;
 import org.divigroup.divigroup.service.CuentaService;
 import org.divigroup.divigroup.service.ProductoService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -55,5 +57,10 @@ public class GrupoController {
     @GetMapping("gasto/{idCuenta}")
     public List<SoloProductoDTO> listarGastos(@PathVariable int idCuenta){
         return productoService.encontrarPorCuenta(idCuenta);
+    }
+
+    @GetMapping("gastos/{idGrupo}")
+    public HashMap<String, Float> listarGastosGrupo(@PathVariable int idGrupo){
+        return productoService.puestaEnCuentas(idGrupo);
     }
 }

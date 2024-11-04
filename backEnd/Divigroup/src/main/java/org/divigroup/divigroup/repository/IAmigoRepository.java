@@ -20,4 +20,15 @@ public interface IAmigoRepository extends JpaRepository<Amigo, Integer> {
             "from Amigo a " +
             "where (a.amigo = :usuario or a.user = :usuario) and a.confirmado = true")
     public List<Amigo> amigos(Usuario usuario);
+
+    // @Query(value = """
+    //         select *
+    //         from divigroup.usuario
+    //         where id in (SELECT CASE WHEN a.usuario1 = :idUsuario THEN a.usuario2 ELSE a.usuario1 END as amigo
+    //                      FROM divigroup.amigo a
+    //                      WHERE a.usuario2 = :idUsuario
+    //                         OR a.usuario1 = :idUsuario
+    //         )
+    //         """, nativeQuery = true)
+    // public List<Usuario> pruebas(int idUsuario);
 }

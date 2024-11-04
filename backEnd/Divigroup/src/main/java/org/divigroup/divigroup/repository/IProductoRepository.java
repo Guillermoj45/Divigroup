@@ -15,4 +15,5 @@ public interface IProductoRepository extends JpaRepository<Producto, Integer> {
             "from Producto p " +
             "where p.cuenta = :cuenta")
     public List<Producto> encontrarPorCuenta(Cuenta cuenta);
+
 }
