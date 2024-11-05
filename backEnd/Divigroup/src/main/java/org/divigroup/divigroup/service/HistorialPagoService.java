@@ -16,6 +16,11 @@ public class HistorialPagoService {
     @Autowired
     private CuentaService cuentaService;
 
+    /**
+     * Método que se encarga de encontrar un historial de pago por su cuenta
+     * @param cuenta cuenta a buscar
+     * @return historial de pago encontrado
+     */
     public List<HistorialPago> encontrarPorCuenta(Cuenta cuenta) {
         return historialPagoRepository.encontrarPorCuenta(cuenta);
     }

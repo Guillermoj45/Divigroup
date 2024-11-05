@@ -55,22 +55,30 @@ public class CuentaService {
         }
         usuarioCuentaService.agregarUsuarioCuenta(cuenta, usuario);
         List<Usuario> participantes = usuarioCuentaService.listaUsuarios(cuenta);
-        GrupoListaParticipantesDTO dto1 = new GrupoListaParticipantesDTO(cuenta, participantes);
 
-        return dto1;
+        return new GrupoListaParticipantesDTO(cuenta, participantes);
     }
 
+    /**
+     * Lista los participantes de una cuenta
+     * @param idCuenta id de la cuenta
+     * @return DTO con la cuenta y los participantes
+     */
     public GrupoListaParticipantesDTO listaParticipantes(int idCuenta) {
         Cuenta cuenta = cuentaRepository.findById(idCuenta).orElse(null);
         if (cuenta == null){
             return null;
         }
         List<Usuario> participantes = usuarioCuentaService.listaUsuarios(cuenta);
-        GrupoListaParticipantesDTO dto = new GrupoListaParticipantesDTO(cuenta, participantes);
 
-        return dto;
+        return new GrupoListaParticipantesDTO(cuenta, participantes);
     }
 
+    /**
+     * Elimina un usuario de una cuenta
+     * @param dto DTO con los datos de la relación
+     * @return DTO con la cuenta y los participantes
+     */
     public GrupoListaParticipantesDTO eliminarUsuarioCuenta(GrupoParticipanteDTO dto) {
         Cuenta cuenta = cuentaRepository.findById(dto.getIdGrupo()).orElse(null);
         Usuario usuario = usuarioService.buscarUsuarioId(dto.getIdUsuario());
@@ -80,16 +88,25 @@ public class CuentaService {
         }
         usuarioCuentaService.eliminarUsuarioCuenta(cuenta, usuario);
         List<Usuario> participantes = usuarioCuentaService.listaUsuarios(cuenta);
-        GrupoListaParticipantesDTO dto1 = new GrupoListaParticipantesDTO(cuenta, participantes);
 
-        return dto1;
+        return new GrupoListaParticipantesDTO(cuenta, participantes);
     }
 
+    /**
+     * Lista las cuentas de un usuario
+     * @param idUsuario id del usuario
+     * @return lista de cuentas
+     */
     public List<Cuenta> listarCuentas(int idUsuario) {
         Usuario usuario = usuarioService.buscarUsuarioId(idUsuario);
         return usuarioCuentaService.listaCuentas(usuario);
     }
 
+    /**
+     * Agrega un gasto a una cuenta
+     * @param dto DTO con los datos del gasto
+     * @return producto creado
+     */
     public Producto agregarGasto(AgregarGastoDTO dto) {
         Cuenta cuenta = cuentaRepository.findById(dto.getIdGrupo()).orElse(null);
         Usuario usuario = usuarioService.buscarUsuarioId(dto.getIdUsuario());
@@ -101,10 +118,14 @@ public class CuentaService {
         producto.setCuenta(cuenta);
         producto.setUser(usuario);
 
-
         return productoService.crearProducto(producto);
     }
 
+    /**
+     * Busca una cuenta por su id
+     * @param idCuenta id de la cuenta
+     * @return cuenta encontrada
+     */
     public Cuenta buscarCuentaId(int idCuenta){
         return cuentaRepository.findById(idCuenta).orElse(null);
     }

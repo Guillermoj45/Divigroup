@@ -104,7 +104,7 @@ public class ProductoService {
 
         for (String u : suma.keySet()){
             if (suma.get(u) > 0){
-                Float resta = suma.get(u) - totalHistorial;
+                float resta = suma.get(u) - totalHistorial;
                 resta = Float.parseFloat(String.format("%.2f", resta).replace(",", "."));
 
                 if (resta < 0){
