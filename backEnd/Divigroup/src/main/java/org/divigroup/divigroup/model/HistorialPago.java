@@ -20,11 +20,14 @@ public class HistorialPago {
     @Enumerated(EnumType.ORDINAL)
     private TipoPago tipoPago;
 
+    @Column(name = "monton")
+    private float monton;
+
     @JoinColumn(name = "id_users")
     @ManyToOne
     private Usuario usuario;
 
-    @JoinColumn(name = "id_producto")
+    @JoinColumn(name = "id_cuenta")
     @ManyToOne(cascade = CascadeType.PERSIST)
-    private Producto producto;
+    private Cuenta cuenta;
 }
