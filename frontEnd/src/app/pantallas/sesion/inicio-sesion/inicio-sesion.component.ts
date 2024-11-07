@@ -15,11 +15,13 @@ import {RouterModule} from "@angular/router";
   ]
 })
 export class InicioSesionComponent implements OnInit {
+  id: number = 1;
 
   constructor() {
   }
 
   ngOnInit() {
+    localStorage.setItem('idUsuario', this.id.toString());
   }
 
   customCounterFormatter(inputLength: number, maxLength: number) {

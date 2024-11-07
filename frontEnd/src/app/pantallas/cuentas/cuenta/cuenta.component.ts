@@ -12,6 +12,7 @@ import {ProductoComponent} from "../../../tarjetas/producto/producto.component";
 import {BotonAgregarComponent} from "../../../componentes/boton-agregar/boton-agregar.component";
 import {RouterLink} from "@angular/router";
 import {FooterComponent} from "../../../componentes/footer/footer.component";
+import {CuentaService} from "../../../service/cuenta.service";
 
 @Component({
   selector: 'app-cuenta',
@@ -36,22 +37,20 @@ import {FooterComponent} from "../../../componentes/footer/footer.component";
 export class CuentaComponent implements OnInit {
   nombre: string = 'Nombre de cuenta';
   imagen: string = 'https://picsum.photos/500/500?random=4';
-  cuentas: Cuenta[];
+  cuentas: Cuenta[] = [];
   segmento: string = 'cuentas';
   productos: NgIterable<Producto> | undefined | null;
 
 
-  constructor() {
-    this.cuentas = [new Cuenta('Cuenta 1', 100, 'https://picsum.photos/500/500?random=3', 1)];
-    this.productos = [new Producto('https://picsum.photos/80/80?random=1', 'salchichas', 1, new Date())];
-    this.productos = [
-      ...this.productos,
-      new Producto('https://picsum.photos/80/80?random=2', 'kepchup', 1, new Date()),
-      new Producto('https://picsum.photos/80/80?random=3', 'mostaza', 1, new Date()),
-    ];
+  constructor(private cuentaService: CuentaService) {
+
   }
 
   ngOnInit() {
+    this.cuentaService.getObtenerCuentas().subscribe((cuentas: Cuenta[]) => {
+      this.cuentas = cuentas;
+      console.log(this.cuentas);
+    });
   }
 
   onSegmentChange(event: any) {
