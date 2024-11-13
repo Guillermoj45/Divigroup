@@ -11,6 +11,7 @@
     labelPlacement="floating"
     maxlength="50"
     type="text"
+    [(ngModel)]="username"
   />
   <ion-input
     [counterFormatter]="customCounterFormatter"
@@ -20,8 +21,9 @@
     labelPlacement="floating"
     maxlength="50"
     type="password"
+    [(ngModel)]="password"
   />
-  <ion-button href="/home" shape="round">Iniciar sesión</ion-button>
+  <ion-button (click)="login()" shape="round">Iniciar sesión</ion-button>
   <ion-button href="/registro" shape="round">Crear cuenta</ion-button>
   <a href="/recuperacion"><span style="text-align: center">¿Olvidaste tu contraseña?</span></a>
 </div>

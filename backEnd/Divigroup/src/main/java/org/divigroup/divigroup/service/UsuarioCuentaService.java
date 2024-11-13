@@ -30,6 +30,14 @@ public class UsuarioCuentaService {
         usuarioCuenta.setCuenta(cuenta);
         return cuentaRepository.save(usuarioCuenta);
     }
+    public UsuarioCuenta agregarUsuarioCuenta(Cuenta cuenta, Usuario usuario, boolean esAdmin){
+        UsuarioCuenta usuarioCuenta = new UsuarioCuenta();
+        usuarioCuenta.setUsuario(usuario);
+        usuarioCuenta.setCuenta(cuenta);
+        usuarioCuenta.setAdmin(esAdmin);
+        return cuentaRepository.save(usuarioCuenta);
+    }
+
 
     /**
      * Elimina un usuario de una cuenta

@@ -25,8 +25,8 @@ public class GrupoController {
     private final ProductoService productoService;
 
     @PostMapping("/nuevo")
-    public Cuenta crearCuenta(@RequestBody Cuenta cuenta){
-        return cuentaService.crearCuenta(cuenta);
+    public Cuenta crearCuenta(@CookieValue(value = "idUsuario") int idUsuario ,@RequestBody Cuenta cuenta){
+        return cuentaService.crearCuenta(cuenta, idUsuario);
     }
 
     @PostMapping("/participantes/nuevo")
@@ -44,8 +44,8 @@ public class GrupoController {
         return cuentaService.eliminarUsuarioCuenta(dto);
     }
 
-    @GetMapping("{idUsuario}")
-    public List<Cuenta> listarCuentas(@PathVariable int idUsuario){
+    @GetMapping()
+    public List<Cuenta> listarCuentas(@CookieValue(value = "idUsuario") int idUsuario) {
         return cuentaService.listarCuentas(idUsuario);
     }
 
@@ -58,6 +58,12 @@ public class GrupoController {
     public List<SoloProductoDTO> listarGastos(@PathVariable int idCuenta){
         return productoService.encontrarPorCuenta(idCuenta);
     }
+
+//    @GetMapping("gasto")
+//    public List<SoloProductoDTO> listarGastos(@CookieValue(value = "idUsuario", defaultValue = "defaultCookieValue")int idUsuarioCookie){
+//        System.out.println("Cookie: " + idUsuarioCookie);
+//        return productoService.encontrarPorCuenta(idUsuarioCookie);
+//    }
 
     @GetMapping("gastos/{idGrupo}")
     public HashMap<String, Float> listarGastosGrupo(@PathVariable int idGrupo){

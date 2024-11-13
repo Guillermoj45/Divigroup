@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpRequest} from "@angular/common/http";
 import {Cuenta} from "../modelos/Cuenta";
 import {Observable} from "rxjs";
+import {Producto} from "../modelos/Producto";
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +13,15 @@ export class CuentaService {
 
   postCrearCuenta(cuenta: Cuenta): Observable<Cuenta>{
 
-    return this.http.post<Cuenta>('http://localhost:3000/crear-cuenta', cuenta);
+    return this.http.post<Cuenta>('api/crear-cuenta', cuenta);
   }
 
-  public getObtenerCuentas(): Observable<Cuenta[]>{
-    let idUsuario:number = parseInt(<string>localStorage.getItem('idUsuario'));
-    return this.http.get<Cuenta[]>('http://localhost:3000/obtener-cuentas/'+idUsuario);
+    public getObtenerCuentas(): Observable<Cuenta[]> {
+        return this.http.get<Cuenta[]>(`/api/grupo`);
+    }
+
+  public getObtenerGastos(cuenta: Cuenta): Observable<Producto[]> {
+    return this.http.get<Producto[]>(`/api/grupo/gasto/${cuenta.id}`);
   }
 
 }

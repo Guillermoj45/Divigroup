@@ -37,7 +37,9 @@ public class CuentaService {
      * @param cuenta Cuenta que vamos a guardar
      * @return devuelve el objeto entero de nuevo
      */
-    public Cuenta crearCuenta(Cuenta cuenta){
+    public Cuenta crearCuenta(Cuenta cuenta, int idUsuario){
+        Usuario usuario = usuarioService.buscarUsuarioId(idUsuario);
+        usuarioCuentaService.agregarUsuarioCuenta(cuenta, usuario, true);
         return cuentaRepository.save(cuenta);
     }
 
