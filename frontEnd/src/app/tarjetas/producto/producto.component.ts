@@ -6,25 +6,25 @@ import {MiniMenuImgsComponent} from "../../componentes/mini-menu-imgs/mini-menu-
 import {RouterLink} from "@angular/router";
 
 @Component({
-  selector: 'app-producto',
-  templateUrl: './producto.component.html',
-  styleUrls: ['./producto.component.scss'],
-  standalone: true,
-  imports: [
-    IonicModule,
-    MiniMenuImgsComponent,
-    BotonAgregarComponent,
-    RouterLink
-  ]
+    selector: 'app-producto',
+    templateUrl: './producto.component.html',
+    styleUrls: ['./producto.component.scss'],
+    standalone: true,
+    imports: [
+        IonicModule,
+        MiniMenuImgsComponent,
+        BotonAgregarComponent,
+        RouterLink
+    ]
 })
 
 export class ProductoComponent implements OnInit {
-  @Input() producto: Producto = new Producto('https://picsum.photos/80/80?random=1', '20', 0, new Date());
+    @Input() producto: Producto = new Producto('https://picsum.photos/80/80?random=1', '20', 0, new Date());
 
-  constructor() {
-  }
+    constructor() {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
 }

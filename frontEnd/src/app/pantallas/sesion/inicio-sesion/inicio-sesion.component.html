@@ -1,29 +1,29 @@
 <ion-img
-  src="assets/icon/Icono.png"
-  style=""
+    src="assets/icon/Icono.png"
+    style=""
 />
 <div>
-  <ion-input
-    [counterFormatter]="customCounterFormatter"
-    [counter]="false"
-    id="username"
-    label="Usuario"
-    labelPlacement="floating"
-    maxlength="50"
-    type="text"
-    [(ngModel)]="username"
-  />
-  <ion-input
-    [counterFormatter]="customCounterFormatter"
-    [counter]="false"
-    id="password"
-    label="Contraseña"
-    labelPlacement="floating"
-    maxlength="50"
-    type="password"
-    [(ngModel)]="password"
-  />
-  <ion-button (click)="login()" shape="round">Iniciar sesión</ion-button>
-  <ion-button href="/registro" shape="round">Crear cuenta</ion-button>
-  <a href="/recuperacion"><span style="text-align: center">¿Olvidaste tu contraseña?</span></a>
+    <ion-input
+        [counterFormatter]="customCounterFormatter"
+        [counter]="false"
+        id="username"
+        label="Usuario"
+        labelPlacement="floating"
+        maxlength="50"
+        type="text"
+        [(ngModel)]="username"
+    />
+    <ion-input
+        [counterFormatter]="customCounterFormatter"
+        [counter]="false"
+        id="password"
+        label="Contraseña"
+        labelPlacement="floating"
+        maxlength="50"
+        type="password"
+        [(ngModel)]="password"
+    />
+    <ion-button (click)="login()" shape="round">Iniciar sesión</ion-button>
+    <ion-button href="/registro" shape="round">Crear cuenta</ion-button>
+    <a href="/recuperacion"><span style="text-align: center">¿Olvidaste tu contraseña?</span></a>
 </div>

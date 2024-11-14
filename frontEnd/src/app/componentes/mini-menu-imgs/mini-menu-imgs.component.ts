@@ -14,22 +14,24 @@ import {image} from "ionicons/icons";
         NgIf
     ]
 })
-export class MiniMenuImgsComponent  implements OnInit {
+export class MiniMenuImgsComponent implements OnInit {
 
     protected imagenesDatos: string[] = [];
     imagenesMostrar: string[] = [];
 
     @Input()
-    set imagenes(imagenes: string[]){
+    set imagenes(imagenes: string[]) {
         this.imagenesDatos = imagenes;
         this.onImagenesChange();
     }
 
-  constructor() { }
+    constructor() {
+    }
 
-  ngOnInit() {
-      this.onImagenesChange()
-  }
+    ngOnInit() {
+        this.onImagenesChange()
+    }
+
     onImagenesChange() {
         this.imagenesMostrar = [];
         let numero = 0;

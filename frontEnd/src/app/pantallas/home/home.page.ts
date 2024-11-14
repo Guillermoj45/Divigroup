@@ -16,10 +16,10 @@ import {NgForOf} from "@angular/common";
 import {UsuarioService} from "../../service/usuario.service";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
-  standalone: true,
+    selector: 'app-home',
+    templateUrl: 'home.page.html',
+    styleUrls: ['home.page.scss'],
+    standalone: true,
     imports: [
 
         TajetaCuentaComponent,
@@ -51,12 +51,13 @@ export class HomePage implements OnInit {
         });
 
     }
+
     constructor(private cuentaService: CuentaService, private usuarioService: UsuarioService) {
         addIcons({'add-outline': addOutline, 'document': document});
     }
 
     sacarUsuarios() {
-        for (let cuenta of this.cuentas){
+        for (let cuenta of this.cuentas) {
             this.usuarioService.introducirUsuariosCuenta(cuenta);
         }
     }
@@ -66,21 +67,20 @@ export class HomePage implements OnInit {
             cuenta.saldo = 0;
             this.cuentaService.getObtenerGastos(cuenta).subscribe((gastos: Producto[]) => {
                 gastos.forEach(gasto => {
-                    cuenta.saldo += gasto.precio? gasto.precio : 0;
+                    cuenta.saldo += gasto.precio ? gasto.precio : 0;
                 })
             });
         }
     }
 
 
-
-  handleInput(event: any) {
-    console.log(event)
-      if (event.target.value === '') {
-          this.cuentas = this.todasCuentas;
-          return;
-      }
-    const query = event.target.value.toLowerCase();
-    this.cuentas = this.todasCuentas.filter((d:Cuenta) => d.nombre.toLowerCase().indexOf(query) > -1);
-  }
+    handleInput(event: any) {
+        console.log(event)
+        if (event.target.value === '') {
+            this.cuentas = this.todasCuentas;
+            return;
+        }
+        const query = event.target.value.toLowerCase();
+        this.cuentas = this.todasCuentas.filter((d: Cuenta) => d.nombre.toLowerCase().indexOf(query) > -1);
+    }
 }

@@ -9,89 +9,89 @@ import {MiniMenuImgsComponent} from "../../componentes/mini-menu-imgs/mini-menu-
 import {RouterLink} from "@angular/router";
 
 @Component({
-  selector: 'app-amigo',
-  templateUrl: './amigo.component.html',
-  styleUrls: ['./amigo.component.scss'],
-  standalone: true,
-  imports: [
-    IonicModule,
-    FooterComponent,
-    NgStyle,
-    MenuTajetaCuentaComponent,
-    TajetaCuentaComponent,
-    TarjetaAmigosComponent,
-    MiniMenuImgsComponent,
-    RouterLink
-  ]
+    selector: 'app-amigo',
+    templateUrl: './amigo.component.html',
+    styleUrls: ['./amigo.component.scss'],
+    standalone: true,
+    imports: [
+        IonicModule,
+        FooterComponent,
+        NgStyle,
+        MenuTajetaCuentaComponent,
+        TajetaCuentaComponent,
+        TarjetaAmigosComponent,
+        MiniMenuImgsComponent,
+        RouterLink
+    ]
 })
 export class AmigoComponent implements OnInit {
-  foto: string = 'https://picsum.photos/1000/1000?random=4';
-  imagenFondo: string = 'https://picsum.photos/5000/5000?random=4';
-  nombre: string = 'Nombre de amigo';
-  isActionSheet: boolean = false;
-  public actionSheetButtons = [
-    {
-      text: 'Denunciar',
-      role: 'destructive',
-      handler: () => {
-        this.denunciar();
-      },
-      data: {
-        action: 'Denunciar',
-      },
-    },
-    {
-      text: 'Bloquear',
-      role: 'destructive',
-      handler: () => {
-        this.bloquear();
-      },
-      data: {
-        action: 'Bloquear',
-      },
-    },
-    {
-      text: 'Dejar de ser amigo',
-      role: 'destructive',
-      handler: () => {
-        this.dejarDeSerAmigo();
-      },
-      data: {
-        action: 'Bloquear',
-      },
-    },
-    {
-      text: 'Cancelar',
-      role: 'cancel',
-      data: {
-        action: 'cancel',
-      },
-    },
-  ];
+    foto: string = 'https://picsum.photos/1000/1000?random=4';
+    imagenFondo: string = 'https://picsum.photos/5000/5000?random=4';
+    nombre: string = 'Nombre de amigo';
+    isActionSheet: boolean = false;
+    public actionSheetButtons = [
+        {
+            text: 'Denunciar',
+            role: 'destructive',
+            handler: () => {
+                this.denunciar();
+            },
+            data: {
+                action: 'Denunciar',
+            },
+        },
+        {
+            text: 'Bloquear',
+            role: 'destructive',
+            handler: () => {
+                this.bloquear();
+            },
+            data: {
+                action: 'Bloquear',
+            },
+        },
+        {
+            text: 'Dejar de ser amigo',
+            role: 'destructive',
+            handler: () => {
+                this.dejarDeSerAmigo();
+            },
+            data: {
+                action: 'Bloquear',
+            },
+        },
+        {
+            text: 'Cancelar',
+            role: 'cancel',
+            data: {
+                action: 'cancel',
+            },
+        },
+    ];
 
-  constructor() {
-  }
+    constructor() {
+    }
 
-  ngOnInit() {
-    this.containerCuentas();
-  }
+    ngOnInit() {
+        this.containerCuentas();
+    }
 
-  public denunciar() {
-    console.log('Denunciar');
-  }
+    public denunciar() {
+        console.log('Denunciar');
+    }
 
-  public bloquear() {
-    console.log('Bloquear');
-  }
+    public bloquear() {
+        console.log('Bloquear');
+    }
 
-  public dejarDeSerAmigo() {
-    console.log('Dejar de ser amigo');
-  }
+    public dejarDeSerAmigo() {
+        console.log('Dejar de ser amigo');
+    }
 
-  setOpen(isOpen: boolean) {
-    this.isActionSheet = isOpen;
-  }
+    setOpen(isOpen: boolean) {
+        this.isActionSheet = isOpen;
+    }
 
-  private containerCuentas() {
-  }
+    private containerCuentas() {
+    }
 }

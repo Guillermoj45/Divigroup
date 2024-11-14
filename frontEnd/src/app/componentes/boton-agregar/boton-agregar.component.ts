@@ -14,31 +14,33 @@ import {add} from "ionicons/icons";
         NgIf
     ]
 })
-export class BotonAgregarComponent  implements OnInit {
-  agregar:boolean = false;
-  @Input() textoAyuda:string = "Ingrese aquí el nombre";
-  constructor() {
-    addIcons({add})
-  }
+export class BotonAgregarComponent implements OnInit {
+    agregar: boolean = false;
+    @Input() textoAyuda: string = "Ingrese aquí el nombre";
 
-  ngOnInit() {}
-
-  setAgregar(newValor:boolean){
-    if (this.textoAyuda == "") {
-      return
-    }
-    this.agregar = newValor;
-  }
-
-  agregarAmigo(){
-    let input = document.getElementById("inputAmigo") as HTMLInputElement;
-    const nombre = input ? input.value : "";
-    if (nombre == "") {
-      console.log("No se ingreso ningún nombre");
-      return;
+    constructor() {
+        addIcons({add})
     }
 
-    console.log(nombre);
-    this.setAgregar(false);
-  }
+    ngOnInit() {
+    }
+
+    setAgregar(newValor: boolean) {
+        if (this.textoAyuda == "") {
+            return
+        }
+        this.agregar = newValor;
+    }
+
+    agregarAmigo() {
+        let input = document.getElementById("inputAmigo") as HTMLInputElement;
+        const nombre = input ? input.value : "";
+        if (nombre == "") {
+            console.log("No se ingreso ningún nombre");
+            return;
+        }
+
+        console.log(nombre);
+        this.setAgregar(false);
+    }
 }

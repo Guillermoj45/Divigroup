@@ -1,7 +1,10 @@
-<app-navar></app-navar>
+<div style="display: flex; background: #1E1E1E;">
+    <ion-searchbar [debounce]="1000" placeholder="Buscar amigo" (ionInput)="handleInput($event)"></ion-searchbar>
+    <ion-img style="width: 50px" src="/assets/img/icons8-campana-96.png" routerLink="/notificaciones"/>
+</div>
 
 <ion-content>
-  <app-menu-tarjeta-amigos></app-menu-tarjeta-amigos>
+    <app-tarjeta-amigos *ngFor="let amigo of amigos" [persona]="amigo"></app-tarjeta-amigos>
 </ion-content>
 <app-boton-agregar [textoAyuda]="'Ingrese nombre de usuario'"></app-boton-agregar>
 

@@ -10,43 +10,43 @@ import {FooterComponent} from "../../../componentes/footer/footer.component";
 import {MiniMenuImgsComponent} from "../../../componentes/mini-menu-imgs/mini-menu-imgs.component";
 
 @Component({
-  selector: 'app-agragar-cuenta',
-  templateUrl: './agragar-cuenta.component.html',
-  styleUrls: ['./agragar-cuenta.component.scss'],
-  standalone: true,
-  imports: [
-    FooterComponent,
-    IonicModule,
-    MiniMenuImgsComponent,
-    TarjetaAmigosComponent,
-    NgForOf,
-    RouterLink
-  ]
+    selector: 'app-agragar-cuenta',
+    templateUrl: './agragar-cuenta.component.html',
+    styleUrls: ['./agragar-cuenta.component.scss'],
+    standalone: true,
+    imports: [
+        FooterComponent,
+        IonicModule,
+        MiniMenuImgsComponent,
+        TarjetaAmigosComponent,
+        NgForOf,
+        RouterLink
+    ]
 })
 export class AgragarCuentaComponent implements OnInit {
-  @Input() invitados: Persona[] = [];
+    @Input() invitados: Persona[] = [];
 
-  constructor() {
-    addIcons({cloudUploadOutline})
-    this.invitados = [
-      new Persona(1, "Juan", "https://picsum.photos/500/500?random=0"),
-      new Persona(2, "Pedro", "https://picsum.photos/500/500?random=1"),
-      new Persona(3, "Maria", "https://picsum.photos/500/500?random=2"),
-      new Persona(4, "Jose", "https://picsum.photos/500/500?random=3"),
-      new Persona(5, "Luis", "https://picsum.photos/500/500?random=4"),
-    ]
-  }
+    constructor() {
+        addIcons({cloudUploadOutline})
+        this.invitados = [
+            new Persona(1, "Juan", "https://picsum.photos/500/500?random=0"),
+            new Persona(2, "Pedro", "https://picsum.photos/500/500?random=1"),
+            new Persona(3, "Maria", "https://picsum.photos/500/500?random=2"),
+            new Persona(4, "Jose", "https://picsum.photos/500/500?random=3"),
+            new Persona(5, "Luis", "https://picsum.photos/500/500?random=4"),
+        ]
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
-  agregarCuenta() {
-    console.log("Agregar cuenta")
-  }
+    agregarCuenta() {
+        console.log("Agregar cuenta")
+    }
 
 
-  cancelar() {
-    console.log("Cancelar")
-  }
+    cancelar() {
+        console.log("Cancelar")
+    }
 
 }

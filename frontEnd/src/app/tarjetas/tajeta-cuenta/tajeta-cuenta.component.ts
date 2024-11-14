@@ -1,16 +1,16 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {
-  IonAvatar,
-  IonCard,
-  IonCardContent,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonCardTitle,
-  IonCol,
-  IonGrid,
-  IonIcon,
-  IonImg,
-  IonRow
+    IonAvatar,
+    IonCard,
+    IonCardContent,
+    IonCardHeader,
+    IonCardSubtitle,
+    IonCardTitle,
+    IonCol,
+    IonGrid,
+    IonIcon,
+    IonImg,
+    IonRow
 } from "@ionic/angular/standalone";
 import {NgOptimizedImage} from "@angular/common";
 import {RouterLink} from "@angular/router";
@@ -18,37 +18,37 @@ import {MiniMenuImgsComponent} from "../../componentes/mini-menu-imgs/mini-menu-
 import {Cuenta} from "../../modelos/Cuenta";
 
 @Component({
-  selector: 'app-tajeta-cuenta',
-  templateUrl: './tajeta-cuenta.component.html',
-  styleUrls: ['./tajeta-cuenta.component.scss'],
-  standalone: true,
-  imports: [
-    IonCard,
-    IonCardContent,
-    IonCardHeader,
-    IonCardSubtitle,
-    IonCardTitle,
-    IonImg,
-    IonAvatar,
-    IonGrid,
-    IonRow,
-    IonCol,
-    IonIcon,
-    NgOptimizedImage,
-    MiniMenuImgsComponent,
-    RouterLink
-  ]
+    selector: 'app-tajeta-cuenta',
+    templateUrl: './tajeta-cuenta.component.html',
+    styleUrls: ['./tajeta-cuenta.component.scss'],
+    standalone: true,
+    imports: [
+        IonCard,
+        IonCardContent,
+        IonCardHeader,
+        IonCardSubtitle,
+        IonCardTitle,
+        IonImg,
+        IonAvatar,
+        IonGrid,
+        IonRow,
+        IonCol,
+        IonIcon,
+        NgOptimizedImage,
+        MiniMenuImgsComponent,
+        RouterLink
+    ]
 })
 export class TajetaCuentaComponent implements OnInit {
-    @Input() cuenta?:Cuenta;
+    @Input() cuenta?: Cuenta;
     imagenes: string[] = [];
 
-  constructor() {
-  }
+    constructor() {
+    }
 
-  ngOnInit() {
-    this.waitForPersonas();
-  }
+    ngOnInit() {
+        this.waitForPersonas();
+    }
 
     waitForPersonas() {
         const checkPersonas = () => {

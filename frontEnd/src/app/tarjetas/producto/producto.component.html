@@ -1,18 +1,18 @@
 <div style="height: fit-content; margin-bottom: 10px" routerLink="/producto">
-  <ion-grid>
-    <ion-row>
-      <ion-col size="3">
-        <ion-img [src]="producto.imagen"></ion-img>
-      </ion-col>
-      <ion-col>
-        <h5>{{ producto.nombre }}</h5>
-        <app-mini-menu-imgs></app-mini-menu-imgs>
-      </ion-col>
-      <ion-col size="2">
-        <p>{{ producto.fecha.getHours().toString().padStart(2, '0') }}
-          :{{ producto.fecha.getMinutes().toString().padStart(2, '0') }}</p>
-        <p>{{ producto.precio }}€</p>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="3">
+                <ion-img [src]="producto.imagen"></ion-img>
+            </ion-col>
+            <ion-col>
+                <h5>{{ producto.nombre }}</h5>
+                <app-mini-menu-imgs></app-mini-menu-imgs>
+            </ion-col>
+            <ion-col size="2">
+                <p>{{ producto.fecha.getHours().toString().padStart(2, '0') }}
+                    :{{ producto.fecha.getMinutes().toString().padStart(2, '0') }}</p>
+                <p>{{ producto.precio }}€</p>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </div>

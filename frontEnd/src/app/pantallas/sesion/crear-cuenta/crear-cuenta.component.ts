@@ -2,23 +2,23 @@ import {Component, OnInit} from '@angular/core';
 import {IonicModule} from "@ionic/angular";
 
 @Component({
-  selector: 'app-crear-cuenta',
-  templateUrl: './crear-cuenta.component.html',
-  styleUrls: ['./crear-cuenta.component.scss'],
-  standalone: true,
-  imports: [
-    IonicModule
-  ]
+    selector: 'app-crear-cuenta',
+    templateUrl: './crear-cuenta.component.html',
+    styleUrls: ['./crear-cuenta.component.scss'],
+    standalone: true,
+    imports: [
+        IonicModule
+    ]
 })
 export class CrearCuentaComponent implements OnInit {
 
-  constructor() {
-  }
+    constructor() {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
-  customCounterFormatter(inputLength: number, maxLength: number) {
-    return `${maxLength - inputLength} characters remaining`;
-  }
+    customCounterFormatter(inputLength: number, maxLength: number) {
+        return `${maxLength - inputLength} characters remaining`;
+    }
 }

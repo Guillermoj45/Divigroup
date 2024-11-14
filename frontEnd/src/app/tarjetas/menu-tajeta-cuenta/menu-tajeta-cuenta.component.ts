@@ -5,10 +5,10 @@ import {Cuenta} from "../../modelos/Cuenta";
 import {NgForOf} from "@angular/common";
 
 @Component({
-  selector: 'app-menu-tajeta-cuenta',
-  templateUrl: './menu-tajeta-cuenta.component.html',
-  styleUrls: ['./menu-tajeta-cuenta.component.scss'],
-  standalone: true,
+    selector: 'app-menu-tajeta-cuenta',
+    templateUrl: './menu-tajeta-cuenta.component.html',
+    styleUrls: ['./menu-tajeta-cuenta.component.scss'],
+    standalone: true,
     imports: [
         IonicModule,
         TajetaCuentaComponent,
@@ -18,14 +18,14 @@ import {NgForOf} from "@angular/common";
 
 
 export class MenuTajetaCuentaComponent implements OnInit {
-  items: String[] = [];
-    @Input() cuentas:Cuenta[]= new Array<Cuenta>();
+    items: String[] = [];
+    @Input() cuentas: Cuenta[] = new Array<Cuenta>();
 
-  constructor() {
-  }
+    constructor() {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
 
 }

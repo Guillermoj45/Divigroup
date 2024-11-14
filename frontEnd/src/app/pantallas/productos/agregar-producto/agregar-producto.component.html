@@ -1,51 +1,51 @@
 <ion-content>
-  <ion-grid style="width: 100%">
-    <ion-row>
-      <ion-col size="5" style="margin:auto;">
-        <ion-img [src]="prodcuto.imagen" style="width: 100%"/>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="9">
-        <ion-item>
-          <ion-input [(ngModel)]="prodcuto.nombre" color="red" placeholder="Introduzca el nombre"></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="9">
-        <ion-item>
-          <ion-input [(ngModel)]="prodcuto.precio" color="red" placeholder="Introduzca el precio"
-                     type="number"></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="4">
-        <ion-button style="width: 100%" (click)="agregarImagen($event)">
-          <ion-icon name="camera" style="margin-right: 2px"></ion-icon>
-          Subir imagen
-        </ion-button>
-      </ion-col>
-      <ion-col size="4">
-        <ion-button style="width: 100%;" (click)="agregarArchivo($event)">
-          <ion-icon name="clipboard-outline" style="margin-right: 2px"></ion-icon>
-          Subir documento
-        </ion-button>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <app-tarjeta-amigos *ngFor="let invitado of invitados" [persona]="invitado" [seleccionado]="false"/>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+    <ion-grid style="width: 100%">
+        <ion-row>
+            <ion-col size="5" style="margin:auto;">
+                <ion-img [src]="prodcuto.imagen" style="width: 100%"/>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="9">
+                <ion-item>
+                    <ion-input [(ngModel)]="prodcuto.nombre" color="red" placeholder="Introduzca el nombre"></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="9">
+                <ion-item>
+                    <ion-input [(ngModel)]="prodcuto.precio" color="red" placeholder="Introduzca el precio"
+                               type="number"></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="4">
+                <ion-button style="width: 100%" (click)="agregarImagen($event)">
+                    <ion-icon name="camera" style="margin-right: 2px"></ion-icon>
+                    Subir imagen
+                </ion-button>
+            </ion-col>
+            <ion-col size="4">
+                <ion-button style="width: 100%;" (click)="agregarArchivo($event)">
+                    <ion-icon name="clipboard-outline" style="margin-right: 2px"></ion-icon>
+                    Subir documento
+                </ion-button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <app-tarjeta-amigos *ngFor="let invitado of invitados" [persona]="invitado" [seleccionado]="false"/>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>
 
 <ion-fab horizontal="start" slot="fixed" vertical="bottom">
-  <ion-button routerLink="/cuentas/cuenta" style="margin: auto">Cancelar</ion-button>
+    <ion-button routerLink="/cuentas/cuenta" style="margin: auto">Cancelar</ion-button>
 </ion-fab>
 <ion-fab horizontal="end" slot="fixed" vertical="bottom">
-  <ion-button (click)="agregarProducto()" style="margin: auto">Guardar</ion-button>
+    <ion-button (click)="agregarProducto()" style="margin: auto">Guardar</ion-button>
 </ion-fab>
 <app-footer></app-footer>

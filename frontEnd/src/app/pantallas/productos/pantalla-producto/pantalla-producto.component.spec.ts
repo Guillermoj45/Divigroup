@@ -1,22 +1,22 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { PantallaProductoComponent } from './pantalla-producto.component';
+import {PantallaProductoComponent} from './pantalla-producto.component';
 
 describe('PantallaProductoComponent', () => {
-  let component: PantallaProductoComponent;
-  let fixture: ComponentFixture<PantallaProductoComponent>;
+    let component: PantallaProductoComponent;
+    let fixture: ComponentFixture<PantallaProductoComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      imports: [PantallaProductoComponent],
-    }).compileComponents();
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [PantallaProductoComponent],
+        }).compileComponents();
 
-    fixture = TestBed.createComponent(PantallaProductoComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  }));
+        fixture = TestBed.createComponent(PantallaProductoComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    }));
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

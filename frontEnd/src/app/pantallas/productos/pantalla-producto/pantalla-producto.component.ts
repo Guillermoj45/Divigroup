@@ -10,48 +10,49 @@ import {addIcons} from "ionicons";
 import {closeSharp, createSharp} from "ionicons/icons";
 
 @Component({
-  selector: 'app-pantalla-producto',
-  templateUrl: './pantalla-producto.component.html',
-  styleUrls: ['./pantalla-producto.component.scss'],
-  standalone: true,
-  imports: [
-    IonicModule,
-    NgForOf,
-    NgIf,
-    ProductoComponent,
-    RouterLink,
-    TarjetaAmigosComponent,
-    FooterComponent,
-    BotonAgregarComponent
-  ]
+    selector: 'app-pantalla-producto',
+    templateUrl: './pantalla-producto.component.html',
+    styleUrls: ['./pantalla-producto.component.scss'],
+    standalone: true,
+    imports: [
+        IonicModule,
+        NgForOf,
+        NgIf,
+        ProductoComponent,
+        RouterLink,
+        TarjetaAmigosComponent,
+        FooterComponent,
+        BotonAgregarComponent
+    ]
 })
-export class PantallaProductoComponent  implements OnInit {
-  imagen:string = "https://picsum.photos/500/500?random=4";
-  nombre:string = "Sofa";
-  public alertButtons = [
-    {
-      text: 'No',
-      cssClass: 'alert-button-cancel',
-    },
-    {
-      text: 'Si',
-      cssClass: 'alert-button-confirm',
-    },
-  ];
+export class PantallaProductoComponent implements OnInit {
+    imagen: string = "https://picsum.photos/500/500?random=4";
+    nombre: string = "Sofa";
+    public alertButtons = [
+        {
+            text: 'No',
+            cssClass: 'alert-button-cancel',
+        },
+        {
+            text: 'Si',
+            cssClass: 'alert-button-confirm',
+        },
+    ];
 
-  constructor() {
-    addIcons({closeSharp, createSharp})
-  }
+    constructor() {
+        addIcons({closeSharp, createSharp})
+    }
 
-  ngOnInit() {}
+    ngOnInit() {
+    }
 
 
-  //Función para mostrar la información del producto
-  getTotal(){
-    return 12;
-  }
+    //Función para mostrar la información del producto
+    getTotal() {
+        return 12;
+    }
 
-  getPorPersona(){
-    return 12;
-  }
+    getPorPersona() {
+        return 12;
+    }
 }
