@@ -8,7 +8,7 @@ export class Cuenta {
     saldo: number = 100;
     imagen: string = "";
     imagenFondo: string = "";
-    personas?: Persona[];
+    personas: Persona[]=[];
     productos?: Array<Producto>;
 }
 

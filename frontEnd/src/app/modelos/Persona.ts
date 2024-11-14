@@ -7,6 +7,7 @@ export class Persona {
     rol: string = "";
     email: string = "";
     cuentas: Cuenta[] = [];
+    deuda: number = 0;
 
     constructor(id: number, userName: string, avatar: string) {
         this.id = id;

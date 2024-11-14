@@ -10,7 +10,7 @@ import {TarjetaAmigosComponent} from "../../../tarjetas/tarjeta-amigos/tarjeta-a
 import {Producto} from "../../../modelos/Producto";
 import {ProductoComponent} from "../../../tarjetas/producto/producto.component";
 import {BotonAgregarComponent} from "../../../componentes/boton-agregar/boton-agregar.component";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {FooterComponent} from "../../../componentes/footer/footer.component";
 import {CuentaService} from "../../../service/cuenta.service";
 
@@ -35,22 +35,17 @@ import {CuentaService} from "../../../service/cuenta.service";
     ]
 })
 export class CuentaComponent implements OnInit {
-    nombre: string = 'Nombre de cuenta';
-    imagen: string = 'https://picsum.photos/500/500?random=4';
-    cuentas: Cuenta[] = [];
+    protected cuenta: Cuenta;
     segmento: string = 'cuentas';
-    productos: NgIterable<Producto> | undefined | null;
 
 
-    constructor(private cuentaService: CuentaService) {
-
+    constructor(private cuentaService: CuentaService, private router:Router) {
+        const navigation = this.router.getCurrentNavigation();
+        this.cuenta = navigation?.extras.state?.['cuenta'];
     }
 
     ngOnInit() {
-//    this.cuentaService.getObtenerGastos().subscribe((cuentas: Cuenta[]) => {
-//      this.cuentas = cuentas;
-//      console.log(this.cuentas);
-//    });
+        this.puestaComun();
     }
 
     onSegmentChange(event: any) {
@@ -58,23 +53,21 @@ export class CuentaComponent implements OnInit {
     }
 
     getTotal() {
-        let total: number = 0;
-        if (this.productos === null || this.productos === undefined) {
-            return total;
-        }
-        for (let producto of this.productos) {
-            if (producto.precio !== null) {
-                total += producto.precio;
-            }
-        }
-        return total;
+        return this.cuenta.saldo;
     }
 
     getPorPersona() {
         let total: number = this.getTotal();
-        let personas: number = this.cuentas.length;
+        let personas: number = this.cuenta.personas?.length || 1;
         return total / personas;
     }
 
+    puestaComun(){
+        this.cuentaService.getPuestaComun(this.cuenta.id).subscribe((cuenta) => {
+            for (let persona of this.cuenta.personas){
+                persona.deuda = cuenta[persona.username];
+            }
+        });
+    }
 }
 

@@ -13,10 +13,10 @@
                             <ion-card-title>{{ persona.username }}</ion-card-title>
                         </div>
                     </ion-col>
-                    <ion-col *ngIf="deve !== null">
+                    <ion-col *ngIf="persona.deuda !== null">
                         <div
                             style="display: block; border-radius: 10%; padding: 6px; width: fit-content; background-color: {{getColor()}};">
-                            {{ getMensaje() }} {{ deve }}€
+                            {{ getMensaje() }} {{ persona.deuda }}€
                         </div>
                     </ion-col>
                     <ion-col *ngIf="seleccionado !== null" size="1" style="margin: auto">

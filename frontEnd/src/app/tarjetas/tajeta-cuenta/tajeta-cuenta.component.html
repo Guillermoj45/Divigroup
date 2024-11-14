@@ -1,4 +1,4 @@
-<ion-card routerLink="/cuentas/cuenta" style="height: 18%">
+<ion-card (click)="clickCuenta()" style="height: 18%">
     <ion-card-header style="margin-top: -10px;">
         <div class="divMismaLinea ">
             <ion-grid style="max-height: fit-content">
@@ -18,7 +18,7 @@
                     <ion-col class="centrarTexto">
                         <div style="display: block">
                             <ion-card-subtitle>9:41am</ion-card-subtitle>
-                            <ion-card-subtitle style="text-align: end;">{{ cuenta?.saldo }}</ion-card-subtitle>
+                            <ion-card-subtitle style="text-align: end;">{{ cuenta?.saldo }}€</ion-card-subtitle>
                         </div>
                     </ion-col>
                 </ion-row>

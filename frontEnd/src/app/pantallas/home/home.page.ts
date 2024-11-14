@@ -6,7 +6,6 @@ import {addIcons} from "ionicons";
 import {addOutline, document} from "ionicons/icons";
 
 import {BotonAgregarComponent} from "../../componentes/boton-agregar/boton-agregar.component";
-import {RouterLink} from "@angular/router";
 import {FooterComponent} from "../../componentes/footer/footer.component";
 import {NavarComponent} from "../../componentes/navar/navar.component";
 import {CuentaService} from "../../service/cuenta.service";
@@ -29,7 +28,6 @@ import {UsuarioService} from "../../service/usuario.service";
         IonContent,
         NavarComponent,
         BotonAgregarComponent,
-        RouterLink,
         IonImg,
         NgForOf,
     ],
@@ -66,11 +64,18 @@ export class HomePage implements OnInit {
         for (let cuenta of this.cuentas) {
             cuenta.saldo = 0;
             this.cuentaService.getObtenerGastos(cuenta).subscribe((gastos: Producto[]) => {
+                cuenta.productos = gastos;
                 gastos.forEach(gasto => {
                     cuenta.saldo += gasto.precio ? gasto.precio : 0;
                 })
+                cuenta.productos.forEach(producto => {
+                    if (producto.fecha === undefined){
+                        producto.fecha = new Date();
+                    }
+                })
             });
         }
+        console.log(this.cuentas);
     }
 
 

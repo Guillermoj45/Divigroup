@@ -25,4 +25,7 @@ export class CuentaService {
         return this.http.get<Producto[]>(`/api/grupo/gasto/${cuenta.id}`);
     }
 
+    getPuestaComun(idGrupo:number): Observable<any> {
+        return this.http.get<any>(`/api/grupo/gastos/${idGrupo}`);
+    }
 }

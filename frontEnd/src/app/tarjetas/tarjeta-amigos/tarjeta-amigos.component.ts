@@ -43,7 +43,6 @@ import {MiniMenuImgsComponent} from "../../componentes/mini-menu-imgs/mini-menu-
     ]
 })
 export class TarjetaAmigosComponent implements OnInit {
-    @Input() deve: number | null = null;
     @Input() persona: Persona = new Persona(0, 'Usuario X', 'https://picsum.photos/500/500?random=4')
     @Input() seleccionado: boolean | null = null;
     protected readonly image = image;
@@ -53,29 +52,30 @@ export class TarjetaAmigosComponent implements OnInit {
     }
 
     ngOnInit() {
+        console.log(this.persona);
     }
 
     getColor() {
-        if (this.deve === null) {
+        if (this.persona.deuda === null) {
             return '#592e2e';
         }
-        if (this.deve > 0) {
+        if (this.persona.deuda > 0) {
             return '#32592e';
         }
-        if (this.deve < 0) {
+        if (this.persona.deuda < 0) {
             return '#592e2e';
         }
         return 'danger';
     }
 
     getMensaje() {
-        if (this.deve === null) {
+        if (this.persona.deuda === null) {
             return 'No se ha definido';
         }
-        if (this.deve > 0) {
+        if (this.persona.deuda > 0) {
             return 'Pagado';
         }
-        if (this.deve < 0) {
+        if (this.persona.deuda < 0) {
             return 'Deben';
         }
         return 'No se ha definido';

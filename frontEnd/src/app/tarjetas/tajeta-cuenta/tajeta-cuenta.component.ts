@@ -13,7 +13,7 @@ import {
     IonRow
 } from "@ionic/angular/standalone";
 import {NgOptimizedImage} from "@angular/common";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {MiniMenuImgsComponent} from "../../componentes/mini-menu-imgs/mini-menu-imgs.component";
 import {Cuenta} from "../../modelos/Cuenta";
 
@@ -43,7 +43,7 @@ export class TajetaCuentaComponent implements OnInit {
     @Input() cuenta?: Cuenta;
     imagenes: string[] = [];
 
-    constructor() {
+    constructor(private router: Router) {
     }
 
     ngOnInit() {
@@ -61,5 +61,10 @@ export class TajetaCuentaComponent implements OnInit {
             }
         };
         checkPersonas();
+    }
+
+    clickCuenta() {
+        this.router.navigate(['/cuentas/cuenta'], {state: {cuenta: this.cuenta}});
+        console.log(this.cuenta);
     }
 }

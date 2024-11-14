@@ -22,9 +22,11 @@ export class ProductoComponent implements OnInit {
     @Input() producto: Producto = new Producto('https://picsum.photos/80/80?random=1', '20', 0, new Date());
 
     constructor() {
+
     }
 
     ngOnInit() {
+        console.log(this.producto);
     }
 
 }

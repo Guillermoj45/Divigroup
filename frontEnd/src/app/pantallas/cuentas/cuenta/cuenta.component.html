@@ -2,8 +2,8 @@
     <ion-grid class="ion-color-defecto">
         <ion-row>
             <ion-col size="4" style="margin:auto;">
-                <ion-img [src]="imagen"/>
-                <p>{{ nombre }}</p>
+                <ion-img [src]="cuenta.imagen"/>
+                <p>{{ cuenta.nombre }}</p>
             </ion-col>
         </ion-row>
         <ion-row>
@@ -19,22 +19,22 @@
             </ion-col>
         </ion-row>
         <ion-row>
-            hola
+
         </ion-row>
+
         <ion-row>
+
             <ion-col size="10" style="margin:auto;">
                 <div *ngIf="segmento === 'cuentas'">
-                    <div *ngFor="let producto of productos">
+                    <div *ngFor="let producto of cuenta.productos">
                         <app-producto [producto]="producto"></app-producto>
+
                     </div>
                 </div>
                 <div *ngIf="segmento === 'division'">
                     <p>Total {{ getTotal() }}€ <br>
                         Por persona {{ getPorPersona() }}€</p>
-                    <app-tarjeta-amigos [deve]="202"></app-tarjeta-amigos>
-                    <app-tarjeta-amigos [deve]="-12"></app-tarjeta-amigos>
-                    <app-tarjeta-amigos [deve]="12"></app-tarjeta-amigos>
-                    <app-tarjeta-amigos [deve]="12"></app-tarjeta-amigos>
+                    <app-tarjeta-amigos *ngFor="let persona of cuenta.personas" [persona]="persona" ></app-tarjeta-amigos>
                 </div>
             </ion-col>
         </ion-row>
