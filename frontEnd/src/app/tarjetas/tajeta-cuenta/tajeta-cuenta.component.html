@@ -5,19 +5,19 @@
         <ion-row>
           <ion-col size="2.6">
             <ion-avatar>
-              <ion-img alt="Foto de la cuenta" src="/assets/img/playa.jpg" style="margin-top: -10px; max-width:90%"/>
+              <ion-img alt="Foto de la cuenta" src="{{ cuenta?.imagen }}" style="margin-top: -10px; max-width:90%"/>
             </ion-avatar>
           </ion-col>
           <ion-col size="8">
             <div class="centrarTexto">
-              <ion-card-title>Cuenta X</ion-card-title>
+              <ion-card-title>{{ cuenta?.nombre }}</ion-card-title>
             </div>
-            <app-mini-menu-imgs></app-mini-menu-imgs>
+            <app-mini-menu-imgs [imagenes]="imagenes"></app-mini-menu-imgs>
           </ion-col>
           <ion-col class="centrarTexto">
             <div style="display: block">
               <ion-card-subtitle>9:41am</ion-card-subtitle>
-              <ion-card-subtitle style="text-align: end;">100€</ion-card-subtitle>
+              <ion-card-subtitle style="text-align: end;">{{ cuenta?.saldo }}</ion-card-subtitle>
             </div>
           </ion-col>
         </ion-row>

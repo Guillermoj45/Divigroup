@@ -1,17 +1,16 @@
 import {Cuenta} from './Cuenta';
 
 export class Persona {
-  id: number;
-  userName: string;
-  avatar: string;
-  cuentas: Array<Cuenta>;
+  id: number = 0;
+  username: string="";
+  avatar: string="";
+  rol: string="";
+  email: string="";
+  cuentas: Cuenta[] = [];
 
-  constructor(id: number, userName: string, avatar: string, cuentas?: Array<Cuenta>) {
-    this.id = id;
-    this.userName = userName;
-    this.avatar = avatar;
-    this.cuentas = cuentas || [];
-  }
-
-
+    constructor(id:number, userName:string, avatar:string) {
+        this.id = id;
+        this.username = userName;
+        this.avatar = avatar;
+    }
 }

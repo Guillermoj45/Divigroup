@@ -47,10 +47,10 @@ export class CuentaComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.cuentaService.getObtenerCuentas().subscribe((cuentas: Cuenta[]) => {
-      this.cuentas = cuentas;
-      console.log(this.cuentas);
-    });
+//    this.cuentaService.getObtenerGastos().subscribe((cuentas: Cuenta[]) => {
+//      this.cuentas = cuentas;
+//      console.log(this.cuentas);
+//    });
   }
 
   onSegmentChange(event: any) {

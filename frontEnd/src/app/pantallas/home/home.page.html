@@ -1,6 +1,9 @@
-<app-navar></app-navar>
+<div style="display: flex; background: #1E1E1E;" >
+    <ion-searchbar  [debounce]="1000" placeholder="Bucar cuenta" (ionInput)="handleInput($event)"></ion-searchbar>
+    <ion-img style="width: 50px" src="/assets/img/icons8-campana-96.png" routerLink="/notificaciones"/>
+</div>
 <ion-content>
-  <app-menu-tajeta-cuenta></app-menu-tajeta-cuenta>
+  <app-tajeta-cuenta *ngFor="let cuenta of cuentas" [cuenta]="cuenta"></app-tajeta-cuenta>
 </ion-content>
 <app-boton-agregar routerLink="/cuentas/crear" textoAyuda=""></app-boton-agregar>
 <app-footer></app-footer>

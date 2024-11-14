@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {IonIcon, IonImg, IonSearchbar} from "@ionic/angular/standalone";
 import {RouterLink} from "@angular/router";
+import {Cuenta} from "../../modelos/Cuenta";
 
 @Component({
     selector: 'app-navar',
@@ -20,7 +21,9 @@ export class NavarComponent  implements OnInit {
 
   ngOnInit() {}
 
-  handleInput($event: any) {
 
-  }
+    handleInput(event: any) {
+        console.log(event)
+
+    }
 }

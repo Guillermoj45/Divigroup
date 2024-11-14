@@ -1,15 +1,10 @@
 <div style="display: flex">
-  <ion-avatar style="aspect-ratio: 1 / 1; width: 10%; height: 10%">
-    <img alt="Foto de la cuenta" src="https://picsum.photos/80/80?random=1" />
+
+
+  <ion-avatar *ngFor="let imagen of imagenesDatos" style="aspect-ratio: 1 / 1; width: 10%; height: 10%">
+    <img alt="Foto de la cuenta" src="{{imagen}}" />
   </ion-avatar>
-  <ion-avatar style="aspect-ratio: 1 / 1; width: 10%; height: 10%">
-    <img alt="Foto de la cuenta" src="https://picsum.photos/80/80?random=2" />
-  </ion-avatar>
-  <ion-avatar style="aspect-ratio: 1 / 1; width: 10%; height: 10%">
-    <img alt="Foto de la cuenta" src="https://picsum.photos/80/80?random=3" />
-  </ion-avatar>
-  <ion-avatar style="aspect-ratio: 1 / 1; width: 10%; height: 10%">
-    <img alt="Foto de la cuenta" src="https://picsum.photos/80/80?random=4" />
-  </ion-avatar>
+
+
 
 </div>
