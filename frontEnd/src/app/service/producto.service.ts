@@ -23,6 +23,7 @@ export class ProductoService {
             next: (data) => {
                 cuenta.productos!.push(data);
                 Cuenta.cuentaSaldo(cuenta);
+                cuenta.cuentaSaldo2()
             },
             error: (err) => {
                 console.error('Error occurred:', err);

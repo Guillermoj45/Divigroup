@@ -8,6 +8,7 @@ export class Persona {
     email: string = "";
     cuentas: Cuenta[] = [];
     deuda?: number;
+    seleccionado?: boolean;
 
     constructor(id: number, userName: string, avatar: string) {
         this.id = id;

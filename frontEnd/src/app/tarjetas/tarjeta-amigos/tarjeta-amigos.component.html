@@ -19,8 +19,8 @@
                             {{ getMensaje() }} {{ persona.deuda }}€
                         </div>
                     </ion-col>
-                    <ion-col *ngIf="seleccionado !== null" size="1" style="margin: auto">
-                        <ion-checkbox [(ngModel)]="seleccionado"></ion-checkbox>
+                    <ion-col *ngIf="persona.seleccionado !== null" size="1" style="margin: auto">
+                        <ion-checkbox [(ngModel)]="persona.seleccionado"></ion-checkbox>
                     </ion-col>
                 </ion-row>
             </ion-grid>

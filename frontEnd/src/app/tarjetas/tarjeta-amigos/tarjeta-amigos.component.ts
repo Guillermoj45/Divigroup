@@ -44,7 +44,6 @@ import {MiniMenuImgsComponent} from "../../componentes/mini-menu-imgs/mini-menu-
 })
 export class TarjetaAmigosComponent implements OnInit {
     @Input() persona: Persona = new Persona(0, 'Usuario X', 'https://picsum.photos/500/500?random=4')
-    @Input() seleccionado: boolean | null = null;
     protected readonly image = image;
 
     constructor(private router: Router) {
@@ -81,10 +80,10 @@ export class TarjetaAmigosComponent implements OnInit {
     }
 
     cliqueado() {
-        if (this.seleccionado === null) {
+        if (this.persona.seleccionado === null) {
             this.router.navigate(['/amigos/perfil']);
         } else {
-            this.seleccionado = !this.seleccionado;
+            this.persona.seleccionado = !this.persona.seleccionado;
         }
     }
 }

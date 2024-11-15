@@ -8,6 +8,7 @@ import {NgForOf} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {FooterComponent} from "../../../componentes/footer/footer.component";
 import {MiniMenuImgsComponent} from "../../../componentes/mini-menu-imgs/mini-menu-imgs.component";
+import {UsuarioService} from "../../../service/usuario.service";
 
 @Component({
     selector: 'app-agragar-cuenta',
@@ -26,7 +27,7 @@ import {MiniMenuImgsComponent} from "../../../componentes/mini-menu-imgs/mini-me
 export class AgragarCuentaComponent implements OnInit {
     @Input() invitados: Persona[] = [];
 
-    constructor() {
+    constructor(private usuarioService: UsuarioService) {
         addIcons({cloudUploadOutline})
         this.invitados = [
             new Persona(1, "Juan", "https://picsum.photos/500/500?random=0"),
@@ -38,6 +39,12 @@ export class AgragarCuentaComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.usuarioService.getAmigos().subscribe((amigos: Persona[]) => {
+            this.invitados = amigos;
+            this.invitados.forEach((invitado) => {
+                invitado.seleccionado = false;
+            })
+        })
     }
 
     agregarCuenta() {

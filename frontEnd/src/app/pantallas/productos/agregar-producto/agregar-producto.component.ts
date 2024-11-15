@@ -12,6 +12,7 @@ import {FooterComponent} from "../../../componentes/footer/footer.component";
 import {state} from "@angular/animations";
 import {Cuenta} from "../../../modelos/Cuenta";
 import {ProductoService} from "../../../service/producto.service";
+import {UsuarioService} from "../../../service/usuario.service";
 
 @Component({
     selector: 'app-agregar-producto',
@@ -31,16 +32,10 @@ import {ProductoService} from "../../../service/producto.service";
 export class AgregarProductoComponent implements OnInit {
     cuenta:Cuenta = new Cuenta();
     producto: Producto = new Producto('https://picsum.photos/800/800?random=1', '', 0, new Date());
+    invitados: Persona[] = [];
 
-    invitados: Persona[] = [
-        new Persona(1, 'Juan', 'https://picsum.photos/800/800?random=2'),
-        new Persona(2, 'Pedro', 'https://picsum.photos/800/800?random=3'),
-        new Persona(3, 'Maria', 'https://picsum.photos/800/800?random=4'),
-        new Persona(4, 'Ana', 'https://picsum.photos/800/800?random=5'),
-        new Persona(5, 'Luis', 'https://picsum.photos/800/800?random=6'),
-    ]
 
-    constructor(private router:Router, private productoService: ProductoService) {
+    constructor(private router:Router, private productoService: ProductoService, private usuarioService: UsuarioService) {
         addIcons({camera, clipboardOutline})
     }
 
@@ -48,6 +43,12 @@ export class AgregarProductoComponent implements OnInit {
         const navigation = this.router.getCurrentNavigation();
         this.cuenta = navigation?.extras.state?.['cuenta'];
         this.producto = new Producto('https://picsum.photos/800/800?random=1', '', 0, new Date());
+        this.usuarioService.getAmigos().subscribe((amigos:Persona[]) => {
+            this.invitados = amigos;
+            this.invitados.forEach((invitado) => {
+                invitado.seleccionado = false;
+            })
+        })
     }
 
     agregarArchivo(event: Event) {
