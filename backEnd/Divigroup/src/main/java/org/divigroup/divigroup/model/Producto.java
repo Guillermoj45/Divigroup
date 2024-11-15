@@ -4,6 +4,8 @@ package org.divigroup.divigroup.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "producto", schema = "divigroup")
 @Getter
@@ -28,6 +30,9 @@ public class Producto {
 
     @Column(name = "imagen", unique = true, length = 200)
     private String imagen;
+
+    @Column(name = "fecha")
+    private LocalDateTime fecha;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_users")

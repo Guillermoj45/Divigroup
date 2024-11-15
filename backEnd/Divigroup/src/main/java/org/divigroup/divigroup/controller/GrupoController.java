@@ -50,7 +50,7 @@ public class GrupoController {
     }
 
     @PostMapping("gasto/nuevo")
-    public Producto agregarGasto(@CookieValue(value = "idUsuario") int idUsuario, @RequestBody AgregarGastoDTO dto){
+    public SoloProductoDTO agregarGasto(@CookieValue(value = "idUsuario") int idUsuario, @RequestBody AgregarGastoDTO dto){
         dto.setIdUsuario(idUsuario);
         return cuentaService.agregarGasto(dto);
     }

@@ -6,12 +6,15 @@ import lombok.NoArgsConstructor;
 import org.divigroup.divigroup.dto.AgregarGastoDTO;
 import org.divigroup.divigroup.dto.GrupoParticipanteDTO;
 import org.divigroup.divigroup.dto.GrupoListaParticipantesDTO;
+import org.divigroup.divigroup.dto.SoloProductoDTO;
 import org.divigroup.divigroup.model.*;
 import org.divigroup.divigroup.repository.ICuentaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -109,18 +112,23 @@ public class CuentaService {
      * @param dto DTO con los datos del gasto
      * @return producto creado
      */
-    public Producto agregarGasto(AgregarGastoDTO dto) {
+    public SoloProductoDTO agregarGasto(AgregarGastoDTO dto) {
         Cuenta cuenta = cuentaRepository.findById(dto.getIdGrupo()).orElse(null);
         Usuario usuario = usuarioService.buscarUsuarioId(dto.getIdUsuario());
 
         if (cuenta == null || usuario == null){
             return null;
         }
+
         Producto producto = dto.getProducto();
+        if (producto.getFecha() == null){
+            producto.setFecha(LocalDateTime.now());
+        }
         producto.setCuenta(cuenta);
         producto.setUser(usuario);
+        SoloProductoDTO soloProductoDTO = new SoloProductoDTO(productoService.crearProducto(producto));
 
-        return productoService.crearProducto(producto);
+        return soloProductoDTO;
     }
 
     /**

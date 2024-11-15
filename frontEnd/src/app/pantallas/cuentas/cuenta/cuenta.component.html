@@ -33,7 +33,7 @@
                 </div>
                 <div *ngIf="segmento === 'division'">
                     <p>Total {{ getTotal() }}€ <br>
-                        Por persona {{ getPorPersona() }}€</p>
+                        Por persona {{ porPersona }}€</p>
                     <app-tarjeta-amigos *ngFor="let persona of cuenta.personas" [persona]="persona" ></app-tarjeta-amigos>
                 </div>
             </ion-col>

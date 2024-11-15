@@ -37,6 +37,7 @@ import {CuentaService} from "../../../service/cuenta.service";
 export class CuentaComponent implements OnInit {
     protected cuenta: Cuenta;
     segmento: string = 'cuentas';
+    porPersona: string = "";
 
 
     constructor(private cuentaService: CuentaService, private router:Router) {
@@ -45,9 +46,13 @@ export class CuentaComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.puestaComun();
-        this.calcularSaldo();
-
+         this.cuentaService.getObtenerGastos(this.cuenta).subscribe((productos: Producto[]) => {
+            this.cuenta.productos = productos;
+            this.getPorPersona()
+             Cuenta.cuentaSaldo(this.cuenta);
+            console.log(this.cuenta)
+            this.puestaComun();
+         });
     }
 
     onSegmentChange(event: any) {
@@ -61,7 +66,7 @@ export class CuentaComponent implements OnInit {
     getPorPersona() {
         let total: number = this.getTotal();
         let personas: number = this.cuenta.personas?.length || 1;
-        return total / personas;
+        this.porPersona = (total / personas).toFixed(2);
     }
 
     puestaComun(){
@@ -75,12 +80,5 @@ export class CuentaComponent implements OnInit {
         this.router.navigate(['/producto/crear'], {state: {cuenta: this.cuenta}});
     }
 
-    calcularSaldo(){
-        this.cuenta.saldo = 0;
-        this.cuenta.productos!.forEach(producto => {
-            this.cuenta.saldo += producto.precio ? producto.precio : 0;
-        });
-        console.log("Hola")
-    }
 }
 

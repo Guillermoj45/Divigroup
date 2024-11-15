@@ -12,16 +12,17 @@ export class ProductoService {
 
     pushProducto(cuenta:Cuenta, nuevoProducto:Producto){
         let lugar = (cuenta.productos?.length ?? 0) - 1;
-        nuevoProducto.fecha = new Date();
+        nuevoProducto.fecha = undefined;
         let enviar= {
           "idGrupo": cuenta.id,
           "producto": nuevoProducto
         }
-        console.log(cuenta);
+        console.log(enviar);
 
         this.http.post<Producto>('/api/grupo/gasto/nuevo', enviar).subscribe({
             next: (data) => {
                 cuenta.productos!.push(data);
+                Cuenta.cuentaSaldo(cuenta);
             },
             error: (err) => {
                 console.error('Error occurred:', err);

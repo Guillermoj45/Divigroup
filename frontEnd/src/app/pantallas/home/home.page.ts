@@ -67,13 +67,11 @@ export class HomePage implements OnInit {
                 cuenta.productos = gastos;
                 gastos.forEach(gasto => {
                     cuenta.saldo += gasto.precio ? gasto.precio : 0;
-                })
-                cuenta.productos.forEach(producto => {
-                    if (producto.fecha === undefined){
-                        producto.fecha = new Date();
-                    }
+                    cuenta.saldo = Number.parseFloat(cuenta.saldo.toFixed(2));
+                    console.log(cuenta.saldo);
                 })
             });
+            console.log(cuenta);
         }
     }
 
