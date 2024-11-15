@@ -13,7 +13,7 @@
                             <ion-card-title>{{ persona.username }}</ion-card-title>
                         </div>
                     </ion-col>
-                    <ion-col *ngIf="persona.deuda !== null">
+                    <ion-col *ngIf="persona.deuda !== undefined">
                         <div
                             style="display: block; border-radius: 10%; padding: 6px; width: fit-content; background-color: {{getColor()}};">
                             {{ getMensaje() }} {{ persona.deuda }}€

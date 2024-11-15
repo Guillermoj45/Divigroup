@@ -26,7 +26,6 @@ export class ProductoComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.producto);
     }
 
 }

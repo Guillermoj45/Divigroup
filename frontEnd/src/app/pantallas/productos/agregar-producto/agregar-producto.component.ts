@@ -7,8 +7,11 @@ import {addIcons} from "ionicons";
 import {TarjetaAmigosComponent} from "../../../tarjetas/tarjeta-amigos/tarjeta-amigos.component";
 import {NgForOf, NgIf} from "@angular/common";
 import {Persona} from "../../../modelos/Persona";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {FooterComponent} from "../../../componentes/footer/footer.component";
+import {state} from "@angular/animations";
+import {Cuenta} from "../../../modelos/Cuenta";
+import {ProductoService} from "../../../service/producto.service";
 
 @Component({
     selector: 'app-agregar-producto',
@@ -26,7 +29,9 @@ import {FooterComponent} from "../../../componentes/footer/footer.component";
     ]
 })
 export class AgregarProductoComponent implements OnInit {
-    prodcuto: Producto = new Producto('https://picsum.photos/800/800?random=1', '', 0, new Date());
+    cuenta:Cuenta = new Cuenta();
+    producto: Producto = new Producto('https://picsum.photos/800/800?random=1', '', 0, new Date());
+
     invitados: Persona[] = [
         new Persona(1, 'Juan', 'https://picsum.photos/800/800?random=2'),
         new Persona(2, 'Pedro', 'https://picsum.photos/800/800?random=3'),
@@ -35,11 +40,14 @@ export class AgregarProductoComponent implements OnInit {
         new Persona(5, 'Luis', 'https://picsum.photos/800/800?random=6'),
     ]
 
-    constructor() {
+    constructor(private router:Router, private productoService: ProductoService) {
         addIcons({camera, clipboardOutline})
     }
 
-    ngOnInit() {
+    ngOnInit(){
+        const navigation = this.router.getCurrentNavigation();
+        this.cuenta = navigation?.extras.state?.['cuenta'];
+        this.producto = new Producto('https://picsum.photos/800/800?random=1', '', 0, new Date());
     }
 
     agregarArchivo(event: Event) {
@@ -75,14 +83,19 @@ export class AgregarProductoComponent implements OnInit {
         const input = event.target as HTMLInputElement;
         if (input.files && input.files.length > 0) {
             const file = input.files[0];
-            if (this.prodcuto.imagen != null) {
-                this.prodcuto.imagen = URL.createObjectURL(file).toString();
+            if (this.producto.imagen != null) {
+                this.producto.imagen = URL.createObjectURL(file).toString();
                 console.log(URL.createObjectURL(file).toString())
             }
         }
     }
 
-    agregarProducto() {
-        console.log(this.prodcuto);
+    agregarProducto(){
+        console.log({
+            "Producto agregado": this.producto,
+            "Cuenta": this.cuenta
+            });
+        this.productoService.pushProducto(this.cuenta, this.producto);
+        this.router.navigate(['/cuentas/cuenta'], {state: {cuenta: this.cuenta}});
     }
 }

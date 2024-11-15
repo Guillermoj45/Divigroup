@@ -52,11 +52,10 @@ export class TarjetaAmigosComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.persona);
     }
 
     getColor() {
-        if (this.persona.deuda === null) {
+        if (this.persona.deuda === undefined) {
             return '#592e2e';
         }
         if (this.persona.deuda > 0) {
@@ -69,7 +68,7 @@ export class TarjetaAmigosComponent implements OnInit {
     }
 
     getMensaje() {
-        if (this.persona.deuda === null) {
+        if (this.persona.deuda === undefined) {
             return 'No se ha definido';
         }
         if (this.persona.deuda > 0) {

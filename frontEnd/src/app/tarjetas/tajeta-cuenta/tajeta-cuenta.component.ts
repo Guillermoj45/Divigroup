@@ -65,6 +65,5 @@ export class TajetaCuentaComponent implements OnInit {
 
     clickCuenta() {
         this.router.navigate(['/cuentas/cuenta'], {state: {cuenta: this.cuenta}});
-        console.log(this.cuenta);
     }
 }

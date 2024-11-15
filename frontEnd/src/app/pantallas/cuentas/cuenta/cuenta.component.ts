@@ -46,6 +46,8 @@ export class CuentaComponent implements OnInit {
 
     ngOnInit() {
         this.puestaComun();
+        this.calcularSaldo();
+
     }
 
     onSegmentChange(event: any) {
@@ -68,6 +70,17 @@ export class CuentaComponent implements OnInit {
                 persona.deuda = cuenta[persona.username];
             }
         });
+    }
+    agregarProducto(){
+        this.router.navigate(['/producto/crear'], {state: {cuenta: this.cuenta}});
+    }
+
+    calcularSaldo(){
+        this.cuenta.saldo = 0;
+        this.cuenta.productos!.forEach(producto => {
+            this.cuenta.saldo += producto.precio ? producto.precio : 0;
+        });
+        console.log("Hola")
     }
 }
 

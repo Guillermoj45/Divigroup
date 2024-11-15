@@ -9,6 +9,6 @@ export class Cuenta {
     imagen: string = "";
     imagenFondo: string = "";
     personas: Persona[]=[];
-    productos?: Array<Producto>;
+    productos?: Producto[] = [];
 }
 
