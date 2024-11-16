@@ -13,12 +13,12 @@
                             <ion-card-title>{{ persona.username }}</ion-card-title>
                         </div>
                     </ion-col>
-                    <ion-col *ngIf="persona.deuda !== undefined && !paraSeleccionar">
+                    <ion-col *ngIf="persona.deuda !== undefined && !paraSeleccionar && !paraSeleccionar2">
                         <div style="display: block; border-radius: 10%; padding: 6px; width: fit-content; background-color: {{ getColor() }};">
                             {{ getMensaje() }} {{ persona.deuda }}€
                         </div>
                     </ion-col>
-                    <ion-col *ngIf="persona.seleccionado !== undefined " size="1" style="margin: auto">
+                    <ion-col *ngIf="(persona.seleccionado !== undefined || paraSeleccionar) && paraSeleccionar" size="1" style="margin: auto">
                         <ion-checkbox [(ngModel)]="persona.seleccionado"></ion-checkbox>
                     </ion-col>
                 </ion-row>

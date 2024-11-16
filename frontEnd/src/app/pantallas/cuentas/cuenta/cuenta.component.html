@@ -35,12 +35,12 @@
                     </div>
                 </div>
                 <div *ngIf="segmento === 'division'">
-                    <p>Total {{ getTotal() }}€ <br>
+                    <p>Total {{ getTotal().toFixed(2) }}€ <br>
                         Por persona {{ cuenta.porPersona }}€</p>
                     <app-tarjeta-amigos *ngFor="let persona of cuenta.personas" [persona]="persona" ></app-tarjeta-amigos>
                 </div>
                 <div *ngIf="segmento === 'personas'">
-                    <app-tarjeta-amigos *ngFor="let persona of cuenta.personas" [paraSeleccionar]="true" [persona]="persona" ></app-tarjeta-amigos>
+                    <app-tarjeta-amigos (click)="alterado(persona)" *ngFor="let persona of listaMostrar" [paraSeleccionar]="paraSeleccionar" [paraSeleccionar2]="true" [persona]="persona" ></app-tarjeta-amigos>
                 </div>
             </ion-col>
         </ion-row>
@@ -49,7 +49,7 @@
 <app-boton-agregar *ngIf="segmento !== 'personas'" (click)="agregarProducto()" textoAyuda=""></app-boton-agregar>
 
 <ion-fab *ngIf="segmento === 'personas'" horizontal="end" vertical="bottom" slot="fixed" style="margin-bottom: 60px">
-    <ion-fab-button >
+    <ion-fab-button (click)="seleccionarAmigo()">
         <ion-icon name="person-outline"></ion-icon>
     </ion-fab-button>
 </ion-fab>

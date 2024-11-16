@@ -1,4 +1,4 @@
-import {Component, NgIterable, OnInit} from '@angular/core';
+import {Component, NgIterable, OnInit, ViewChild} from '@angular/core';
 import {IonicModule} from "@ionic/angular";
 import {FormsModule} from "@angular/forms";
 import {Cuenta} from "../../../modelos/Cuenta";
@@ -15,6 +15,9 @@ import {FooterComponent} from "../../../componentes/footer/footer.component";
 import {CuentaService} from "../../../service/cuenta.service";
 import {addIcons} from "ionicons";
 import {personOutline} from "ionicons/icons";
+import {UsuarioService} from "../../../service/usuario.service";
+import {Persona} from "../../../modelos/Persona";
+import {BehaviorSubject} from "rxjs";
 
 @Component({
     selector: 'app-cuenta',
@@ -39,23 +42,67 @@ import {personOutline} from "ionicons/icons";
 export class CuentaComponent implements OnInit {
     protected cuenta: Cuenta;
     segmento: string = 'cuentas';
+    paraSeleccionar: boolean = false;
+    listaMostrar:Persona[] = [];
 
 
-    constructor(private cuentaService: CuentaService, private router:Router) {
+    constructor(private cuentaService: CuentaService, private router:Router, private usuarioService: UsuarioService) {
         const navigation = this.router.getCurrentNavigation();
         this.cuenta = navigation?.extras.state?.['cuenta'];
+
 
     }
 
     ngOnInit() {
+        const navigation = this.router.getCurrentNavigation();
+        this.cuenta = navigation?.extras.state?.['cuenta'];
+
          this.cuentaService.getObtenerGastos(this.cuenta).subscribe((productos: Producto[]) => {
             this.cuenta.productos = productos;
-            this.getPorPersona()
-             Cuenta.cuentaSaldo(this.cuenta);
-             this.puestaComun();
-            console.log(this.cuenta)
+            this.getPorPersona();
+            Cuenta.cuentaSaldo(this.cuenta);
+            this.puestaComun();
+            this.listaMostrar = this.cuenta.personas;
+            console.log(this.cuenta);
          });
+        this.paraSeleccionar = false;
         addIcons({ personOutline });
+    }
+
+    seleccionarAmigo() {
+        this.paraSeleccionar = !this.paraSeleccionar;
+        if (this.paraSeleccionar) {
+            this.usuarioService.getAmigos().subscribe((amigos) => {
+                this.listaMostrar = amigos;
+                amigos.forEach((persona) => {
+                    for (let amigo of this.cuenta.personas) {
+                        if (persona.id === amigo.id) {
+                            console.log(persona.id + " " + amigo.id);
+                            persona.seleccionado = true;
+                        }
+                    }
+                });
+            });
+        } else {
+            this.listaMostrar = this.cuenta.personas;
+        }
+    }
+
+    alterado(persona:Persona){
+        if (persona.seleccionado){
+            this.cuentaService.agregarPersona(this.cuenta,persona).subscribe((cuenta) => {
+                this.cuenta.personas.push(persona);
+                this.listaMostrar = cuenta.personas;
+                console.log("Persona agregada");
+            });
+        } else {
+            console.log(persona)
+            this.cuentaService.eliminarPersona(this.cuenta,persona).subscribe((cuenta) => {
+                this.cuenta.personas = this.cuenta.personas.filter((p) => p.id !== persona.id);
+                this.listaMostrar = cuenta.personas;
+                console.log("Persona eliminada");
+            });
+        }
     }
 
     onSegmentChange(event: any) {

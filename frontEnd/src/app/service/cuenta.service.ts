@@ -3,6 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {Cuenta} from "../modelos/Cuenta";
 import {map, Observable} from "rxjs";
 import {Producto} from "../modelos/Producto";
+import {Persona} from "../modelos/Persona";
+import {body} from "ionicons/icons";
 
 @Injectable({
     providedIn: 'root'
@@ -10,6 +12,24 @@ import {Producto} from "../modelos/Producto";
 export class CuentaService {
 
     constructor(private http: HttpClient) {
+    }
+
+    agregarPersona(cuenta: Cuenta, persona: Persona): Observable<any> {
+        console.log(cuenta, persona);
+        let mensaje = {
+            idGrupo: cuenta.id,
+            idUersona: persona.id
+        }
+        return this.http.post<Cuenta>('/api/grupo/participantes/nuevo', mensaje);
+    }
+
+    eliminarPersona(cuenta: Cuenta, persona: Persona): Observable<any> {
+         let mensaje = {
+            idGrupo: cuenta.id,
+            idUersona: persona.id
+         }
+
+        return this.http.delete<Cuenta>('/api/grupo/participantes/eliminar', {body: mensaje});
     }
 
     postCrearCuenta(cuenta: Cuenta): Observable<Cuenta> {

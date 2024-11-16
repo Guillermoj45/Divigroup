@@ -45,6 +45,7 @@ import {MiniMenuImgsComponent} from "../../componentes/mini-menu-imgs/mini-menu-
 export class TarjetaAmigosComponent implements OnInit {
     @Input() persona: Persona = new Persona(0, 'Usuario X', 'https://picsum.photos/500/500?random=4')
     @Input() paraSeleccionar: boolean = false;
+    @Input() paraSeleccionar2: boolean = false;
     protected readonly image = image;
 
     constructor(private router: Router) {
