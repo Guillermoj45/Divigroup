@@ -2,10 +2,7 @@ package org.divigroup.divigroup.controller;
 
 
 import lombok.AllArgsConstructor;
-import org.divigroup.divigroup.dto.AgregarGastoDTO;
-import org.divigroup.divigroup.dto.GrupoParticipanteDTO;
-import org.divigroup.divigroup.dto.GrupoListaParticipantesDTO;
-import org.divigroup.divigroup.dto.SoloProductoDTO;
+import org.divigroup.divigroup.dto.*;
 import org.divigroup.divigroup.model.Cuenta;
 import org.divigroup.divigroup.model.Producto;
 import org.divigroup.divigroup.model.Usuario;
@@ -25,7 +22,7 @@ public class GrupoController {
     private final ProductoService productoService;
 
     @PostMapping("/nuevo")
-    public Cuenta crearCuenta(@CookieValue(value = "idUsuario") int idUsuario ,@RequestBody Cuenta cuenta){
+    public Cuenta crearCuenta(@CookieValue(value = "idUsuario") int idUsuario ,@RequestBody AgregarCuentaDTO cuenta){
         return cuentaService.crearCuenta(cuenta, idUsuario);
     }
 

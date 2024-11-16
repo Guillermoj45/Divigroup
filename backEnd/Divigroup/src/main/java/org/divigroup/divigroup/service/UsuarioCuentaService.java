@@ -1,10 +1,13 @@
 package org.divigroup.divigroup.service;
 
+import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.divigroup.divigroup.model.Cuenta;
 import org.divigroup.divigroup.model.Usuario;
 import org.divigroup.divigroup.model.UsuarioCuenta;
 import org.divigroup.divigroup.repository.IUsuarioCuentaRepository;
+import org.divigroup.divigroup.repository.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +16,14 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@NoArgsConstructor
+@AllArgsConstructor
 public class UsuarioCuentaService {
-    @Autowired
-    IUsuarioCuentaRepository cuentaRepository;
+
+    IUsuarioCuentaRepository usuarioCuentaRepository;
+
+    UsuarioService usuarioService;
+
+
 
     /**
      * Agrega un usuario a una cuenta
@@ -28,14 +35,19 @@ public class UsuarioCuentaService {
         UsuarioCuenta usuarioCuenta = new UsuarioCuenta();
         usuarioCuenta.setUsuario(usuario);
         usuarioCuenta.setCuenta(cuenta);
-        return cuentaRepository.save(usuarioCuenta);
+        return usuarioCuentaRepository.save(usuarioCuenta);
     }
-    public UsuarioCuenta agregarUsuarioCuenta(Cuenta cuenta, Usuario usuario, boolean esAdmin){
+    @Transactional
+    public UsuarioCuenta agregarUsuarioCuenta(Cuenta cuenta, Usuario usuario, boolean esAdmin) {
+        System.out.println("Cuenta: " + cuenta.getId());
+
+        usuario = usuarioService.buscarUsuarioId(usuario.getId());
+
         UsuarioCuenta usuarioCuenta = new UsuarioCuenta();
         usuarioCuenta.setUsuario(usuario);
         usuarioCuenta.setCuenta(cuenta);
         usuarioCuenta.setAdmin(esAdmin);
-        return cuentaRepository.save(usuarioCuenta);
+        return usuarioCuentaRepository.save(usuarioCuenta);
     }
 
 
@@ -46,10 +58,10 @@ public class UsuarioCuentaService {
      * @return un boolean que indica si a sido eliminado o no
      */
     public boolean eliminarUsuarioCuenta(Cuenta cuenta, Usuario usuario){
-        UsuarioCuenta usuarioCuenta = cuentaRepository.findTopByUsuarioEqualsAndCuentaEquals(usuario, cuenta).orElse(null);
+        UsuarioCuenta usuarioCuenta = usuarioCuentaRepository.findTopByUsuarioEqualsAndCuentaEquals(usuario, cuenta).orElse(null);
 
         if (usuarioCuenta != null){
-            cuentaRepository.delete(usuarioCuenta);
+            usuarioCuentaRepository.delete(usuarioCuenta);
             return true;
         }
         return false;
@@ -61,7 +73,7 @@ public class UsuarioCuentaService {
      * @return una lista de usuarios a la que pertenecen a la cuenta
      */
     public List<Usuario> listaUsuarios (Cuenta cuenta){
-        List<UsuarioCuenta> usuarioCuentas = cuentaRepository.findAllByCuentaEquals(cuenta);
+        List<UsuarioCuenta> usuarioCuentas = usuarioCuentaRepository.findAllByCuentaEquals(cuenta);
         List<Usuario> usuarios = new ArrayList<>();
         for (UsuarioCuenta c : usuarioCuentas){
             usuarios.add(c.getUsuario());
@@ -77,7 +89,7 @@ public class UsuarioCuentaService {
      */
     public List<Cuenta> listaCuentas (Usuario usuario) {
 
-        return cuentaRepository.listarCuentasUsuario(usuario);
+        return usuarioCuentaRepository.listarCuentasUsuario(usuario);
     }
 
 }

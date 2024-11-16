@@ -46,4 +46,13 @@ public class Usuario {
     @Column(name = "eliminado")
     @JsonIgnore
     private boolean eliminado;
+
+    public Usuario(Usuario usuario){
+        this.id = usuario.getId();
+        this.username = usuario.getUsername();
+        this.email = usuario.getEmail();
+        this.avatar = usuario.getAvatar();
+        this.tipoPago = usuario.getTipoPago();
+        this.rol = usuario.getRol();
+    }
 }

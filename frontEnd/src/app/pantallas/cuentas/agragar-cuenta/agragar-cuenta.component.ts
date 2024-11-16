@@ -9,6 +9,9 @@ import {RouterLink} from "@angular/router";
 import {FooterComponent} from "../../../componentes/footer/footer.component";
 import {MiniMenuImgsComponent} from "../../../componentes/mini-menu-imgs/mini-menu-imgs.component";
 import {UsuarioService} from "../../../service/usuario.service";
+import {Cuenta} from "../../../modelos/Cuenta";
+import {FormsModule} from "@angular/forms";
+import {CuentaService} from "../../../service/cuenta.service";
 
 @Component({
     selector: 'app-agragar-cuenta',
@@ -21,13 +24,15 @@ import {UsuarioService} from "../../../service/usuario.service";
         MiniMenuImgsComponent,
         TarjetaAmigosComponent,
         NgForOf,
-        RouterLink
+        RouterLink,
+        FormsModule
     ]
 })
 export class AgragarCuentaComponent implements OnInit {
     @Input() invitados: Persona[] = [];
+    cuenta: Cuenta = new Cuenta()
 
-    constructor(private usuarioService: UsuarioService) {
+    constructor(private usuarioService: UsuarioService, private cuentaService: CuentaService) {
         addIcons({cloudUploadOutline})
         this.invitados = [
             new Persona(1, "Juan", "https://picsum.photos/500/500?random=0"),
@@ -45,10 +50,23 @@ export class AgragarCuentaComponent implements OnInit {
                 invitado.seleccionado = false;
             })
         })
+        this.cuenta.imagen = "/assets/img/playa.jpg"
     }
 
     agregarCuenta() {
+        if (this.cuenta.nombre.length === 0) {
+            console.error("Nombre de la cuenta vacio", "El nombre de la cuenta no puede ser nulo")
+            return
+        }
+        for (let invitado of this.invitados) {
+            if (invitado.seleccionado) {
+                this.cuenta.personas.push(invitado)
+            }
+        }
+        this.cuentaService.postCrearCuenta(this.cuenta)
         console.log("Agregar cuenta")
+        this.cuenta = new Cuenta()
+        this.cuenta.imagen = "/assets/img/playa.jpg"
     }
 
 

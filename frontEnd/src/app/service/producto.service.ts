@@ -23,7 +23,7 @@ export class ProductoService {
             next: (data) => {
                 cuenta.productos!.push(data);
                 Cuenta.cuentaSaldo(cuenta);
-                cuenta.cuentaSaldo2()
+                this.getPorPersona(cuenta);
             },
             error: (err) => {
                 console.error('Error occurred:', err);
@@ -35,4 +35,10 @@ export class ProductoService {
 
         return ;
         }
+
+    getPorPersona(cuenta: Cuenta) {
+        let total: number = cuenta.saldo;
+        let personas: number = cuenta.personas?.length || 1;
+        cuenta.porPersona = (total / personas).toFixed(2);
+    }
 }

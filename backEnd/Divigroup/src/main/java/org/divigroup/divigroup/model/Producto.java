@@ -34,6 +34,9 @@ public class Producto {
     @Column(name = "fecha")
     private LocalDateTime fecha;
 
+    @Column(name = "facturas", length = 200)
+    private String factura;
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_users")
     private Usuario user;

@@ -11,5 +11,6 @@ public class AgregarGastoDTO {
     private int idUsuario;
     private int idGrupo;
     private Producto producto;
-    private MultipartFile archivo;
+    private MultipartFile factura;
+    private MultipartFile imagen;
 }

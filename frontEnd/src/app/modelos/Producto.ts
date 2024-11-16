@@ -3,6 +3,8 @@ export class Producto {
     nombre: string;
     precio: number | null;
     fecha?: string;
+    imagenArchivo?: File;
+    factura?: File;
 
     constructor(imagen: string, nombre: string, precio: number, fecha: Date) {
         this.imagen = imagen;

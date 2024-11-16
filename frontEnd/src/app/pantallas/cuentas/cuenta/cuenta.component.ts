@@ -13,6 +13,8 @@ import {BotonAgregarComponent} from "../../../componentes/boton-agregar/boton-ag
 import {Router, RouterLink} from "@angular/router";
 import {FooterComponent} from "../../../componentes/footer/footer.component";
 import {CuentaService} from "../../../service/cuenta.service";
+import {addIcons} from "ionicons";
+import {personOutline} from "ionicons/icons";
 
 @Component({
     selector: 'app-cuenta',
@@ -37,12 +39,12 @@ import {CuentaService} from "../../../service/cuenta.service";
 export class CuentaComponent implements OnInit {
     protected cuenta: Cuenta;
     segmento: string = 'cuentas';
-    porPersona: string = "";
 
 
     constructor(private cuentaService: CuentaService, private router:Router) {
         const navigation = this.router.getCurrentNavigation();
         this.cuenta = navigation?.extras.state?.['cuenta'];
+
     }
 
     ngOnInit() {
@@ -50,9 +52,10 @@ export class CuentaComponent implements OnInit {
             this.cuenta.productos = productos;
             this.getPorPersona()
              Cuenta.cuentaSaldo(this.cuenta);
+             this.puestaComun();
             console.log(this.cuenta)
-            this.puestaComun();
          });
+        addIcons({ personOutline });
     }
 
     onSegmentChange(event: any) {
@@ -66,15 +69,16 @@ export class CuentaComponent implements OnInit {
     getPorPersona() {
         let total: number = this.getTotal();
         let personas: number = this.cuenta.personas?.length || 1;
-        this.porPersona = (total / personas).toFixed(2);
+        this.cuenta.porPersona = (total / personas).toFixed(2);
     }
 
     puestaComun(){
-        this.cuentaService.getPuestaComun(this.cuenta.id).subscribe((cuenta) => {
+        this.cuentaService.getPuestaComun(this.cuenta.id??0).subscribe((cuenta) => {
             for (let persona of this.cuenta.personas){
                 persona.deuda = cuenta[persona.username];
             }
         });
+        console.log("Puesta en comun ejecutada")
     }
     agregarProducto(){
         this.router.navigate(['/producto/crear'], {state: {cuenta: this.cuenta}});

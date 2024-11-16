@@ -8,18 +8,17 @@
                             <img [src]="persona.avatar" alt="Foto de la cuenta"/>
                         </ion-avatar>
                     </ion-col>
-                    <ion-col size="6">
+                    <ion-col size="5">
                         <div class="centrarTexto">
                             <ion-card-title>{{ persona.username }}</ion-card-title>
                         </div>
                     </ion-col>
-                    <ion-col *ngIf="persona.deuda !== undefined">
-                        <div
-                            style="display: block; border-radius: 10%; padding: 6px; width: fit-content; background-color: {{getColor()}};">
+                    <ion-col *ngIf="persona.deuda !== undefined && !paraSeleccionar">
+                        <div style="display: block; border-radius: 10%; padding: 6px; width: fit-content; background-color: {{ getColor() }};">
                             {{ getMensaje() }} {{ persona.deuda }}€
                         </div>
                     </ion-col>
-                    <ion-col *ngIf="persona.seleccionado !== null" size="1" style="margin: auto">
+                    <ion-col *ngIf="persona.seleccionado !== undefined " size="1" style="margin: auto">
                         <ion-checkbox [(ngModel)]="persona.seleccionado"></ion-checkbox>
                     </ion-col>
                 </ion-row>

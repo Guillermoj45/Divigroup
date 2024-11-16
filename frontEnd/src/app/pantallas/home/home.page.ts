@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {IonContent, IonImg, IonSearchbar,} from '@ionic/angular/standalone';
+import {IonContent, IonImg, IonRouterLink, IonSearchbar,} from '@ionic/angular/standalone';
 import {TajetaCuentaComponent} from "../../tarjetas/tajeta-cuenta/tajeta-cuenta.component";
 import {MenuTajetaCuentaComponent} from "../../tarjetas/menu-tajeta-cuenta/menu-tajeta-cuenta.component";
 import {addIcons} from "ionicons";
@@ -13,6 +13,7 @@ import {Cuenta} from "../../modelos/Cuenta";
 import {Producto} from "../../modelos/Producto";
 import {NgForOf} from "@angular/common";
 import {UsuarioService} from "../../service/usuario.service";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-home',
@@ -30,6 +31,7 @@ import {UsuarioService} from "../../service/usuario.service";
         BotonAgregarComponent,
         IonImg,
         NgForOf,
+        IonRouterLink,
     ],
 })
 
@@ -50,7 +52,7 @@ export class HomePage implements OnInit {
 
     }
 
-    constructor(private cuentaService: CuentaService, private usuarioService: UsuarioService) {
+    constructor(private cuentaService: CuentaService, private usuarioService: UsuarioService, private router : Router) {
         addIcons({'add-outline': addOutline, 'document': document});
     }
 
@@ -68,10 +70,8 @@ export class HomePage implements OnInit {
                 gastos.forEach(gasto => {
                     cuenta.saldo += gasto.precio ? gasto.precio : 0;
                     cuenta.saldo = Number.parseFloat(cuenta.saldo.toFixed(2));
-                    console.log(cuenta.saldo);
                 })
             });
-            console.log(cuenta);
         }
     }
 
@@ -84,5 +84,9 @@ export class HomePage implements OnInit {
         }
         const query = event.target.value.toLowerCase();
         this.cuentas = this.todasCuentas.filter((d: Cuenta) => d.nombre.toLowerCase().indexOf(query) > -1);
+    }
+
+    crearCuenta(){
+        this.router.navigate(['/cuentas/crear']).then(r => console.log(r));
     }
 }

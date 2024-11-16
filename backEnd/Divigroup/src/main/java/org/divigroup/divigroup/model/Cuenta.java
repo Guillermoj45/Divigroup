@@ -27,4 +27,11 @@ public class Cuenta {
 
     @Column(name = "imagen_fondo", unique = true, length = 200)
     String imagenFondo;
+
+    public Cuenta (String nombre, String descripcion, String imagen, String imagenFondo) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.imagen = imagen;
+        this.imagenFondo = imagenFondo;
+    }
 }

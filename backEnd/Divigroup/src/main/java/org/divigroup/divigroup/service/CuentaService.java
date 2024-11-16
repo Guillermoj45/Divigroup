@@ -3,10 +3,7 @@ package org.divigroup.divigroup.service;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import org.divigroup.divigroup.dto.AgregarGastoDTO;
-import org.divigroup.divigroup.dto.GrupoParticipanteDTO;
-import org.divigroup.divigroup.dto.GrupoListaParticipantesDTO;
-import org.divigroup.divigroup.dto.SoloProductoDTO;
+import org.divigroup.divigroup.dto.*;
 import org.divigroup.divigroup.model.*;
 import org.divigroup.divigroup.repository.ICuentaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -37,13 +35,27 @@ public class CuentaService {
 
     /**
      * Creamos una cuenta
-     * @param cuenta Cuenta que vamos a guardar
+     * @param agregarCuentaDTO Cuenta que vamos a guardar
      * @return devuelve el objeto entero de nuevo
      */
-    public Cuenta crearCuenta(Cuenta cuenta, int idUsuario){
+    public Cuenta crearCuenta(AgregarCuentaDTO agregarCuentaDTO, int idUsuario){
         Usuario usuario = usuarioService.buscarUsuarioId(idUsuario);
-        usuarioCuentaService.agregarUsuarioCuenta(cuenta, usuario, true);
-        return cuentaRepository.save(cuenta);
+        Cuenta cuentaNueva = new Cuenta(agregarCuentaDTO.getNombre(), agregarCuentaDTO.getDescripcion(), agregarCuentaDTO.getImagen(), agregarCuentaDTO.getImagenFondo());
+
+        usuarioCuentaService.agregarUsuarioCuenta(cuentaNueva, usuario, true);
+
+        ArrayList<Usuario> usuarioMapeados = new ArrayList<>();
+        for (Usuario u : agregarCuentaDTO.getPersonas()){
+            usuarioMapeados.add(new Usuario(u));
+        }
+
+        for (Usuario u : usuarioMapeados){
+            u = new Usuario(u);
+            usuarioCuentaService.agregarUsuarioCuenta(cuentaNueva, u, false);
+        }
+
+        System.out.println("Cuenta creada: " + cuentaNueva);
+        return cuentaRepository.save(cuentaNueva);
     }
 
     /**
@@ -126,7 +138,7 @@ public class CuentaService {
         }
         producto.setCuenta(cuenta);
         producto.setUser(usuario);
-        SoloProductoDTO soloProductoDTO = new SoloProductoDTO(productoService.crearProducto(producto));
+        SoloProductoDTO soloProductoDTO = new SoloProductoDTO(productoService.crearProducto(producto, dto.getImagen(), dto.getFactura()));
 
         return soloProductoDTO;
     }
