@@ -47,6 +47,7 @@ export class TajetaCuentaComponent implements OnInit {
     }
 
     ngOnInit() {
+        console.log(this.cuenta);
         this.waitForPersonas();
     }
 

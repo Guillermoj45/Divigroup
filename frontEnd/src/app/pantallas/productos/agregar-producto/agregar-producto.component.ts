@@ -13,6 +13,7 @@ import {state} from "@angular/animations";
 import {Cuenta} from "../../../modelos/Cuenta";
 import {ProductoService} from "../../../service/producto.service";
 import {UsuarioService} from "../../../service/usuario.service";
+import {CuentaService} from "../../../service/cuenta.service";
 
 @Component({
     selector: 'app-agregar-producto',
@@ -35,7 +36,7 @@ export class AgregarProductoComponent implements OnInit {
     invitados: Persona[] = [];
 
 
-    constructor(private router:Router, private productoService: ProductoService, private usuarioService: UsuarioService) {
+    constructor(private router:Router, private productoService: ProductoService, private cuentaService: CuentaService) {
         addIcons({camera, clipboardOutline})
     }
 
@@ -43,12 +44,12 @@ export class AgregarProductoComponent implements OnInit {
         const navigation = this.router.getCurrentNavigation();
         this.cuenta = navigation?.extras.state?.['cuenta'];
         this.producto = new Producto('https://picsum.photos/800/800?random=1', '', 0, new Date());
-        this.usuarioService.getAmigos().subscribe((amigos:Persona[]) => {
-            this.invitados = amigos;
-            this.invitados.forEach((invitado) => {
-                invitado.seleccionado = false;
-            })
-        })
+        // this.usuarioService.getUsuariosCuenta(this.cuenta.id!).subscribe((amigos:Persona[]) => {
+        //     this.invitados = amigos;
+        //     this.invitados.forEach((invitado) => {
+        //         invitado.seleccionado = false;
+        //     })
+        // })
     }
 
     agregarArchivo(event: Event) {
@@ -98,5 +99,14 @@ export class AgregarProductoComponent implements OnInit {
             });
         this.productoService.pushProducto(this.cuenta, this.producto);
         this.router.navigate(['/cuentas/cuenta'], {state: {cuenta: this.cuenta}});
+        this.puestaComun();
+    }
+    puestaComun(){
+        this.cuentaService.getPuestaComun(this.cuenta.id??0).subscribe((cuenta) => {
+            for (let persona of this.cuenta.personas){
+                persona.deuda = cuenta[persona.username];
+            }
+        });
+        console.log("Puesta en comun ejecutada")
     }
 }

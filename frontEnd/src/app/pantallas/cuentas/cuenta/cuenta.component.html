@@ -15,6 +15,9 @@
                     <ion-segment-button value="division">
                         <ion-label>Division</ion-label>
                     </ion-segment-button>
+                    <ion-segment-button value="personas">
+                        <ion-label>Personas</ion-label>
+                    </ion-segment-button>
                 </ion-segment>
             </ion-col>
         </ion-row>
@@ -33,13 +36,21 @@
                 </div>
                 <div *ngIf="segmento === 'division'">
                     <p>Total {{ getTotal() }}€ <br>
-                        Por persona {{ porPersona }}€</p>
+                        Por persona {{ cuenta.porPersona }}€</p>
                     <app-tarjeta-amigos *ngFor="let persona of cuenta.personas" [persona]="persona" ></app-tarjeta-amigos>
+                </div>
+                <div *ngIf="segmento === 'personas'">
+                    <app-tarjeta-amigos *ngFor="let persona of cuenta.personas" [paraSeleccionar]="true" [persona]="persona" ></app-tarjeta-amigos>
                 </div>
             </ion-col>
         </ion-row>
     </ion-grid>
 </ion-content>
-<app-boton-agregar (click)="agregarProducto()" textoAyuda=""></app-boton-agregar>
+<app-boton-agregar *ngIf="segmento !== 'personas'" (click)="agregarProducto()" textoAyuda=""></app-boton-agregar>
 
+<ion-fab *ngIf="segmento === 'personas'" horizontal="end" vertical="bottom" slot="fixed" style="margin-bottom: 60px">
+    <ion-fab-button >
+        <ion-icon name="person-outline"></ion-icon>
+    </ion-fab-button>
+</ion-fab>
 <app-footer></app-footer>

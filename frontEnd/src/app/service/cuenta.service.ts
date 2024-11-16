@@ -13,11 +13,16 @@ export class CuentaService {
     }
 
     postCrearCuenta(cuenta: Cuenta): Observable<Cuenta> {
-        return this.http.post<Cuenta>('api/crear-cuenta', cuenta);
+        console.log(cuenta);
+        let resultado = this.http.post<Cuenta>('/api/grupo/nuevo', cuenta);
+        resultado.subscribe((cuenta) => {
+            console.log(cuenta);
+        })
+        return resultado;
     }
 
     public getObtenerCuentas(): Observable<Cuenta[]> {
-        return this.http.get<Cuenta[]>(`/api/grupo`).pipe(map((datos) => datos.map((dato) => new Cuenta(dato.id, dato.descripcion, dato.imagen, dato.imagenFondo)))
+        return this.http.get<Cuenta[]>(`/api/grupo`).pipe(map((datos) => datos.map((dato) => new Cuenta(dato.id, dato.nombre, dato.descripcion, dato.imagen, dato.imagenFondo)))
 
         );
     }

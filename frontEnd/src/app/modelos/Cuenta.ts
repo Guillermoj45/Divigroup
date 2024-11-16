@@ -2,7 +2,7 @@ import {Persona} from './Persona';
 import {Producto} from "./Producto";
 
 export class Cuenta {
-    id: number = 0;
+    id?: number = undefined;
     nombre: string = "";
     descripcion: string = "";
     saldo: number = 100;
@@ -10,10 +10,12 @@ export class Cuenta {
     imagenFondo: string = "";
     personas: Persona[]=[];
     productos?: Producto[] = [];
+    porPersona: string = "";
 
 
-    constructor(id?: number, descripcion?: string, imagen?: string, imagenFondo?: string) {
-        this.id = id?? 0;
+    constructor(id?: number, nombre?:string, descripcion?: string, imagen?: string, imagenFondo?: string) {
+        this.id = id;
+        this.nombre = nombre ?? "";
         this.descripcion = descripcion?? "";
         this.imagen = imagen ?? "";
         this.imagenFondo = imagenFondo ?? "";
