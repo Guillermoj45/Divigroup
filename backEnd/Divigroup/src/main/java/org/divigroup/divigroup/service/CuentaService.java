@@ -66,7 +66,12 @@ public class CuentaService {
     public GrupoListaParticipantesDTO agregarUsuarioCuenta(GrupoParticipanteDTO dto){
         Cuenta cuenta = cuentaRepository.findById(dto.getIdGrupo()).orElse(null);
         Usuario usuario = usuarioService.buscarUsuarioId(dto.getIdUsuario());
-
+        System.out.println("""
+                HOLAAAAAAAA
+                
+                
+                
+                """ + cuenta + usuario);
         if (cuenta == null || usuario == null){
             return null;
         }

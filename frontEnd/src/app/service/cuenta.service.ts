@@ -18,15 +18,15 @@ export class CuentaService {
         console.log(cuenta, persona);
         let mensaje = {
             idGrupo: cuenta.id,
-            idUersona: persona.id
+            idUsuario: persona.id
         }
-        return this.http.post<Cuenta>('/api/grupo/participantes/nuevo', mensaje);
+        return this.http.post<any>('/api/grupo/participantes/nuevo', mensaje);
     }
 
     eliminarPersona(cuenta: Cuenta, persona: Persona): Observable<any> {
          let mensaje = {
             idGrupo: cuenta.id,
-            idUersona: persona.id
+             idUsuario: persona.id
          }
 
         return this.http.delete<Cuenta>('/api/grupo/participantes/eliminar', {body: mensaje});

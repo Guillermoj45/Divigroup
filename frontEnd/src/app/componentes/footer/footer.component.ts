@@ -54,4 +54,13 @@ export class FooterComponent implements OnInit {
     ngOnInit() {
     }
 
+    home(){
+        this.router.navigate(['/home']);
+    }
+    amigos(){
+        this.router.navigate(['/amigos']);
+    }
+    perfil(){
+        this.router.navigate(['/perfil']);
+    }
 }

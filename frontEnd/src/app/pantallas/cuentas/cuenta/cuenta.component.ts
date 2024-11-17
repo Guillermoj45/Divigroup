@@ -91,15 +91,15 @@ export class CuentaComponent implements OnInit {
     alterado(persona:Persona){
         if (persona.seleccionado){
             this.cuentaService.agregarPersona(this.cuenta,persona).subscribe((cuenta) => {
+                console.log("hola", cuenta);
                 this.cuenta.personas.push(persona);
-                this.listaMostrar = cuenta.personas;
                 console.log("Persona agregada");
             });
         } else {
             console.log(persona)
             this.cuentaService.eliminarPersona(this.cuenta,persona).subscribe((cuenta) => {
+                console.log("hola", cuenta);
                 this.cuenta.personas = this.cuenta.personas.filter((p) => p.id !== persona.id);
-                this.listaMostrar = cuenta.personas;
                 console.log("Persona eliminada");
             });
         }
