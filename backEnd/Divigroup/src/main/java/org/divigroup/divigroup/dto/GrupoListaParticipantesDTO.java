@@ -1,9 +1,6 @@
 package org.divigroup.divigroup.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.divigroup.divigroup.model.Cuenta;
 import org.divigroup.divigroup.model.Usuario;
 import org.springframework.stereotype.Service;
@@ -14,6 +11,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class GrupoListaParticipantesDTO {
     private Cuenta cuenta;
     private List<Usuario> participantes;
