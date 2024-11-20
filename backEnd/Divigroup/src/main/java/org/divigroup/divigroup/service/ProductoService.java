@@ -110,12 +110,9 @@ public class ProductoService {
 
         Float total = 0.0F;
         for (String u : suma.keySet()){
-            System.out.println(u + ": " + suma.get(u));
             total += suma.get(u);
-            System.out.println("Total: " + total);
         }
         total = Float.parseFloat(String.format("%.2f", total).replace(",", "."));
-        System.out.println("Total: " + total);
 
         float totalPorPersona = total / participantes.size();
         suma.forEach((k, v) -> {

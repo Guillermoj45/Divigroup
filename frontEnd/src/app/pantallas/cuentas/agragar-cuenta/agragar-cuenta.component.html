@@ -20,7 +20,7 @@
     <ion-row>
         <ion-col>
             <div style="max-height: 300px; overflow-y: auto;">
-                <app-tarjeta-amigos *ngFor="let invitado of invitados" [persona]="invitado"></app-tarjeta-amigos>
+                <app-tarjeta-amigos *ngFor="let invitado of invitados" [persona]="invitado" [paraSeleccionar]="true"></app-tarjeta-amigos>
             </div>
         </ion-col>
     </ion-row>
@@ -31,4 +31,11 @@
 <ion-fab (click)="agregarCuenta()" horizontal="end" slot="fixed" vertical="bottom">
     <ion-button>Guardar</ion-button>
 </ion-fab>
+<ion-alert
+    [isOpen]="isAlertOpen"
+    header="{{ tituloAlerta }}"
+    message="{{ mensajeAlerta }}"
+    [buttons]="alertButtons"
+    (didDismiss)="setOpen(false)"
+></ion-alert>
 <app-footer/>

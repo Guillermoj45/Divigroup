@@ -35,9 +35,7 @@ export class CuentaService {
     postCrearCuenta(cuenta: Cuenta): Observable<Cuenta> {
         console.log(cuenta);
         let resultado = this.http.post<Cuenta>('/api/grupo/nuevo', cuenta);
-        resultado.subscribe((cuenta) => {
-            console.log(cuenta);
-        })
+
         return resultado;
     }
 

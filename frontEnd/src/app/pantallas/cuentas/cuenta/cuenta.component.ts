@@ -56,6 +56,7 @@ export class CuentaComponent implements OnInit {
     ngOnInit() {
         const navigation = this.router.getCurrentNavigation();
         this.cuenta = navigation?.extras.state?.['cuenta'];
+        console.log(this.cuenta);
 
          this.cuentaService.getObtenerGastos(this.cuenta).subscribe((productos: Producto[]) => {
             this.cuenta.productos = productos;
@@ -120,7 +121,7 @@ export class CuentaComponent implements OnInit {
     }
 
     puestaComun(){
-        this.cuentaService.getPuestaComun(this.cuenta.id??0).subscribe((cuenta) => {
+        this.cuentaService.getPuestaComun(this.cuenta.id!).subscribe((cuenta) => {
             for (let persona of this.cuenta.personas){
                 persona.deuda = cuenta[persona.username];
             }
