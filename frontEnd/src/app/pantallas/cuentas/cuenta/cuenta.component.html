@@ -40,7 +40,7 @@
                     <app-tarjeta-amigos *ngFor="let persona of cuenta.personas" [persona]="persona" ></app-tarjeta-amigos>
                 </div>
                 <div *ngIf="segmento === 'personas'">
-                    <app-tarjeta-amigos (click)="alterado(persona)" *ngFor="let persona of listaMostrar" [paraSeleccionar]="paraSeleccionar" [paraSeleccionar2]="true" [persona]="persona" ></app-tarjeta-amigos>
+                    <app-tarjeta-amigo-votacion (click)="alterado(persona)" *ngFor="let persona of listaMostrar" [paraSeleccionar]="paraSeleccionar" [paraSeleccionar2]="true" [persona]="persona" ></app-tarjeta-amigo-votacion>
                 </div>
             </ion-col>
         </ion-row>

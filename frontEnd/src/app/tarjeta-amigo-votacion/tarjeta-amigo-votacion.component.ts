@@ -1,29 +1,24 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Persona} from "../modelos/Persona";
+import {Router, RouterLink} from "@angular/router";
 import {
-    IonAvatar,
-    IonButton,
+    IonAvatar, IonButton,
     IonCard,
     IonCardHeader,
     IonCardSubtitle,
-    IonCardTitle,
-    IonCheckbox,
+    IonCardTitle, IonCheckbox,
     IonCol,
-    IonGrid,
-    IonIcon,
-    IonRow
+    IonGrid, IonIcon, IonRow
 } from "@ionic/angular/standalone";
-import {Router, RouterLink} from "@angular/router";
+import {MiniMenuImgsComponent} from "../componentes/mini-menu-imgs/mini-menu-imgs.component";
 import {NgIf} from "@angular/common";
-import {Persona} from "../../modelos/Persona";
-import {image} from "ionicons/icons";
 import {FormsModule} from "@angular/forms";
-import {MiniMenuImgsComponent} from "../../componentes/mini-menu-imgs/mini-menu-imgs.component";
 
 @Component({
-    selector: 'app-tarjeta-amigos',
-    templateUrl: './tarjeta-amigos.component.html',
-    styleUrls: ['./tarjeta-amigos.component.scss'],
-    standalone: true,
+  selector: 'app-tarjeta-amigo-votacion',
+  templateUrl: './tarjeta-amigo-votacion.component.html',
+  styleUrls: ['./tarjeta-amigo-votacion.component.scss'],
+  standalone: true,
     imports: [
         IonAvatar,
         IonCard,
@@ -42,11 +37,10 @@ import {MiniMenuImgsComponent} from "../../componentes/mini-menu-imgs/mini-menu-
         FormsModule
     ]
 })
-export class TarjetaAmigosComponent implements OnInit {
+export class TarjetaAmigoVotacionComponent  implements OnInit {
     @Input() persona: Persona = new Persona(0, 'Usuario X', 'https://picsum.photos/500/500?random=4')
     @Input() paraSeleccionar: boolean = false;
     @Input() paraSeleccionar2: boolean = false;
-    protected readonly image = image;
 
     constructor(private router: Router) {
 

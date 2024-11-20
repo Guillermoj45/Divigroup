@@ -1,4 +1,13 @@
-import {Component, NgIterable, OnInit, ViewChild} from '@angular/core';
+import {
+    Component,
+    NgIterable,
+    OnInit,
+    QueryList,
+    ViewChild,
+    ViewChildren,
+    AfterViewInit,
+    ChangeDetectorRef, NgZone
+} from '@angular/core';
 import {IonicModule} from "@ionic/angular";
 import {FormsModule} from "@angular/forms";
 import {Cuenta} from "../../../modelos/Cuenta";
@@ -18,6 +27,7 @@ import {personOutline} from "ionicons/icons";
 import {UsuarioService} from "../../../service/usuario.service";
 import {Persona} from "../../../modelos/Persona";
 import {BehaviorSubject} from "rxjs";
+import {TarjetaAmigoVotacionComponent} from "../../../tarjeta-amigo-votacion/tarjeta-amigo-votacion.component";
 
 @Component({
     selector: 'app-cuenta',
@@ -36,56 +46,85 @@ import {BehaviorSubject} from "rxjs";
         ProductoComponent,
         FooterComponent,
         BotonAgregarComponent,
-        RouterLink
+        RouterLink,
+        TarjetaAmigoVotacionComponent
     ]
 })
-export class CuentaComponent implements OnInit {
+
+export class CuentaComponent implements OnInit, AfterViewInit {
     protected cuenta: Cuenta;
     segmento: string = 'cuentas';
     paraSeleccionar: boolean = false;
     listaMostrar:Persona[] = [];
+    @ViewChildren(TarjetaAmigosComponent) tarjetaAmigosComponents!: QueryList<TarjetaAmigosComponent>;
 
-
-    constructor(private cuentaService: CuentaService, private router:Router, private usuarioService: UsuarioService) {
+    constructor(private cuentaService: CuentaService, private router:Router, private usuarioService: UsuarioService, private changeDetectorRef: ChangeDetectorRef, private ngZone: NgZone) {
         const navigation = this.router.getCurrentNavigation();
         this.cuenta = navigation?.extras.state?.['cuenta'];
+        addIcons({ personOutline });
+    }
+
+    ngAfterViewInit(){
+        this.cuentaService.getObtenerGastos(this.cuenta).subscribe((productos: Producto[]) => {
+            this.cuenta.productos = productos;
+        })
 
 
+        this.tarjetaAmigosComponents.changes.subscribe(() => {
+            if (this.tarjetaAmigosComponents.get(0)?.paraSeleccionar == false && this.tarjetaAmigosComponents.get(0)?.paraSeleccionar2 == false){
+                this.puestaComun();
+            }
+            this.tarjetaAmigosComponents.forEach((tarjeta) => {
+
+                for (let persona of this.cuenta.personas) {
+                    if (tarjeta.persona.id === persona.id) {
+                        tarjeta.setPersona(persona);
+                    }
+                }
+            });
+            this.changeDetectorRef.detectChanges();
+        })
     }
 
     ngOnInit() {
         const navigation = this.router.getCurrentNavigation();
         this.cuenta = navigation?.extras.state?.['cuenta'];
-        console.log(this.cuenta);
 
-         this.cuentaService.getObtenerGastos(this.cuenta).subscribe((productos: Producto[]) => {
-            this.cuenta.productos = productos;
-            this.getPorPersona();
-            Cuenta.cuentaSaldo(this.cuenta);
-            this.puestaComun();
-            this.listaMostrar = this.cuenta.personas;
-            console.log(this.cuenta);
-         });
+
+        this.getPorPersona();
+        console.log(this.cuenta);
+        Cuenta.cuentaSaldo(this.cuenta);
+        this.puestaComun();
+        this.listaMostrar = this.cuenta.personas;
+
         this.paraSeleccionar = false;
-        addIcons({ personOutline });
     }
 
     seleccionarAmigo() {
         this.paraSeleccionar = !this.paraSeleccionar;
         if (this.paraSeleccionar) {
+
+
             this.usuarioService.getAmigos().subscribe((amigos) => {
-                this.listaMostrar = amigos;
-                amigos.forEach((persona) => {
-                    for (let amigo of this.cuenta.personas) {
-                        if (persona.id === amigo.id) {
-                            console.log(persona.id + " " + amigo.id);
-                            persona.seleccionado = true;
+                this.ngZone.run(() => {
+                    amigos.forEach((persona) => {
+                        for (let amigo of this.cuenta.personas) {
+                            if (persona.id === amigo.id) {
+                                console.log(persona.id + " " + amigo.id);
+                                persona.seleccionado = true;
+                            }
                         }
-                    }
+                    });
+                    this.listaMostrar = amigos;
+                    console.log("lista amigos", this.listaMostrar);
+                    this.changeDetectorRef.detectChanges(); // Forzar la detección de cambios
                 });
             });
         } else {
-            this.listaMostrar = this.cuenta.personas;
+            this.ngZone.run(() => {
+                this.listaMostrar = this.cuenta.personas;
+                this.changeDetectorRef.detectChanges(); // Forzar la detección de cambios
+            });
         }
     }
 
@@ -108,6 +147,10 @@ export class CuentaComponent implements OnInit {
 
     onSegmentChange(event: any) {
         this.segmento = event.detail.value;
+        if (this.segmento === 'personas'){
+            this.listaMostrar = this.cuenta.personas;
+            this.paraSeleccionar = false;
+        }
     }
 
     getTotal() {
@@ -121,7 +164,14 @@ export class CuentaComponent implements OnInit {
     }
 
     puestaComun(){
+        console.log(this.cuenta.personas);
+        if (this.cuenta.personas == undefined){
+            this.usuarioService.getUsuariosCuenta(this.cuenta.id!).subscribe((personas:any) => {
+                this.cuenta.personas = personas.participantes;
+            });
+        }
         this.cuentaService.getPuestaComun(this.cuenta.id!).subscribe((cuenta) => {
+            console.log("Llega la puesta en comun", cuenta, this.cuenta.personas);
             for (let persona of this.cuenta.personas){
                 persona.deuda = cuenta[persona.username];
             }

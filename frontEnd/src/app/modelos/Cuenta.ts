@@ -23,6 +23,13 @@ export class Cuenta {
 
     static cuentaSaldo(cuenta: Cuenta) {
          cuenta.saldo = 0;
+         if (cuenta.productos === undefined) {
+             cuenta.productos = [];
+         }
+         if (cuenta.productos.length === 0) {
+             return;
+         }
+
          cuenta.productos!.forEach(producto => {
              cuenta.saldo += producto.precio ? producto.precio : 0;
              cuenta.saldo = Number.parseFloat(cuenta.saldo.toFixed(2));

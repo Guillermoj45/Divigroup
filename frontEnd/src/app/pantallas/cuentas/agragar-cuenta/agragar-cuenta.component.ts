@@ -75,23 +75,22 @@ export class AgragarCuentaComponent implements OnInit {
                 this.cuenta.personas.push(invitado)
             }
         }
-
+        console.log("Cuenta a agregar", this.cuenta.personas)
         this.cuentaService.postCrearCuenta(this.cuenta).subscribe((datos) => {
             console.log(datos);
             let cuenta: Cuenta = datos
-            cuenta.personas = this.cuenta.personas
-            console.log(this.cuenta)
+            this.usuarioService.introducirUsuariosCuenta(cuenta);
+
+            console.log("Cuenta Nueva dentro de agregar cuenta", this.cuenta)
             this.router.navigate(["/cuentas/cuenta"], {state: {"cuenta": cuenta}})
+
+
+            this.cuenta = new Cuenta()
+            this.cuenta.imagen = "/assets/img/playa.jpg"
+            console.log("Invitados seleccionados", this.cuenta.personas)
         })
 
-
-        this.cuenta = new Cuenta()
-        this.cuenta.imagen = "/assets/img/playa.jpg"
     }
 
-
-    cancelar() {
-        console.log("Cancelar")
-    }
 
 }
