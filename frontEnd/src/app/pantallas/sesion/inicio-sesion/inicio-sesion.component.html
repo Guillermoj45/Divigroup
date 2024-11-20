@@ -26,4 +26,12 @@
     <ion-button (click)="login()" shape="round">Iniciar sesión</ion-button>
     <ion-button href="/registro" shape="round">Crear cuenta</ion-button>
     <a href="/recuperacion"><span style="text-align: center">¿Olvidaste tu contraseña?</span></a>
+
+    <ion-alert
+        [isOpen]="isAlertOpen"
+        header="{{ tituloAlerta }}"
+        message="{{ mensajeAlerta }}"
+        [buttons]="alertButtons"
+        (didDismiss)="setOpen(false)"
+    ></ion-alert>
 </div>

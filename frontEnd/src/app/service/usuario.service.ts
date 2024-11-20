@@ -17,6 +17,7 @@ export class UsuarioService {
             cuenta.personas = datos.participantes;
         });
     }
+
     getUsuariosCuenta(idCuenta: number): Observable<Persona[]> {
         return this.http.get<any>(`api/grupo/participantes/${idCuenta}`);
     }

@@ -70,7 +70,7 @@ export class TarjetaAmigosComponent implements OnInit {
 
     getMensaje() {
         if (this.persona.deuda === undefined) {
-            return 'No se ha definido';
+            return '';
         }
         if (this.persona.deuda > 0) {
             return 'Pagado';
@@ -78,7 +78,7 @@ export class TarjetaAmigosComponent implements OnInit {
         if (this.persona.deuda < 0) {
             return 'Deben';
         }
-        return 'No se ha definido';
+        return 'Esta en paz';
     }
 
     cliqueado() {

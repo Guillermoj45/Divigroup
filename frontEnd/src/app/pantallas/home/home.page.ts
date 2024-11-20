@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {IonContent, IonImg, IonRouterLink, IonSearchbar,} from '@ionic/angular/standalone';
 import {TajetaCuentaComponent} from "../../tarjetas/tajeta-cuenta/tajeta-cuenta.component";
 import {MenuTajetaCuentaComponent} from "../../tarjetas/menu-tajeta-cuenta/menu-tajeta-cuenta.component";
@@ -14,6 +14,7 @@ import {Producto} from "../../modelos/Producto";
 import {NgForOf} from "@angular/common";
 import {UsuarioService} from "../../service/usuario.service";
 import {Router} from "@angular/router";
+import {TarjetaAmigosComponent} from "../../tarjetas/tarjeta-amigos/tarjeta-amigos.component";
 
 @Component({
     selector: 'app-home',
@@ -37,19 +38,24 @@ import {Router} from "@angular/router";
 
 
 export class HomePage implements OnInit {
-
+    @ViewChildren(TajetaCuentaComponent) tajetaCuentaComponents!: QueryList<TajetaCuentaComponent>;
     todasCuentas: Cuenta[] = [];
     cuentas: Cuenta[] = [];
 
     ngOnInit() {
+
+    }
+
+    ionViewWillEnter() {
         this.cuentaService.getObtenerCuentas().subscribe((cuentas: Cuenta[]) => {
             this.todasCuentas = cuentas;
 
             this.cuentas = cuentas;
             this.sacarUsuarios();
             this.calcularSaldo();
+            this.tajetaCuentaComponents.forEach(tajetaCuentaComponent => {tajetaCuentaComponent.ngOnInit()});
         });
-
+        console.log("Cuentas hola");
     }
 
     constructor(private cuentaService: CuentaService, private usuarioService: UsuarioService, private router : Router) {

@@ -34,6 +34,11 @@ export class AgregarProductoComponent implements OnInit {
     cuenta:Cuenta = new Cuenta();
     producto: Producto = new Producto('https://picsum.photos/800/800?random=1', '', 0, new Date());
     invitados: Persona[] = [];
+    isAlertOpen = false;
+    alertButtons = ['Action'];
+    tituloAlerta:String = "";
+    mensajeAlerta:String = "";
+
 
 
     constructor(private router:Router, private productoService: ProductoService, private cuentaService: CuentaService) {
@@ -41,15 +46,19 @@ export class AgregarProductoComponent implements OnInit {
     }
 
     ngOnInit(){
+        this.producto = new Producto('https://picsum.photos/800/800?random=1', '', 0, new Date());
         const navigation = this.router.getCurrentNavigation();
         this.cuenta = navigation?.extras.state?.['cuenta'];
-        this.producto = new Producto('https://picsum.photos/800/800?random=1', '', 0, new Date());
         // this.usuarioService.getUsuariosCuenta(this.cuenta.id!).subscribe((amigos:Persona[]) => {
         //     this.invitados = amigos;
         //     this.invitados.forEach((invitado) => {
         //         invitado.seleccionado = false;
         //     })
         // })
+    }
+
+    setOpen(isOpen: boolean) {
+        this.isAlertOpen = isOpen;
     }
 
     agregarArchivo(event: Event) {
@@ -97,6 +106,16 @@ export class AgregarProductoComponent implements OnInit {
             "Producto agregado": this.producto,
             "Cuenta": this.cuenta
             });
+        if (this.producto.nombre === null || this.producto.nombre === "") {
+            this.tituloAlerta = "Error al agregar producto";
+            this.mensajeAlerta = "El nombre del producto no puede estar vacio";
+            this.setOpen(true);
+            return;
+        }
+        if (this.producto.precio === null) {
+            this.producto.precio = 0;
+        }
+        console.log(this.producto);
         this.productoService.pushProducto(this.cuenta, this.producto);
         this.router.navigate(['/cuentas/cuenta'], {state: {cuenta: this.cuenta}});
         this.puestaComun();

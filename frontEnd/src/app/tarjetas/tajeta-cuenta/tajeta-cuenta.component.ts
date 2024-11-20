@@ -43,11 +43,11 @@ export class TajetaCuentaComponent implements OnInit {
     @Input() cuenta?: Cuenta;
     imagenes: string[] = [];
 
+
     constructor(private router: Router) {
     }
 
     ngOnInit() {
-        console.log(this.cuenta);
         this.waitForPersonas();
     }
 

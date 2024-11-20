@@ -48,4 +48,11 @@
 <ion-fab horizontal="end" slot="fixed" vertical="bottom">
     <ion-button (click)="agregarProducto()" style="margin: auto">Guardar</ion-button>
 </ion-fab>
+<ion-alert
+    [isOpen]="isAlertOpen"
+    header="{{ tituloAlerta }}"
+    message="{{ mensajeAlerta }}"
+    [buttons]="alertButtons"
+    (didDismiss)="setOpen(false)"
+></ion-alert>
 <app-footer></app-footer>
