@@ -27,9 +27,6 @@ public class CuentaService {
 
     private UsuarioService usuarioService;
 
-    @Lazy
-    @Autowired
-    private ProductoService productoService;
 
     /**
      * Creamos una cuenta
@@ -119,29 +116,6 @@ public class CuentaService {
         return usuarioCuentaService.listaCuentas(usuario);
     }
 
-    /**
-     * Agrega un gasto a una cuenta
-     * @param dto DTO con los datos del gasto
-     * @return producto creado
-     */
-    public SoloProductoDTO agregarGasto(AgregarGastoDTO dto) {
-        Cuenta cuenta = cuentaRepository.findById(dto.getIdGrupo()).orElse(null);
-        Usuario usuario = usuarioService.buscarUsuarioId(dto.getIdUsuario());
-
-        if (cuenta == null || usuario == null){
-            return null;
-        }
-
-        Producto producto = dto.getProducto();
-        if (producto.getFecha() == null){
-            producto.setFecha(LocalDateTime.now());
-        }
-        producto.setCuenta(cuenta);
-        producto.setUser(usuario);
-        SoloProductoDTO soloProductoDTO = new SoloProductoDTO(productoService.crearProducto(producto, dto.getImagen(), dto.getFactura()));
-
-        return soloProductoDTO;
-    }
 
     /**
      * Busca una cuenta por su id

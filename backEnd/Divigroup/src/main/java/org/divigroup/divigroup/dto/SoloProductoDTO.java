@@ -2,6 +2,7 @@ package org.divigroup.divigroup.dto;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.divigroup.divigroup.model.Producto;
 import org.springframework.web.service.annotation.GetExchange;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class SoloProductoDTO {
     Integer id;
     String nombre;

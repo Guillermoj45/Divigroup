@@ -3,6 +3,7 @@ package org.divigroup.divigroup.service;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import lombok.AllArgsConstructor;
+import org.divigroup.divigroup.dto.AgregarGastoDTO;
 import org.divigroup.divigroup.dto.SoloProductoDTO;
 import org.divigroup.divigroup.model.Cuenta;
 import org.divigroup.divigroup.model.HistorialPago;
@@ -17,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.*;
 
 /**
@@ -26,7 +28,6 @@ import java.util.*;
 @AllArgsConstructor
 public class ProductoService {
     private IProductoRepository productoRepository;
-
     @Lazy
     @Autowired
     private CuentaService cuentaService;
@@ -34,6 +35,7 @@ public class ProductoService {
     private HistorialPagoService historialPagoService;
 
     private Cloudinary cloudinary;
+    private UsuarioService usuarioService;
 
     /**
      * Método que se encarga de crear un producto
@@ -148,4 +150,29 @@ public class ProductoService {
 
         return suma;
     }
+
+    /**
+     * Agrega un gasto a una cuenta
+     * @param dto DTO con los datos del gasto
+     * @return producto creado
+     */
+    public SoloProductoDTO agregarGasto(AgregarGastoDTO dto) {
+        Cuenta cuenta = cuentaService.buscarCuentaId(dto.getIdGrupo());
+        Usuario usuario = usuarioService.buscarUsuarioId(dto.getIdUsuario());
+
+        if (cuenta == null || usuario == null){
+            return null;
+        }
+
+        Producto producto = dto.getProducto();
+        if (producto.getFecha() == null){
+            producto.setFecha(LocalDateTime.now());
+        }
+        producto.setCuenta(cuenta);
+        producto.setUser(usuario);
+        SoloProductoDTO soloProductoDTO = new SoloProductoDTO(crearProducto(producto, dto.getImagen(), dto.getFactura()));
+
+        return soloProductoDTO;
+    }
+
 }
