@@ -9,6 +9,8 @@ import org.divigroup.divigroup.model.HistorialPago;
 import org.divigroup.divigroup.model.Producto;
 import org.divigroup.divigroup.model.Usuario;
 import org.divigroup.divigroup.repository.IProductoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -25,6 +27,8 @@ import java.util.*;
 public class ProductoService {
     private IProductoRepository productoRepository;
 
+    @Lazy
+    @Autowired
     private CuentaService cuentaService;
 
     private HistorialPagoService historialPagoService;

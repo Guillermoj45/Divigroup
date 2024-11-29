@@ -8,6 +8,7 @@ import org.divigroup.divigroup.model.Producto;
 import org.divigroup.divigroup.model.Usuario;
 import org.divigroup.divigroup.service.CuentaService;
 import org.divigroup.divigroup.service.ProductoService;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -18,7 +19,9 @@ import java.util.List;
 @AllArgsConstructor
 public class GrupoController {
 
+    @Lazy
     private final CuentaService cuentaService;
+    @Lazy
     private final ProductoService productoService;
 
     @PostMapping("/nuevo")

@@ -18,21 +18,17 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-@NoArgsConstructor
 @AllArgsConstructor
-
 public class CuentaService {
-    @Autowired
+
     private ICuentaRepository cuentaRepository;
 
-    @Autowired
     private UsuarioCuentaService usuarioCuentaService;
 
-    @Autowired
     private UsuarioService usuarioService;
 
-    @Autowired
     @Lazy
+    @Autowired
     private ProductoService productoService;
 
     /**
@@ -68,12 +64,7 @@ public class CuentaService {
     public GrupoListaParticipantesDTO agregarUsuarioCuenta(GrupoParticipanteDTO dto){
         Cuenta cuenta = cuentaRepository.findById(dto.getIdGrupo()).orElse(null);
         Usuario usuario = usuarioService.buscarUsuarioId(dto.getIdUsuario());
-        System.out.println("""
-                HOLAAAAAAAA
-                
-                
-                
-                """ + cuenta + usuario);
+
         if (cuenta == null || usuario == null){
             return null;
         }

@@ -37,4 +37,8 @@ public class UsuarioService {
 
         return idUsuario;
     }
+
+    public Usuario crearUsuario(Usuario usuario) {
+        return usuarioRepository.save(usuario);
+    }
 }

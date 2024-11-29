@@ -36,4 +36,16 @@ public class AmigoService {
         }
         return participantes;
     }
+
+    public Amigo crearAmigo(int idUsuario, int idAmigo){
+        Usuario usuario = usuarioService.buscarUsuarioId(idUsuario);
+        Usuario amigo = usuarioService.buscarUsuarioId(idAmigo);
+
+        Amigo amigoNuevo = new Amigo();
+        amigoNuevo.setUser(usuario);
+        amigoNuevo.setAmigo(amigo);
+        amigoNuevo.setConfirmado(false);
+
+        return amigoRepository.save(amigoNuevo);
+    }
 }
