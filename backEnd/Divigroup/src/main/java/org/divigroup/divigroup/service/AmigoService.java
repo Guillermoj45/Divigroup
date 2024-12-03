@@ -18,7 +18,7 @@ public class AmigoService {
 
     /**
      * Lista todos los amigos de un usuario
-     * @param usuario El usuario sobre el que queremos hacer las consultas
+     * @param idUsuario El id del usuario sobre el que queremos hacer las consultas
      * @return Lista de amigos
      */
     public List<Usuario> amigosUsuario (int idUsuario){
@@ -40,6 +40,11 @@ public class AmigoService {
     public Amigo crearAmigo(int idUsuario, int idAmigo){
         Usuario usuario = usuarioService.buscarUsuarioId(idUsuario);
         Usuario amigo = usuarioService.buscarUsuarioId(idAmigo);
+
+        if (usuario == null || amigo == null){
+            throw new IllegalArgumentException("Usuario o amigo no encontrado");
+        }
+
         Amigo amigoNuevo = amigoRepository.posibleAmigo(usuario, amigo).orElse(null);
 
         if (amigoNuevo == null){

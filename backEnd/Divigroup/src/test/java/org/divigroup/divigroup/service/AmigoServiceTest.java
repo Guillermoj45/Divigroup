@@ -13,8 +13,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Lazy;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @AutoConfigureTestDatabase
@@ -28,6 +27,10 @@ public class AmigoServiceTest {
     @Autowired
     private UsuarioService usuarioService;
 
+
+    Usuario usuario;
+    Usuario amigo;
+
     @BeforeEach
     public void setUp() {
         // Arrange
@@ -36,31 +39,45 @@ public class AmigoServiceTest {
         usuario.setUsername("usuario");
         usuario.setPassword("password");
 
-        usuarioService.crearUsuario(usuario);
+        this.usuario = usuarioService.crearUsuario(usuario);
 
         Usuario amigo = new Usuario();
         amigo.setId(2);
         amigo.setUsername("amigo");
         amigo.setPassword("password");
 
-        usuarioService.crearUsuario(amigo);
+        this.amigo = usuarioService.crearUsuario(amigo);
+
     }
 
     @Test
     @DisplayName("Crear amigo")
-    public void testCrearAmigo() throws Exception {
+    public void testCrearAmigoTrue() throws Exception {
         // Arrange
 
 
         // Act
-        amigoService.crearAmigo(1, 2);
-        amigoService.crearAmigo(1, 2);
+        amigoService.crearAmigo(usuario.getId(), amigo.getId());
+        amigoService.crearAmigo(usuario.getId(), amigo.getId());
 
-        amigoService.confirmarAmigo(1,2);
-        amigoService.confirmarAmigo(1,2);
+        amigoService.confirmarAmigo(usuario.getId(),amigo.getId());
+        amigoService.confirmarAmigo(usuario.getId(),amigo.getId());
 
         // Assert
-        assertNotEquals(2, amigoService.amigosUsuario(1).size());
-        assertEquals(1, amigoService.amigosUsuario(1).size());
+        assertNotEquals(2, amigoService.amigosUsuario(usuario.getId()).size());
+        assertEquals(1, amigoService.amigosUsuario(usuario.getId()).size());
+    }
+
+    @Test
+    @DisplayName("Confirmar amigo")
+    public void testConfirmarAmigo() throws Exception {
+        // Arrange
+
+        // Act
+        amigoService.crearAmigo(usuario.getId(), amigo.getId());
+        amigoService.confirmarAmigo(usuario.getId(), amigo.getId());
+
+        // Assert
+        assertEquals(1, amigoService.amigosUsuario(amigo.getId()).size());
     }
 }

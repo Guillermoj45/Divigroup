@@ -1,9 +1,4 @@
-create database postgres
-    with owner postgres;
-
-comment on database postgres is 'default administrative connection database';
-
-create table divigroup.usuario
+create table usuario
 (
     id        serial
         primary key,
@@ -17,32 +12,32 @@ create table divigroup.usuario
     eliminado boolean default false
 );
 
-alter table divigroup.usuario
+alter table usuario
     owner to postgres;
 
 create unique index username_users
-    on divigroup.usuario (username)
+    on usuario (username)
     where (eliminado = false);
 
 create unique index email_users
-    on divigroup.usuario (email)
+    on usuario (email)
     where (eliminado = false);
 
 create index users_deleted
-    on divigroup.usuario (eliminado);
+    on usuario (eliminado);
 
 create index users_password
-    on divigroup.usuario (password);
+    on usuario (password);
 
 create index user_password
-    on divigroup.usuario (password);
+    on usuario (password);
 
-create table divigroup.datos_personales
+create table datos_personales
 (
     id               integer not null
         primary key
         constraint users_datos_personales
-            references divigroup.usuario,
+            references usuario,
     nombre           varchar(45),
     primer_apellido  varchar(45),
     segundo_apellido varchar(45),
@@ -51,8 +46,7 @@ create table divigroup.datos_personales
     direccion        varchar(150)
 );
 
-
-create table divigroup.cuenta
+create table cuenta
 (
     id           serial
         primary key,
@@ -62,39 +56,35 @@ create table divigroup.cuenta
     imagen_fondo varchar(200)
 );
 
-
-create table divigroup.amigo
+create table amigo
 (
     usuario1  integer               not null
         constraint users_usuario1
-            references divigroup.usuario,
+            references usuario,
     usuario2  integer               not null
         constraint users_usuario2
-            references divigroup.usuario,
+            references usuario,
     confimado boolean default false not null,
     id        serial
         primary key
 );
 
-
-create table divigroup.user_cuenta
+create table user_cuenta
 (
     id        serial
         primary key,
     id_user   integer not null
         constraint user_user_cuentas
-            references divigroup.usuario
+            references usuario
             on update cascade on delete cascade,
     id_cuenta integer not null
         constraint cuentas_user_cuentas
-            references divigroup.cuenta
+            references cuenta
             on update cascade on delete cascade,
     is_admin  boolean not null
 );
 
-
-
-create table divigroup.producto
+create table producto
 (
     id          serial
         primary key,
@@ -104,31 +94,30 @@ create table divigroup.producto
     imagen      varchar(200),
     id_cuenta   integer      not null
         constraint cuenta_producto
-            references divigroup.cuenta
+            references cuenta
             on update cascade on delete cascade,
     id_users    integer      not null
         constraint user_producto
-            references divigroup.usuario
+            references usuario
             on update cascade on delete cascade,
     fecha       timestamp default now(),
     facturas    varchar(200)
 );
 
-
-create table divigroup.historial_pago
+create table historial_pago
 (
     id        serial
         primary key,
     tipo_pago smallint not null,
     id_users  integer  not null
         constraint users_historial_pagos
-            references divigroup.usuario,
+            references usuario,
     id_cuenta integer
-        references divigroup.cuenta,
+        references cuenta,
     monton    double precision
 );
 
-create table divigroup.notificacion
+create table notificacion
 (
     id       serial
         primary key,
@@ -137,20 +126,20 @@ create table divigroup.notificacion
     visto    boolean,
     users_id integer      not null
         constraint users_notificaciones
-            references divigroup.usuario
+            references usuario
 );
 
 
-create table divigroup.chat
+create table chat
 (
     id          serial
         primary key,
     id_usuario1 integer                             not null
         constraint fk_user1
-            references divigroup.usuario,
+            references usuario,
     id_usuario2 integer                             not null
         constraint fk_user2
-            references divigroup.usuario,
+            references usuario,
     hora        timestamp default CURRENT_TIMESTAMP not null,
     mensaje     text
 );
