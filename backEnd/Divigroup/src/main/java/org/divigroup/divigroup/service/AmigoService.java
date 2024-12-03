@@ -40,12 +40,23 @@ public class AmigoService {
     public Amigo crearAmigo(int idUsuario, int idAmigo){
         Usuario usuario = usuarioService.buscarUsuarioId(idUsuario);
         Usuario amigo = usuarioService.buscarUsuarioId(idAmigo);
+        Amigo amigoNuevo = amigoRepository.posibleAmigo(usuario, amigo).orElse(null);
 
-        Amigo amigoNuevo = new Amigo();
+        if (amigoNuevo == null){
+            amigoNuevo = new Amigo();
+        }
         amigoNuevo.setUser(usuario);
         amigoNuevo.setAmigo(amigo);
         amigoNuevo.setConfirmado(false);
 
         return amigoRepository.save(amigoNuevo);
+    }
+
+    public void confirmarAmigo(int idUsuario, int idAmigo) throws Exception {
+        Usuario usuario = usuarioService.buscarUsuarioId(idUsuario);
+        Usuario amigo = usuarioService.buscarUsuarioId(idAmigo);
+
+        amigoRepository.actualizarConfirmacion(usuario, amigo);
+
     }
 }
