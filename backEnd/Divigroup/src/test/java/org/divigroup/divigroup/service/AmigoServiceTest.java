@@ -51,7 +51,7 @@ public class AmigoServiceTest {
     }
 
     @Test
-    @DisplayName("Crear amigo")
+    @DisplayName("Test de amistad true")
     public void testCrearAmigoTrue() throws Exception {
         // Arrange
 
@@ -64,9 +64,79 @@ public class AmigoServiceTest {
         amigoService.confirmarAmigo(usuario.getId(),amigo.getId());
 
         // Assert
+
+        assertEquals(1, amigoService.amigosUsuario(usuario.getId()).size());
+    }
+
+
+    @Test
+    @DisplayName("Test de usuario nuevo sin amigos")
+    public void testComprobacionUsuarioSinAmigos() throws Exception {
+        // Arrange
+
+        // Act
+
+
+        // Assert
+        assertNotEquals(2, amigoService.amigosUsuario(usuario.getId()).size());
+        assertEquals(0, amigoService.amigosUsuario(usuario.getId()).size());
+    }
+
+    @Test
+    @DisplayName("Test de busqueda de solo amigos")
+    public void testBusquedaSoloAmigos() throws Exception {
+        // Arrange
+
+        // Act
+
+        // Creamos la amistad
+        amigoService.crearAmigo(usuario.getId(), amigo.getId());
+        amigoService.crearAmigo(usuario.getId(), amigo.getId());
+        // No Confirmamos la amistad
+        // amigoService.confirmarAmigo(usuario.getId(),amigo.getId());
+        // amigoService.confirmarAmigo(usuario.getId(),amigo.getId());
+
+        // Assert
+        assertNotEquals(1, amigoService.amigosUsuario(usuario.getId()).size());
+        assertEquals(0, amigoService.amigosUsuario(usuario.getId()).size());
+    }
+
+    @Test
+    @DisplayName("Test usuario no puede ser amigo de un usuario que no existe")
+    public void testUsuarioNoExiste() throws Exception {
+        // Arrange
+
+        // Act
+
+        // Creamos la amistad
+        assertThrows(IllegalArgumentException.class, () -> amigoService.crearAmigo(usuario.getId(), 21322));
+        amigoService.confirmarAmigo(usuario.getId(), 21322);
+
+        // Assert
+        assertEquals(0, amigoService.amigosUsuario(usuario.getId()).size());
+    }
+
+    @Test
+    @DisplayName("Test de amistad false")
+    public void testCrearAmigoFalse() throws Exception {
+        // Arrange
+
+        // Act
+
+        // Creamos la amistad
+        amigoService.crearAmigo(usuario.getId(), amigo.getId());
+        amigoService.crearAmigo(usuario.getId(), amigo.getId());
+        // Confirmamos la amistad
+        amigoService.confirmarAmigo(usuario.getId(),amigo.getId());
+        amigoService.confirmarAmigo(usuario.getId(),amigo.getId());
+
+        // Assert
         assertNotEquals(2, amigoService.amigosUsuario(usuario.getId()).size());
         assertEquals(1, amigoService.amigosUsuario(usuario.getId()).size());
     }
+
+
+
 
     @Test
     @DisplayName("Confirmar amigo")

@@ -1,5 +1,6 @@
 package org.divigroup.divigroup.service;
 
+import lombok.AllArgsConstructor;
 import org.divigroup.divigroup.model.Amigo;
 import org.divigroup.divigroup.model.Usuario;
 import org.divigroup.divigroup.repository.IAmigoRepository;
@@ -10,15 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class AmigoService {
-    @Autowired
     IAmigoRepository amigoRepository;
-    @Autowired
     UsuarioService usuarioService;
 
     /**
      * Lista todos los amigos de un usuario
-     * @param idUsuario El id del usuario sobre el que queremos hacer las consultas
+     * @param idUsuario El ID del usuario sobre el que queremos hacer las consultas
      * @return Lista de amigos
      */
     public List<Usuario> amigosUsuario (int idUsuario){
@@ -37,6 +37,12 @@ public class AmigoService {
         return participantes;
     }
 
+    /**
+     * Crea una amistad entre dos usuarios
+     * @param idUsuario El ID del usuario que quiere añadir un amigo
+     * @param idAmigo El ID del amigo que se quiere añadir
+     * @return Amigo creado
+     */
     public Amigo crearAmigo(int idUsuario, int idAmigo){
         Usuario usuario = usuarioService.buscarUsuarioId(idUsuario);
         Usuario amigo = usuarioService.buscarUsuarioId(idAmigo);
@@ -57,6 +63,13 @@ public class AmigoService {
         return amigoRepository.save(amigoNuevo);
     }
 
+
+    /**
+     * Confirma una amistad entre dos usuarios
+     * @param idUsuario El ID del usuario que quiere confirmar un amigo
+     * @param idAmigo El ID del amigo que se quiere confirmar
+     * @throws Exception Si no se puede confirmar la amistad
+     */
     public void confirmarAmigo(int idUsuario, int idAmigo) throws Exception {
         Usuario usuario = usuarioService.buscarUsuarioId(idUsuario);
         Usuario amigo = usuarioService.buscarUsuarioId(idAmigo);

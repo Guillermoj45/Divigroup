@@ -42,7 +42,7 @@ public class ProductoService {
      * @param producto producto a crear
      * @return producto creado
      */
-    public Producto crearProducto(Producto producto, MultipartFile imagenURL, MultipartFile faturaURL) {
+    public Producto crearProducto(Producto producto, MultipartFile imagenURL, MultipartFile faturaURL) throws IllegalArgumentException {
         try {
             if (imagenURL != null) {
                 File imagen = new File(System.getProperty("java.io.tmpdir") + "/" + imagenURL.getOriginalFilename());
@@ -65,6 +65,10 @@ public class ProductoService {
                 var pic2 = cloudinary.uploader().upload(factura, ObjectUtils.asMap("folder","divigroup"));
 
                 producto.setFactura(pic2.get("url").toString());
+            }
+
+            if (producto.getPrecio() < 0){
+                throw new IllegalArgumentException("El precio no puede ser negativo");
             }
 
         } catch (IOException e) {
