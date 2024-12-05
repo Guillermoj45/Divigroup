@@ -134,8 +134,8 @@ public class GastoServiceTest {
     }
 
     @Test
-    @DisplayName("Solo agregan gastos personas de la cuenta false")
-    public void testSoloAgreganGastosPersonasCuentaFalse() {
+    @DisplayName("Solo agregan gastos personas")
+    public void testSoloAgreganGastosPersonasFalse() {
         // Arrange
         Producto producto = new Producto();
         producto.setId(1);
@@ -146,6 +146,30 @@ public class GastoServiceTest {
         producto.setCuenta(cuenta);
 
         // Act && Assert
-        assertThrows(DataIntegrityViolationException.class, () -> productoService.crearProducto(producto, null, null));
+        assertThrows(IllegalArgumentException.class, () -> productoService.crearProducto(producto, null, null));
+    }
+
+    @Test
+    @DisplayName("Solo agregan gastos personas de la cuenta false")
+    public void testSoloAgreganGastosPersonasCuentaFalse() {
+        Usuario usuario2 = new Usuario();
+        usuario2.setId(2);
+        usuario2.setUsername("usuario2");
+        usuario2.setPassword("password");
+        usuario2.setAvatar("avatar");
+        usuario2.setRol(Rol.USER);
+        usuario2.setTipoPago(TipoPago.BIZUM);
+
+        // Arrange
+        Producto producto = new Producto();
+        producto.setId(1);
+        producto.setNombre("producto");
+        producto.setPrecio(12.2F);
+        producto.setDescripcion("descripcion");
+        producto.setUser(usuario2);
+        producto.setCuenta(cuenta);
+
+        // Act && Assert
+        assertThrows(IllegalArgumentException.class, () -> productoService.crearProducto(producto, null, null));
     }
 }

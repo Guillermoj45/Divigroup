@@ -1,9 +1,7 @@
 package org.divigroup.divigroup.service;
 
 import jakarta.transaction.Transactional;
-import jdk.jfr.Name;
-import lombok.AllArgsConstructor;
-import net.bytebuddy.implementation.bytecode.Throw;
+
 import org.divigroup.divigroup.model.Usuario;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -78,13 +76,13 @@ public class AmigoServiceTest {
 
 
         // Assert
-        assertNotEquals(2, amigoService.amigosUsuario(usuario.getId()).size());
+        assertNotEquals(1, amigoService.amigosUsuario(usuario.getId()).size());
         assertEquals(0, amigoService.amigosUsuario(usuario.getId()).size());
     }
 
     @Test
     @DisplayName("Test de busqueda de solo amigos")
-    public void testBusquedaSoloAmigos() throws Exception {
+    public void testBusquedaSoloAmigos() {
         // Arrange
 
         // Act

@@ -20,6 +20,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Clase que se encarga de la logica de negocio de los productos
@@ -74,6 +75,23 @@ public class ProductoService {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        AtomicBoolean encontrado = new AtomicBoolean(false);
+        if (producto.getCuenta() == null) {
+            throw new IllegalArgumentException("La cuenta no puede ser nula");
+        }
+        if (producto.getUser() == null) {
+            throw new IllegalArgumentException("El usuario no puede ser nulo");
+        }
+        cuentaService.listaParticipantes(producto.getCuenta().getId()).getParticipantes().forEach(usuario -> {
+            if (usuario.getId().equals(producto.getUser().getId())) {
+                encontrado.set(true);
+            }
+        });
+
+        if (!encontrado.get()) {
+            throw new IllegalArgumentException("El usuario no pertenece a la cuenta");
+        }
+
         return productoRepository.save(producto);
     }
 
