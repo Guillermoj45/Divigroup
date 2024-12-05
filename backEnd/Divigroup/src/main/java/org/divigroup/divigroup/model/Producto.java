@@ -38,7 +38,7 @@ public class Producto {
     private String factura;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "id_users")
+    @JoinColumn(name = "id_users", nullable = false)
     private Usuario user;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
