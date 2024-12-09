@@ -14,7 +14,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.dao.DataIntegrityViolationException;
 
 import java.util.ArrayList;
 
@@ -34,9 +33,8 @@ public class GastoServiceTest {
     Usuario usuario;
     Cuenta cuenta;
 
-
     @BeforeEach
-    public void aVoid(){
+    public void setUp() {
         Usuario usuario = new Usuario();
         usuario.setId(1);
         usuario.setUsername("usuario");
@@ -54,15 +52,66 @@ public class GastoServiceTest {
         cuentaDTO.setPersonas(new ArrayList<>());
 
         cuenta = cuentaService.crearCuenta(cuentaDTO, this.usuario.getId());
-
     }
 
 
     @Test
-    @DisplayName("Test crear gasto true")
+    @DisplayName("Test gasto true")
     public void testCrearGastoTrue() {
         // Arrange
 
+
+        Producto producto = new Producto();
+        producto.setId(1);
+        producto.setNombre("producto");
+        producto.setPrecio(12.2F);
+        producto.setDescripcion("descripcion");
+        producto.setUser(usuario);
+        producto.setCuenta(cuenta);
+
+        // Act
+        Producto productoNuevo = productoService.crearProducto(producto, null, null);
+
+        // Assert
+
+        assertNotEquals(null, productoNuevo);
+    }
+
+    @Test
+    @DisplayName("Test un gasto debe estar asociado a una cuenta false")
+    public void testCrearGastoFalseCuenta() {
+        // Arrange
+        Producto producto = new Producto();
+        producto.setId(1);
+        producto.setNombre("producto");
+        producto.setPrecio(12.2F);
+        producto.setDescripcion("descripcion");
+        producto.setUser(usuario);
+
+        // Act && Assert
+        assertThrows(IllegalArgumentException.class, () -> productoService.crearProducto(producto, null, null));
+    }
+
+        @Test
+    @DisplayName("Test un gasto debe estar asociado a una cuenta true")
+    public void testCrearGastoFalseCuentaTrue() {
+        // Arrange
+        Producto producto = new Producto();
+        producto.setId(1);
+        producto.setNombre("producto");
+        producto.setPrecio(12.2F);
+        producto.setDescripcion("descripcion");
+        producto.setUser(usuario);
+        producto.setCuenta(cuenta);
+
+        // Act && Assert
+        assertNotEquals(null, productoService.crearProducto(producto, null, null));
+    }
+
+    @Test
+    @DisplayName("Test un gasto debe estar asociado a un usuario false")
+    public void testCrearGastoFalseUsuario() {
+        // Arrange
         Producto producto = new Producto();
         producto.setId(1);
         producto.setNombre("producto");
@@ -70,17 +119,30 @@ public class GastoServiceTest {
         producto.setDescripcion("descripcion");
 
         producto.setCuenta(cuenta);
-        producto.setUser(usuario);
 
-        // Act
-        Producto productoNuevo = productoService.crearProducto(producto, null, null);
-
-        // Assert
-        assertNotEquals(null, productoNuevo);
+        // Act && Assert
+        assertThrows(IllegalArgumentException.class, () -> productoService.crearProducto(producto, null, null));
     }
 
     @Test
-    @DisplayName("Test crear gasto false")
+    @DisplayName("Test un gasto debe estar asociado a un usuario true")
+    public void testCrearGastoFalseUsuarioTrue() {
+        // Arrange
+        Producto producto = new Producto();
+        producto.setId(1);
+        producto.setNombre("producto");
+        producto.setPrecio(12.2F);
+        producto.setDescripcion("descripcion");
+        producto.setUser(usuario);
+
+        producto.setCuenta(cuenta);
+
+        // Act && Assert
+        assertNotEquals(null, productoService.crearProducto(producto, null, null));
+    }
+
+    @Test
+    @DisplayName("Test gasto false")
     public void testCrearGastoFalse() {
         // Arrange
         Producto producto = new Producto();
@@ -93,11 +155,10 @@ public class GastoServiceTest {
 
        // Act && Assert
         assertThrows(IllegalArgumentException.class, () -> productoService.crearProducto(producto, null, null));
-
     }
 
     @Test
-    @DisplayName("Test crear gasto limite")
+    @DisplayName("Test gasto limite")
     public void testCrearGastoFalseLimite() {
         // Arrange
         Producto producto = new Producto();
@@ -105,71 +166,12 @@ public class GastoServiceTest {
         producto.setNombre("producto");
         producto.setPrecio(0);
         producto.setDescripcion("descripcion");
-
-        producto.setCuenta(cuenta);
         producto.setUser(usuario);
+        producto.setCuenta(cuenta);
 
-        productoService.crearProducto(producto, null, null);
 
        // Act && Assert
-        assertNotEquals(null, producto.getId());
+        assertNotEquals(null, productoService.crearProducto(producto, null, null).getId());
     }
 
-
-    @Test
-    @DisplayName("Solo agregan gastos personas de la cuenta true")
-    public void testSoloAgreganGastosPersonasCuentaTrue() {
-        // Arrange
-        Producto producto = new Producto();
-        producto.setId(1);
-        producto.setNombre("producto");
-        producto.setPrecio(12.2F);
-        producto.setDescripcion("descripcion");
-        producto.setUser(usuario);
-        producto.setCuenta(cuenta);
-        productoService.crearProducto(producto, null, null);
-
-        // Act && Assert
-        assertNotEquals(null, producto);
-    }
-
-    @Test
-    @DisplayName("Solo agregan gastos personas")
-    public void testSoloAgreganGastosPersonasFalse() {
-        // Arrange
-        Producto producto = new Producto();
-        producto.setId(1);
-        producto.setNombre("producto");
-        producto.setPrecio(12.2F);
-        producto.setDescripcion("descripcion");
-        producto.setUser(null);
-        producto.setCuenta(cuenta);
-
-        // Act && Assert
-        assertThrows(IllegalArgumentException.class, () -> productoService.crearProducto(producto, null, null));
-    }
-
-    @Test
-    @DisplayName("Solo agregan gastos personas de la cuenta false")
-    public void testSoloAgreganGastosPersonasCuentaFalse() {
-        Usuario usuario2 = new Usuario();
-        usuario2.setId(2);
-        usuario2.setUsername("usuario2");
-        usuario2.setPassword("password");
-        usuario2.setAvatar("avatar");
-        usuario2.setRol(Rol.USER);
-        usuario2.setTipoPago(TipoPago.BIZUM);
-
-        // Arrange
-        Producto producto = new Producto();
-        producto.setId(1);
-        producto.setNombre("producto");
-        producto.setPrecio(12.2F);
-        producto.setDescripcion("descripcion");
-        producto.setUser(usuario2);
-        producto.setCuenta(cuenta);
-
-        // Act && Assert
-        assertThrows(IllegalArgumentException.class, () -> productoService.crearProducto(producto, null, null));
-    }
 }

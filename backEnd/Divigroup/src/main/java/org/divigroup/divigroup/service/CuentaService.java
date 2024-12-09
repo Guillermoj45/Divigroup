@@ -33,11 +33,18 @@ public class CuentaService {
      * @param agregarCuentaDTO Cuenta que vamos a guardar
      * @return devuelve el objeto entero de nuevo
      */
-    public Cuenta crearCuenta(AgregarCuentaDTO agregarCuentaDTO, int idUsuario){
+    public Cuenta crearCuenta(AgregarCuentaDTO agregarCuentaDTO, int idUsuario) {
+        if (agregarCuentaDTO.getNombre() == null){
+            throw new IllegalArgumentException("El nombre de la cuenta no puede ser nulo");
+        }
+        if (idUsuario == 0){
+            throw new IllegalArgumentException("El id del usuario no puede ser 0");
+        }
+
         Usuario usuario = usuarioService.buscarUsuarioId(idUsuario);
         Cuenta cuentaNueva = new Cuenta(agregarCuentaDTO.getNombre(), agregarCuentaDTO.getDescripcion(), agregarCuentaDTO.getImagen(), agregarCuentaDTO.getImagenFondo());
 
-        usuarioCuentaService.agregarUsuarioCuenta(cuentaNueva, usuario, true);
+        usuarioCuentaService.agregarUsuarioCuenta(cuentaNueva, usuario, true, idUsuario);
 
         ArrayList<Usuario> usuarioMapeados = new ArrayList<>();
         for (Usuario u : agregarCuentaDTO.getPersonas()){
@@ -46,7 +53,7 @@ public class CuentaService {
 
         for (Usuario u : usuarioMapeados){
             u = new Usuario(u);
-            usuarioCuentaService.agregarUsuarioCuenta(cuentaNueva, u, false);
+            usuarioCuentaService.agregarUsuarioCuenta(cuentaNueva, u, false, idUsuario);
         }
 
         System.out.println("Cuenta creada: " + cuentaNueva);
@@ -58,7 +65,7 @@ public class CuentaService {
      * @param dto DTO con los datos de la relación
      * @return devuelve la relación entre ambos
      */
-    public GrupoListaParticipantesDTO agregarUsuarioCuenta(GrupoParticipanteDTO dto){
+    public GrupoListaParticipantesDTO agregarUsuarioCuenta(GrupoParticipanteDTO dto, int idUsuarioAdmin) {
         Cuenta cuenta = cuentaRepository.findById(dto.getIdGrupo()).orElse(null);
         Usuario usuario = usuarioService.buscarUsuarioId(dto.getIdUsuario());
 
@@ -66,7 +73,7 @@ public class CuentaService {
             return null;
         }
 
-        usuarioCuentaService.agregarUsuarioCuenta(cuenta, usuario);
+        usuarioCuentaService.agregarUsuarioCuenta(cuenta, usuario, idUsuarioAdmin);
         Set<Usuario> participantes = new HashSet<>(usuarioCuentaService.listaUsuarios(cuenta));
 
         return new GrupoListaParticipantesDTO(cuenta, participantes);

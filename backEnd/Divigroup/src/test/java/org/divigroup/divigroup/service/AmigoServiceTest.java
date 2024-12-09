@@ -25,7 +25,6 @@ public class AmigoServiceTest {
     @Autowired
     private UsuarioService usuarioService;
 
-
     Usuario usuario;
     Usuario amigo;
 
@@ -143,6 +142,8 @@ public class AmigoServiceTest {
 
         // Act
         amigoService.crearAmigo(usuario.getId(), amigo.getId());
+        assertEquals(0, amigoService.amigosUsuario(amigo.getId()).size());
+
         amigoService.confirmarAmigo(usuario.getId(), amigo.getId());
 
         // Assert
