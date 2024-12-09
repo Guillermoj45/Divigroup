@@ -14,7 +14,7 @@ public class UsuarioService {
     IUsuarioRepository usuarioRepository;
 
     /**
-     * Buscar un usuario por id
+     * Buscar un usuario por ID
      * @param id Id del usuario
      * @return Usuario
      */

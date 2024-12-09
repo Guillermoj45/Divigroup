@@ -74,6 +74,13 @@ public class ProductoService {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        if (producto.getUser() == null){
+            throw new IllegalArgumentException("El usuario no puede ser nulo");
+        } else if (producto.getCuenta() == null){
+            throw new IllegalArgumentException("La cuenta no puede ser nula");
+        }
+
         return productoRepository.save(producto);
     }
 

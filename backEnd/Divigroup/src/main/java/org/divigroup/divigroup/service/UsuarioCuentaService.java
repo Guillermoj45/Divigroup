@@ -37,6 +37,7 @@ public class UsuarioCuentaService {
         usuarioCuenta.setCuenta(cuenta);
         return usuarioCuentaRepository.save(usuarioCuenta);
     }
+
     @Transactional
     public UsuarioCuenta agregarUsuarioCuenta(Cuenta cuenta, Usuario usuario, boolean esAdmin) {
         System.out.println("Cuenta: " + cuenta.getId());
@@ -52,17 +53,43 @@ public class UsuarioCuentaService {
 
 
     /**
+     * Comprueba si hay más de un administrador en una cuenta
+     * @param cuenta La cuenta que queremos para filtrar
+     * @return un boolean que indica si hay más de un administrador
+     */
+    public boolean cuentaTieneMasDeUnAdmin(Cuenta cuenta){
+        return usuarioCuentaRepository.cuentaTieneMasDeUnAdmin(cuenta);
+    }
+
+    /**
+     * Comprueba si un usuario es administrador de una cuenta
+     * @param cuenta La cuenta que queremos para filtrar
+     * @param usuario El usuario que queremos para filtrar
+     * @return un boolean que indica si es administrador o no
+     */
+    public boolean esAdmin(Cuenta cuenta, Usuario usuario){
+        UsuarioCuenta usuarioCuenta = usuarioCuentaRepository.findTopByUsuarioEqualsAndCuentaEquals(usuario, cuenta).orElse(null);
+        if (usuarioCuenta != null){
+            return usuarioCuenta.isAdmin();
+        }
+        return false;
+    }
+
+
+    /**
      * Elimina un usuario de una cuenta
      * @param cuenta La cuenta a la que lo queremos añadir
      * @param usuario El usuario que queremos añadir
      * @return un boolean que indica si a sido eliminado o no
      */
     public boolean eliminarUsuarioCuenta(Cuenta cuenta, Usuario usuario){
-        UsuarioCuenta usuarioCuenta = usuarioCuentaRepository.findTopByUsuarioEqualsAndCuentaEquals(usuario, cuenta).orElse(null);
+        if (cuentaTieneMasDeUnAdmin(cuenta)){
+            UsuarioCuenta usuarioCuenta = usuarioCuentaRepository.findTopByUsuarioEqualsAndCuentaEquals(usuario, cuenta).orElse(null);
 
-        if (usuarioCuenta != null){
-            usuarioCuentaRepository.delete(usuarioCuenta);
-            return true;
+            if (usuarioCuenta != null){
+                usuarioCuentaRepository.delete(usuarioCuenta);
+                return true;
+            }
         }
         return false;
     }
@@ -88,7 +115,6 @@ public class UsuarioCuentaService {
      * @return una lista de cuentas a las que pertenece el usuario
      */
     public List<Cuenta> listaCuentas (Usuario usuario) {
-
         return usuarioCuentaRepository.listarCuentasUsuario(usuario);
     }
 
