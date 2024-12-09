@@ -34,6 +34,13 @@ public class CuentaService {
      * @return devuelve el objeto entero de nuevo
      */
     public Cuenta crearCuenta(AgregarCuentaDTO agregarCuentaDTO, int idUsuario) {
+        if (agregarCuentaDTO.getNombre() == null){
+            throw new IllegalArgumentException("El nombre de la cuenta no puede ser nulo");
+        }
+        if (idUsuario == 0){
+            throw new IllegalArgumentException("El id del usuario no puede ser 0");
+        }
+
         Usuario usuario = usuarioService.buscarUsuarioId(idUsuario);
         Cuenta cuentaNueva = new Cuenta(agregarCuentaDTO.getNombre(), agregarCuentaDTO.getDescripcion(), agregarCuentaDTO.getImagen(), agregarCuentaDTO.getImagenFondo());
 

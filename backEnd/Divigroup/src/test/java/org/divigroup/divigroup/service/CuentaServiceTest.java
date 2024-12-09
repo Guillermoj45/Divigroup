@@ -134,4 +134,31 @@ public class CuentaServiceTest {
         assertFalse(usuarioCuentaService.esAdmin(cuenta, usuario2));
     }
 
+    @Test
+    @DisplayName("test crear cuenta sin nombre")
+    public void testCrearCuenta() {
+        // Arrange
+        AgregarCuentaDTO cuentaDTO = new AgregarCuentaDTO();
+        cuentaDTO.setNombre(null);
+        // Act
+        // Assert
+        assertThrows(IllegalArgumentException.class, () -> cuentaService.crearCuenta(cuentaDTO, usuario.getId()));
+    }
+
+    @Test
+    @DisplayName("test crear cuenta con nombre")
+    public void testCrearCuenta2() {
+        // Arrange
+        AgregarCuentaDTO cuentaDTO = new AgregarCuentaDTO();
+        cuentaDTO.setNombre("cuenta");
+        cuentaDTO.setDescripcion("descripcion");
+        cuentaDTO.setImagen("imagen");
+        cuentaDTO.setPersonas(new ArrayList<>());
+        cuentaDTO.setImagenFondo("imagenFondo");
+
+        // Act
+        Cuenta cuenta = cuentaService.crearCuenta(cuentaDTO, usuario.getId());
+        // Assert
+        assertNotNull(cuenta);
+    }
 }
