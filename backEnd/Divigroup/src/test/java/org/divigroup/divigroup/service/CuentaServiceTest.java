@@ -30,6 +30,7 @@ public class CuentaServiceTest {
 
     Usuario usuario;
     Usuario usuario2;
+    Usuario usuario3;
 
     @BeforeEach
     public void setUp() {
@@ -46,6 +47,13 @@ public class CuentaServiceTest {
         usuario2.setPassword("password");
 
         usuario2 = usuarioService.crearUsuario(usuario2);
+
+        usuario3 = new Usuario();
+        usuario3.setId(3);
+        usuario3.setUsername("usuario3");
+        usuario3.setPassword("password");
+
+        usuario3 = usuarioService.crearUsuario(usuario3);
     }
 
     @Test
@@ -98,12 +106,32 @@ public class CuentaServiceTest {
 
         Cuenta cuenta = cuentaService.crearCuenta(cuentaDTO, usuario.getId());
         // Act
-        usuarioCuentaService.agregarUsuarioCuenta(cuenta, usuario2, true);
+        usuarioCuentaService.agregarUsuarioCuenta(cuenta, usuario2, true, usuario.getId());
         // Assert
         assertNotNull(cuenta);
         assertTrue(usuarioCuentaService.eliminarUsuarioCuenta(cuenta, usuario));
         assertFalse(usuarioCuentaService.esAdmin(cuenta, usuario));
         assertTrue(usuarioCuentaService.esAdmin(cuenta, usuario2));
+    }
+
+    @Test
+    @DisplayName("test solo los administradores pueden agregar o eliminar usuarios")
+    public void testCrearCuentaTrue3() {
+        // Arrange
+        AgregarCuentaDTO cuentaDTO = new AgregarCuentaDTO();
+        cuentaDTO.setNombre("cuenta");
+        cuentaDTO.setDescripcion("descripcion");
+        cuentaDTO.setImagen("imagen");
+        cuentaDTO.setPersonas(new ArrayList<>());
+        cuentaDTO.setImagenFondo("imagenFondo");
+
+        Cuenta cuenta = cuentaService.crearCuenta(cuentaDTO, usuario.getId());
+        // Act
+        usuarioCuentaService.agregarUsuarioCuenta(cuenta, usuario2, usuario.getId());
+        // Assert
+        assertNotNull(cuenta);
+        assertFalse(usuarioCuentaService.eliminarUsuarioCuenta(cuenta, usuario2));
+        assertFalse(usuarioCuentaService.esAdmin(cuenta, usuario2));
     }
 
 }

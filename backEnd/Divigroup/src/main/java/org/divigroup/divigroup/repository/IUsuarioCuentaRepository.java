@@ -48,4 +48,16 @@ public interface IUsuarioCuentaRepository extends JpaRepository<UsuarioCuenta, I
             "from UsuarioCuenta uc " +
             "where uc.cuenta = :cuenta and uc.isAdmin = true")
     boolean cuentaTieneMasDeUnAdmin(Cuenta cuenta);
+
+
+    /**
+     * Te devuleve un resultado boolerano si el usuario es administrador de la cuenta
+     * @param cuenta La cuenta por la que queremos buscar
+     * @param idUsuario El usuario por el que queremos buscar
+     * @return nos devuelve un booleano si el usuario es administrador de la cuenta
+     */
+    @Query("SELECT uc.isAdmin " +
+            "from UsuarioCuenta uc " +
+            "where uc.cuenta = :cuenta and uc.usuario.id = :idUsuario")
+    boolean esAdmin(Cuenta cuenta, int idUsuario);
 }

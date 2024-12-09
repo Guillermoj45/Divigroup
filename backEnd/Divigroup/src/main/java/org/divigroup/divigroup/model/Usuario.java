@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import org.divigroup.divigroup.model.enums.Rol;
 import org.divigroup.divigroup.model.enums.TipoPago;
 import org.hibernate.mapping.Set;
@@ -22,9 +24,11 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotBlank(message = "El nombre de usuario no puede estar vacío")
     @Column(name = "username", unique = true)
     private String username;
 
+    @Email(message = "Email no válido")
     @Column(name = "email", unique = true)
     private String email;
 
@@ -39,6 +43,7 @@ public class Usuario {
     @Enumerated(EnumType.ORDINAL)
     private Rol rol;
 
+    @NotBlank(message = "La contraseña no puede estar vacía")
     @Column(name = "password")
     @JsonIgnore
     private String password;

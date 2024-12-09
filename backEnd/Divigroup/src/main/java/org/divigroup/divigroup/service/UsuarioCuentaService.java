@@ -31,7 +31,11 @@ public class UsuarioCuentaService {
      * @param usuario El usuarios que queremos añadir
      * @return devuelve la relación entre ambos
      */
-    public UsuarioCuenta agregarUsuarioCuenta(Cuenta cuenta, Usuario usuario){
+    public UsuarioCuenta agregarUsuarioCuenta(Cuenta cuenta, Usuario usuario, int idUsuarioAdmin){
+        if (!usuarioCuentaRepository.esAdmin(cuenta, idUsuarioAdmin)){
+            throw new RuntimeException("No eres administrador de la cuenta");
+        }
+
         UsuarioCuenta usuarioCuenta = new UsuarioCuenta();
         usuarioCuenta.setUsuario(usuario);
         usuarioCuenta.setCuenta(cuenta);
@@ -39,7 +43,7 @@ public class UsuarioCuentaService {
     }
 
     @Transactional
-    public UsuarioCuenta agregarUsuarioCuenta(Cuenta cuenta, Usuario usuario, boolean esAdmin) {
+    public UsuarioCuenta agregarUsuarioCuenta(Cuenta cuenta, Usuario usuario, boolean esAdmin, int idUsuarioAdmin) {
         System.out.println("Cuenta: " + cuenta.getId());
 
         usuario = usuarioService.buscarUsuarioId(usuario.getId());

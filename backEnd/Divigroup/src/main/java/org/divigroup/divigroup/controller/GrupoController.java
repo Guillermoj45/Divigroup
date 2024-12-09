@@ -31,7 +31,7 @@ public class GrupoController {
 
     @PostMapping("/participantes/nuevo")
     public GrupoListaParticipantesDTO agregarUsuarioCuenta(@RequestBody GrupoParticipanteDTO dto){
-        return cuentaService.agregarUsuarioCuenta(dto);
+        return cuentaService.agregarUsuarioCuenta(dto,1);
     }
 
     @GetMapping("/participantes/{idCuenta}")
