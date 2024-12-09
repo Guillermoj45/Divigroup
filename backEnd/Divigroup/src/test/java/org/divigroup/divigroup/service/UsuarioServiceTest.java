@@ -50,7 +50,6 @@ public class UsuarioServiceTest {
         usuario.setPassword("password");
 
 
-
         Usuario usuario2 = new Usuario();
         usuario2.setUsername("usuario");
         usuario2.setPassword("password");
