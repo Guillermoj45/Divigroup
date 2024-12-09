@@ -25,4 +25,13 @@ public class HistorialPagoService {
         return historialPagoRepository.encontrarPorCuenta(cuenta);
     }
 
+    /**
+     * Método que se encarga de guardar un historial de pago
+     * @param historialPago historial de pago a guardar
+     * @return historial de pago guardado
+     */
+    public HistorialPago guardar(HistorialPago historialPago) {
+        return historialPagoRepository.save(historialPago);
+    }
+
 }

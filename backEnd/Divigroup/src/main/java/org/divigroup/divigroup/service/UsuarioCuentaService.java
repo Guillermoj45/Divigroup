@@ -44,6 +44,9 @@ public class UsuarioCuentaService {
 
     @Transactional
     public UsuarioCuenta agregarUsuarioCuenta(Cuenta cuenta, Usuario usuario, boolean esAdmin, int idUsuarioAdmin) {
+        if (usuario == null){
+            throw new RuntimeException("El usuario no existe");
+        }
         System.out.println("Cuenta: " + cuenta.getId());
 
         usuario = usuarioService.buscarUsuarioId(usuario.getId());
