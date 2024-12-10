@@ -39,21 +39,6 @@ public class UsuarioCuentaServiceTest {
     private Usuario usuario;
     private Usuario usuario1;
 
-    @BeforeEach
-    public void setUp() {
-        // Arrange
-        usuario = new Usuario();
-        usuario.setId(1);
-        usuario.setUsername("usuario");
-        usuario.setPassword("password");
-
-        usuario1 = new Usuario();
-        usuario1.setId(2);
-        usuario1.setUsername("usuario1");
-        usuario1.setPassword("password");
-
-
-    }
 
     @Test
     @DisplayName("Test de listar todos los integrantes de una cuenta")
@@ -73,7 +58,7 @@ public class UsuarioCuentaServiceTest {
     }
 
     @Test
-    @DisplayName("Test de agregar un usuario a una cuenta")
+    @DisplayName("Test de agregar un usuario inexistente a una cuenta falso")
     public void testAgregarUsuarioCuenta() {
         // Arrange
         cuenta = new Cuenta();

@@ -43,35 +43,6 @@ public class HistorialPagosServiceTest {
     private Cuenta cuenta;
     private Usuario usuario;
 
-    @BeforeEach
-    public void setUp() {
-        usuario = new Usuario();
-        usuario.setId(1);
-        usuario.setUsername("usuario");
-        usuario.setPassword("password");
-
-        when(usuarioService.crearUsuario(any(Usuario.class))).thenReturn(usuario);
-
-        AgregarCuentaDTO cuentaDTO = new AgregarCuentaDTO();
-        cuentaDTO.setNombre("cuenta");
-        cuentaDTO.setDescripcion("descripcion");
-        cuentaDTO.setImagen("imagen");
-        cuentaDTO.setPersonas(new ArrayList<>());
-
-        cuenta = new Cuenta();
-        cuenta.setId(1);
-        cuenta.setNombre("cuenta");
-        cuenta.setDescripcion("descripcion");
-        cuenta.setImagen("imagen");
-
-        when(cuentaService.crearCuenta(any(AgregarCuentaDTO.class), eq(usuario.getId()))).thenReturn(cuenta);
-
-        HistorialPago historialPago = new HistorialPago();
-        historialPago.setId(1);
-        historialPago.setCuenta(cuenta);
-
-        when(historialPagoService.guardar(any(HistorialPago.class))).thenReturn(historialPago);
-    }
 
     @Test
     @DisplayName("Test encontrar por cuenta")
